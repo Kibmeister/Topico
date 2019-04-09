@@ -1,0 +1,31 @@
+{
+  "name": "itpdp",
+  "version": "1.0.0",
+  "description": "System til 'wisydice' projektet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.au.dk/au582126/itpdp"
+  },
+  "author": "Fjellgeit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.au.dk/au582126/itpdp/issues"
+  },
+  "homepage": "https://gitlab.au.dk/au582126/itpdp",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "helmet": "^3.16.0",
+    "ip": "^1.1.5",
+    "mysql": "^2.16.0"
+  }
+}
