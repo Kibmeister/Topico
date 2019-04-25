@@ -1,0 +1,16 @@
+runtime: nodejs10
+
+env_variables:
+  SQL_USER: itpdp
+  SQL_PASSWORD: itpdp
+  SQL_DATABASE: itpdp
+  INSTANCE_CONNECTION_NAME: itpdp2-238612:europe-west1:itpdp
+  NODE_ENV: production
+  CLOUD_BUCKET: itpdp
+
+handlers:
+- url: /.*
+  script: auto
+
+beta_settings:
+  cloud_sql_instances: itpdp2-238612:europe-west1:itpdp
