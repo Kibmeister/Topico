@@ -1,0 +1,13 @@
+{
+  "name": "itpdp-2-semester",
+  "description": "The source code for the itpdp-2 raspberry",
+  "main": "main.js",
+  "author": "Gruppe Fjellgeit",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": "https://gitlab.au.dk/itwot-echo-2019/assignment-2",
+  "dependencies": {
+    "onoff": "^1.2.0"
+  }
+}
