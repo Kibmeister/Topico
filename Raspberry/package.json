@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node main.js"
   },
-  "repository": "https://gitlab.au.dk/itwot-echo-2019/assignment-2",
+  "repository": "https://gitlab.au.dk/au582126/itpdp",
   "dependencies": {
+    "node-arecord": "0.0.2",
     "onoff": "^1.2.0"
   }
 }
