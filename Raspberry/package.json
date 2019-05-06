@@ -6,9 +6,12 @@
   "scripts": {
     "start": "node main.js"
   },
-  "repository": "https://gitlab.au.dk/itwot-echo-2019/assignment-2",
+  "repository": "https://gitlab.au.dk/au582126/itpdp",
   "dependencies": {
+<<<<<<< HEAD
     "howler": "^2.1.2",
+=======
+>>>>>>> 7cf4a24495bb6ff99b626279e4ad6ea2fd615985
     "node-arecord": "0.0.2",
     "onoff": "^1.2.0"
   }
