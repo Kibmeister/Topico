@@ -8,6 +8,8 @@
   },
   "repository": "https://gitlab.au.dk/itwot-echo-2019/assignment-2",
   "dependencies": {
+    "howler": "^2.1.2",
+    "node-arecord": "0.0.2",
     "onoff": "^1.2.0"
   }
 }
