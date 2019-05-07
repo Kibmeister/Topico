@@ -8,11 +8,10 @@
   },
   "repository": "https://gitlab.au.dk/au582126/itpdp",
   "dependencies": {
-<<<<<<< HEAD
+    "ftp": "^0.3.10",
     "howler": "^2.1.2",
-=======
->>>>>>> 7cf4a24495bb6ff99b626279e4ad6ea2fd615985
-    "node-arecord": "0.0.2",
-    "onoff": "^1.2.0"
+    "http": "0.0.0",
+    "http-server": "^0.11.1",
+    "node-arecord": "0.0.2"
   }
 }
