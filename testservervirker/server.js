@@ -14,7 +14,7 @@ httpServer.listen(8080, () => {
 })
 
 // put the HTML file containing your form in a directory named 'public' (relative to where this script is located)
-app.get('/', express.static(path.join(__dirname, './index')))
+app.get('/', express.static(path.join(__dirname, './public')))
 
 const handleError = (err, res) => {
   if (err) throw err
@@ -25,7 +25,7 @@ const handleError = (err, res) => {
 }
 
 const upload = multer({
-  dest: '/192.168.1.62:8080/uploads'
+  dest: '/path/to/temporary/directory/to/store/uploaded/files'
   // you might also want to set some limits: https://github.com/expressjs/multer#limits
 })
 
@@ -34,11 +34,12 @@ app.post(
   upload.single('file' /* name attribute of <file> element in your form */),
   (req, res) => {
     const tempPath = req.file.path
-    const targetPath = path.join(__dirname, './192.168.1.62:8080/uploads/image.png')
+    const targetPath = path.join(__dirname, './uploads/image.png')
 
     if (path.extname(req.file.originalname).toLowerCase() === '.png') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)
+
         res
           .status(200)
           .contentType('text/plain')
@@ -47,6 +48,7 @@ app.post(
     } else {
       fs.unlink(tempPath, err => {
         if (err) return handleError(err, res)
+
         res
           .status(403)
           .contentType('text/plain')
