@@ -6,9 +6,9 @@ var path = require('path')
 
 var filePath = path.join(__dirname, 'voice2.wav')
 
-function PostCode (codestring) {
+function UploadFile (codestring) {
   // Build the post string from an object
-  var postData = fs.createReadStream(filePath)
+  var postData = JSON.stringify(fs.createReadStream(filePath))
   console.log(postData)
   // An object of options to indicate where to post to
   var postOptions = {
@@ -32,9 +32,8 @@ function PostCode (codestring) {
   })
   console.log('PostReq:', postReq)
 
-  // post the data
   postReq.write(postData)
   postReq.end()
 }
 
-PostCode()
+UploadFile()
