@@ -15,11 +15,7 @@ function UploadFile (codestring) {
     host: '192.168.43.31',
     port: '8080',
     path: '/upload/',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': Buffer.byteLength(postData)
-    }
+    method: 'POST'
   }
   console.log('PostOptions:', postOptions)
 
