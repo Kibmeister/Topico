@@ -34,9 +34,9 @@ app.post(
   upload.single('file' /* name attribute of <file> element in your form */),
   (req, res) => {
     const tempPath = req.file.path
-    const targetPath = path.join(__dirname, './uploads/image.png')
+    const targetPath = path.join(__dirname, './uploads/test.wav')
 
-    if (path.extname(req.file.originalname).toLowerCase() === '.png') {
+    if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)
 
