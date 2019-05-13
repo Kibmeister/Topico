@@ -7,7 +7,7 @@ var filePath = './voice.wav'
 
 function PostCode (codestring) {
   // Build the post string from an object
-  var postData = fs.readFile(filePath)
+  var postData = fs.createReadStream(filePath)
   console.log(postData)
   // An object of options to indicate where to post to
   var postOptions = {
