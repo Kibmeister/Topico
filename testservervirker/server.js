@@ -48,7 +48,6 @@ app.post(
     } else {
       fs.unlink(tempPath, err => {
         if (err) return handleError(err, res)
-
         res
           .status(403)
           .contentType('text/plain')
