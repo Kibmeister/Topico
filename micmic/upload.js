@@ -1,10 +1,11 @@
 'use strict'
 
 var http = require('http')
+var fs = require('fs')
 
 function PostCode (codestring) {
   // Build the post string from an object
-  var postData = './voice.wav'
+  var postData = fs.readFile('./voice.wav')
   console.log(postData)
   // An object of options to indicate where to post to
   var postOptions = {
