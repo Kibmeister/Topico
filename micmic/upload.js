@@ -17,6 +17,7 @@ function PostCode (codestring) {
       'Content-Length': Buffer.byteLength(postData)
     }
   }
+  console.log('PostOptions:', postOptions)
 
   // Set up the request
   var postReq = http.request(postOptions, function (res) {
@@ -25,6 +26,7 @@ function PostCode (codestring) {
       console.log('Response: ' + chunk)
     })
   })
+  console.log('PostReq:', postReq)
 
   // post the data
   postReq.write(postData)
