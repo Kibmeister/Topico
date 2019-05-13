@@ -8,9 +8,9 @@ function PostCode (codestring) {
   console.log(postData)
   // An object of options to indicate where to post to
   var postOptions = {
-    host: 'closure-compiler.appspot.com',
-    port: '80',
-    path: '/compile',
+    host: '192.168.43.31',
+    port: '8080',
+    path: '/uploads/',
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

@@ -39,7 +39,6 @@ app.post(
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)
-
         res
           .status(200)
           .contentType('text/plain')
@@ -52,7 +51,7 @@ app.post(
         res
           .status(403)
           .contentType('text/plain')
-          .end('Only .png files are allowed!')
+          .end('Only .wav files are allowed!')
       })
     }
   }
