@@ -10,7 +10,7 @@ function PostCode (codestring) {
   var postOptions = {
     host: '192.168.43.31',
     port: '8080',
-    path: '/upload/',
+    path: '/uploads/',
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
