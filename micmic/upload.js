@@ -2,8 +2,9 @@
 
 var http = require('http')
 var fs = require('fs')
+var path = require('path')
 
-var filePath = './voice.wav'
+var filePath = path.join(__dirname, 'voice2.wav')
 
 function PostCode (codestring) {
   // Build the post string from an object
