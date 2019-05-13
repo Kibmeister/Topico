@@ -2,43 +2,26 @@ CREATE DATABASE IF NOT EXISTS itpdp;
 
 USE itpdp;
 
-CREATE TABLE IF NOT EXISTS Class(
-	class_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(40) NOT NULL,
-    teacher_name VARCHAR(40) NOT NULL
-);
-
-INSERT INTO Class(name, teacher_name) VALUES ('Klasse 1', 'Teacher name');
-
-CREATE TABLE IF NOT EXISTS Teams(
-	team_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    team_name VARCHAR(30),
-    points INTEGER,
-    class_id INTEGER REFERENCES Class(class_id)
-);
-
-INSERT INTO Teams(team_name, points, class_id) VALUES ('Team 1', 20, 1);
-INSERT INTO Teams(team_name, points, class_id) VALUES ('Team 2', 10, 1);
-INSERT INTO Teams(team_name, points, class_id) VALUES ('Team 3', 15, 1);
-INSERT INTO Teams(team_name, points, class_id) VALUES ('Team 4', 2, 1);
-
 CREATE TABLE IF NOT EXISTS Words(
 	word_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     class_id INTEGER REFERENCES Class(class_id),
-    word VARCHAR(20) NOT NULL
+    word VARCHAR(20) NOT NULL,
+    helpword1 VARCHAR(16),
+    helpword2 VARCHAR(16),
+    helpword3 VARCHAR(16)
 );
 
-INSERT INTO Words(class_id, word) VALUES (1, 'Black');
-INSERT INTO Words(class_id, word) VALUES (1, 'White');
-INSERT INTO Words(class_id, word) VALUES (1, 'Yellow');
-INSERT INTO Words(class_id, word) VALUES (1, 'Shoe');
-INSERT INTO Words(class_id, word) VALUES (1, 'Aboriginal');
-INSERT INTO Words(class_id, word) VALUES (1, 'Kangaroo');
-INSERT INTO Words(class_id, word) VALUES (1, 'Wave');
-INSERT INTO Words(class_id, word) VALUES (1, 'Bridge');
-INSERT INTO Words(class_id, word) VALUES (1, 'Toaster');
-INSERT INTO Words(class_id, word) VALUES (1, 'Beer');
-INSERT INTO Words(class_id, word) VALUES (1, 'Idiot');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Black', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'White', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Yellow', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Shoe', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Aboriginal', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Kangaroo', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Wave', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Bridge', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Toaster', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Beer', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(class_id, word, helpword1, helpword2, helpword3) VALUES (1, 'Idiot', 'helpword1', 'helpword2', 'helpword3');
 
 CREATE TABLE IF NOT EXISTS Recording (
 	recording_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
