@@ -8,7 +8,7 @@ var filePath = path.join(__dirname, 'voice2.wav')
 
 function UploadFile (codestring) {
   // Build the post string from an object
-  var postData = JSON.stringify(fs.createReadStream(filePath))
+  var postData = fs.createReadStream(filePath)
   console.log(postData)
   // An object of options to indicate where to post to
   var postOptions = {
