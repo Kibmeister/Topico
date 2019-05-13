@@ -33,6 +33,7 @@ app.post(
   '/upload',
   upload.single('file' /* name attribute of <file> element in your form */),
   (req, res) => {
+    console.log('Requested file: ', req.file)
     const tempPath = req.file.path
     const targetPath = path.join(__dirname, './uploads/test.wav')
 
