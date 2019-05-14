@@ -6,6 +6,8 @@ var path = require('path')
 
 var filePath = path.join(__dirname, 'voice2.wav')
 
+var ip = require('ip').address()
+console.log('Attempting upload to: ', ip, ':8080')
 function UploadFile () {
   // Build the post string from an object
   console.log('Loading file from: ', filePath)
@@ -14,7 +16,7 @@ function UploadFile () {
   // An object of options to indicate where to post to
   var postOptions = {
     method: 'POST',
-    host: '192.168.1.62',
+    host: ip,
     port: '8080',
     path: '/upload/',
     headers: {

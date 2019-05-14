@@ -10,6 +10,7 @@
   "dependencies": {
     "aplay": "^1.2.0",
     "fs": "0.0.1-security",
+    "ip": "^1.1.5",
     "mic": "^2.1.2"
   },
   "engine": "node >= 0.12.0"

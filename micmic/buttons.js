@@ -12,16 +12,11 @@ words()
 function words () {
   var words = [word1, word2, word3, word4]
   var roundsWords = myWords
-  console.log('The array is: ' + roundsWords)
   words.forEach(function (entry) {
     var nextWord = myWords[Math.floor(Math.random() * myWords.length)]
     entry = nextWord
-    console.log('Word is: ' + entry)
     var wordNumber = myWords.indexOf(entry)
-    console.log('Index number of word is ' + wordNumber)
     roundsWords.splice(wordNumber, 1)
-    console.log('Removed ' + nextWord + ' from the array.')
-    console.log('The new array is: ' + roundsWords)
   })
 }
 
