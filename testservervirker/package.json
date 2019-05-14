@@ -25,6 +25,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
     "hbs": "^4.0.4",
     "helmet": "^3.16.0",
     "http": "0.0.0",

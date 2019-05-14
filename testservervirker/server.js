@@ -1,3 +1,5 @@
+'use strict'
+
 // Initialize requires:
 const path = require('path')
 const fs = require('fs')
@@ -13,7 +15,7 @@ require('http').createServer(app).listen(8080, () => {
   console.log(`Server hosted on ${require('ip').address()}:${PORT}`)
 })
 
-// put the HTML file containing your form in a directory named 'public' (relative to where this script is located)
+// Serve the index file from /public when a user enters ./ in a browser
 app.get('/', express.static(path.join(__dirname, './public')))
 
 const handleError = (err, res) => {
@@ -34,8 +36,13 @@ app.post(
   upload.single('file'),
   (req, res) => {
     console.log('Requested file: ', req.file)
+    console.log('Requested file path:', req.path)
+    console.log('Requested file name:', req.name)
+    var filePath = path.join(__dirname, req.path)
+    fs.writeFileSync(filePath, req.file)
+    const targetPath = path.join(__dirname, './uploads/', req.file.name)
+    console.log('Requested file: ', req.file)
     const tempPath = req.file.path
-    const targetPath = path.join(__dirname, './uploads/test.wav')
 
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
