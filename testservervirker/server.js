@@ -1,16 +1,16 @@
-const http = require('http')
+// Initialize requires:
 const path = require('path')
 const fs = require('fs')
 const multer = require('multer')
 const express = require('express')
 
+// Initialize express:
 const app = express()
-const httpServer = http.createServer(app)
 
+// Start server and print server IP and port:
 const PORT = process.env.PORT || 8080
-
-httpServer.listen(8080, () => {
-  console.log(`Server is listening on port ${PORT}`)
+require('http').createServer(app).listen(8080, () => {
+  console.log(`Server hosted on ${require('ip').address()}:${PORT}`)
 })
 
 // put the HTML file containing your form in a directory named 'public' (relative to where this script is located)
@@ -25,13 +25,13 @@ const handleError = (err, res) => {
 }
 
 const upload = multer({
-  dest: '/path/to/temporary/directory/to/store/uploaded/files'
-  // you might also want to set some limits: https://github.com/expressjs/multer#limits
+  dest: '/temp'
 })
 
+// Method to handle incoming file uploads:
 app.post(
   '/upload',
-  upload.single('file' /* name attribute of <file> element in your form */),
+  upload.single('file'),
   (req, res) => {
     console.log('Requested file: ', req.file)
     const tempPath = req.file.path
@@ -40,18 +40,16 @@ app.post(
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)
+
         res
           .status(200)
-          .contentType('text/plain')
-          .end('File uploaded!')
       })
     } else {
       fs.unlink(tempPath, err => {
         if (err) return handleError(err, res)
+
         res
           .status(403)
-          .contentType('text/plain')
-          .end('Only .wav files are allowed!')
       })
     }
   }
