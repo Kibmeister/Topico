@@ -46,6 +46,8 @@ body{
   display: inline-block;
 }#id_wordpool{
   display: none;
+}#id_dictionary{
+  display: none;
 }#id_tableText{
   font-size: 20px;
   color:bla;
@@ -82,7 +84,8 @@ td{
   font-size: 15px;
   color: #fff;
   border-bottom: solid 1px gray;
-}audio{
-  padding-top: 100px;
-  margin-left: 22%;
+}#id_AudioControl{
+  margin: 0 auto;
+  margin-top: 40px;
+  display: table;
 }
