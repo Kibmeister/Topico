@@ -65,7 +65,7 @@ app.post(
 
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req.file)
-  let uploadLocation = __dirname + '/uploads/' + req.file.originalname
+  let uploadLocation = path.join(__dirname, '/uploads/', req.file.originalname)
   // where to save the file to. make sure the incoming name has a .wav extension
 
   fs.writeFileSync(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer))) // write the blob to the server as a file
