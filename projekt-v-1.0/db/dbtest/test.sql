@@ -9,20 +9,24 @@ CREATE TABLE IF NOT EXISTS Words(
     queword3 VARCHAR(16)
 );
 
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Black', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('White', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Yellow', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Shoe', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Aboriginal', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Kangaroo', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Wave', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Bridge', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Toaster', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Beer', 'helpword1', 'helpword2', 'helpword3');
-INSERT INTO Words(word, helpword1, helpword2, helpword3) VALUES ('Idiot', 'helpword1', 'helpword2', 'helpword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Black', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('White', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Yellow', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Shoe', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Aboriginal', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Kangaroo', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Wave', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Bridge', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Toaster', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Beer', 'queword1', 'queword2', 'queword3');
+INSERT INTO Words(word, queword1, queword2, queword3) VALUES ('Idiot', 'queword1', 'queword2', 'queword3');
 
-CREATE TABLE IF NOT EXISTS Recording (
+CREATE TABLE IF NOT EXISTS Recordings (
 	recording_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	word VARCHAR(40) REFERENCES Words(word_id),
-    path VARCHAR(200)
+	word VARCHAR(16) REFERENCES Words(word),
+    rpath VARCHAR(200)
 );
+
+INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath');
+INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath2');
+INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath3')
