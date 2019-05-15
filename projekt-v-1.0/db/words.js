@@ -44,6 +44,17 @@ class Words {
       if (err) throw err
     })
   }
+  // Returns words, quewords and paths to display in the GUI
+  static wordsGUIQuery (callback) {
+    const sql = 'SELECT w.word, w.queword1, w.queword2, w.queword3, r.rpath FROM words AS w JOIN recordings AS r ON r.word = w.word;'
+    db.getConnection((err, connection) => {
+      connection.query(sql, (err, results, fields) => {
+        callback(err, results)
+        connection.release()
+      })
+      if (err) throw err
+    })
+  }
 }
 
 module.exports.Words = Words

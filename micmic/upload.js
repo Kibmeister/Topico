@@ -1,11 +1,8 @@
 'use strict'
 
 // Initialize requires:
-const http = require('http')
 const fs = require('fs')
 const FormData = require('form-data')
-const path = require('path')
-const filePath = path.join(__dirname, 'voice2.wav')
 var ipAdress = require('ip').address()
 var port = '8080'
 
