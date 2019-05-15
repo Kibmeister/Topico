@@ -22,7 +22,7 @@ function UploadFile () {
     port: port,
     path: '/upload/',
     headers: {
-      'Content-Type': 'multipart/form-data'
+      'Content-Type': 'audio/wav'
     }
   }
   console.log('postOptions completed!')
@@ -34,7 +34,7 @@ function UploadFile () {
     res.on('data', function (chunk) {
     })
   })
-  // console.log('PostReq:', postReq)
+  console.log('PostReq:', postReq)
 
   postReq.write(postData)
   postReq.end()

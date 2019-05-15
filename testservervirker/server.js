@@ -37,12 +37,12 @@ app.post(
   (req, res) => {
     console.log('Requested file: ', req.file)
     console.log('Requested file path:', req.path)
-    console.log('Requested file name:', req.name)
+    // console.log('Requested file name:', req.name)
     var filePath = path.join(__dirname, req.path)
     fs.writeFileSync(filePath, req.file)
-    const targetPath = path.join(__dirname, './uploads/', req.file.name)
+    const targetPath = path.join(__dirname, './uploads/', req.originalname)
     console.log('Requested file: ', req.file)
-    const tempPath = req.file.path
+    const tempPath = req.path
 
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
