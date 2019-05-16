@@ -1,5 +1,8 @@
-<h2 style="text-align: center;">Group 1</h2>
 
+{{#unless words}}
+  <p>No information available..</p>
+  {{/unless}}
+{{#each words}}
 <div id="id_groupRecording">
   <h3 id="id_tableText">Component words and recording</h3>
   <div class="tbl-header">
@@ -17,26 +20,27 @@
       <tbody>
         <table>
           <td>Main word</td>
-          <td>{{mainWord}}</td>
+          <td>{{word}}</td>
           </tr>
           <tr>
             <td>First helpword</td>
-            <td>{{firstWord}}</td>
+            <td>{{queword1}}</td>
           </tr>
           <tr>
             <td>Second helpword</td>
-            <td>{{secondWord}}</td>
+            <td>{{queword2}}</td>
           </tr>
           <tr>
             <td>Third helpword</td>
-            <td>{{thirdWord}}</td>
+            <td>{{queword3}}</td>
           </tr>
       </tbody>
     </table>
   </div>
   <div id="id_AudioControl">
     <audio controls>
-      <source src="/recordings/National Anthem of Denmark - Danmarks Nationalsang.mp3" type="audio/mp3">
+      <source src={{rpath}} type="audio/mp3">
     </audio>
   </div>
 </div>
+{{/each}}

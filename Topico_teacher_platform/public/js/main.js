@@ -1,23 +1,21 @@
 'use strict'
 
-// const interval = setInterval(() => { fang() }, 2000)
-
 // retreving id form buttons and handlebar divs
 
 const buttonGroups = document.querySelector('#bt_groups')
 const buttonWordpool = document.querySelector('#bt_wordpool')
 const buttonDictionary = document.querySelector('#bt_dictionary')
 
-var divGroups = document.getElementById('id_groups')
-var divWordPool = document.getElementById('id_wordpool')
-var divDictionary = document.getElementById('id_dictionary')
+const divGroups = document.getElementById('id_groups')
+const divWordPool = document.getElementById('id_wordpool')
+const divDictionary = document.getElementById('id_dictionary')
 
 // adding event listeners to buttons, toggling the divs
 buttonGroups.addEventListener('click', () => {
   divWordPool.style.display = 'none'
   divDictionary.style.display = 'none'
   divGroups.style.display = 'block'
-  console.log('groups')
+  group()
 })
 buttonWordpool.addEventListener('click', () => {
   divGroups.style.display = 'none'
@@ -32,29 +30,15 @@ buttonDictionary.addEventListener('click', () => {
   console.log('dictionary')
 })
 
-function fang () {
-  fetch('/measurment?latest=10', {
+function group () {
+  fetch('/groups', {
     method: 'get',
     headers: {
       'Accept': 'application/json'
     }
   }).then((response) => {
-    response.json().then((data) => {
-      mostRecentValues.innerHTML = Handlebars.templates.measurment({ measurments: data })
-    })
-  })
-}
-// const intervalAlle = setInterval(() => { fangAlle() }, 60000)
-
-function fangAlle () {
-  fetch('/measurment', {
-    method: 'get',
-    headers: {
-      'Accept': 'application/json'
-    }
-  }).then((response) => {
-    response.json().then((dataA) => {
-      makeMyChart(dataA)
+    response.json().then((dataWords) => {
+      divGroups.innerHTML = Handlebars.templates.groups({ words: dataWords })
     })
   })
 }
