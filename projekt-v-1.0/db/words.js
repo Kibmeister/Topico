@@ -44,11 +44,21 @@ class Words {
       if (err) throw err
     })
   }
-  // Returns words, quewords and paths to display in the GUI
+  // Returns words and paths to display in the GUI
   static wordsGUIQuery (callback) {
-    const sql = 'SELECT w.word, w.queword1, w.queword2, w.queword3, r.rpath FROM words AS w JOIN recordings AS r ON r.word = w.word;'
+    const sql = 'SELECT word, queword1, queword2, queword3;'
     db.getConnection((err, connection) => {
       connection.query(sql, (err, results, fields) => {
+        callback(err, results)
+        connection.release()
+      })
+      if (err) throw err
+    })
+  }
+  static recordingsGUIQuery (word, callback) {
+    const sql = 'SELECT recording WHERE recording.word = ?;'
+    db.getConnection((err, connection) => {
+      connection.query(sql, [word], (err, results, field) => {
         callback(err, results)
         connection.release()
       })
