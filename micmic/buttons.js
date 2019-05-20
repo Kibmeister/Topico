@@ -1,10 +1,10 @@
 'use strict'
 // var Gpio = require('onoff').Gpio
 var myWords = ['Wave', 'Kangaroo', 'this', 'Mad Men', 'Breaking Bad', 'Modern Family', 'Game of Thrones', 'Dexter']
-var word1
-var word2
-var word3
-var word4
+var word1 = ''
+var word2 = ''
+var word3 = ''
+var word4 = ''
 /* var pushButton1 = new Gpio(17, 'in', 'both') */
 
 words()
@@ -14,10 +14,12 @@ function words () {
   var roundsWords = myWords
   words.forEach(function (entry) {
     var nextWord = myWords[Math.floor(Math.random() * myWords.length)]
+    console.log(nextWord)
     entry = nextWord
     var wordNumber = myWords.indexOf(entry)
     roundsWords.splice(wordNumber, 1)
   })
+  console.log(words)
 }
 
 /* function choose () {
