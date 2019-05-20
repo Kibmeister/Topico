@@ -38,6 +38,7 @@ function group () {
     }
   }).then((response) => {
     response.json().then((dataWords) => {
+      console.log('main word ' + dataWords.word)
       divGroups.innerHTML = Handlebars.templates.groups({ words: dataWords })
     })
   })

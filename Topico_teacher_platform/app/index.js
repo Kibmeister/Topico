@@ -34,9 +34,18 @@ app.get('/groups', (request, response, next) => {
     Words.wordsGUIQuery((err, dataWords) => {
       console.log(dataWords)
       if (err) return next(err)
+
       response.contentType('application/json')
       response.end(JSON.stringify(dataWords))
+      // console.log(dataWords.word)
     })
+    /* Words.recordingsGUIQuery((err, dataRecording) => {
+      console.log('recording string' + dataRecording)
+      if (err) return next(err)
+
+      // response.contentType('application/json')
+      // response.end(JSON.stringify(dataWords))
+    }) */
   } else {
     response.render('index')
   }
