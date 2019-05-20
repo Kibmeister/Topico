@@ -1,24 +1,42 @@
 'use strict'
 // var Gpio = require('onoff').Gpio
 var myWords = ['Wave', 'Kangaroo', 'this', 'Mad Men', 'Breaking Bad', 'Modern Family', 'Game of Thrones', 'Dexter']
-var word1
-var word2
-var word3
-var word4
+var word1 = 'word1'
+var word2 = 'word2'
+var word3 = 'word3'
+var word4 = 'word4'
 /* var pushButton1 = new Gpio(17, 'in', 'both') */
 
-words()
+words2()
 
-function words () {
-  var words = [word1, word2, word3, word4]
+// function words () {
+//   var words = [word1, word2, word3, word4]
+//   var roundsWords = myWords
+//   words.forEach(function (entry) {
+//     console.log(entry)
+//     var nextWord = myWords[Math.floor(Math.random() * myWords.length)]
+//     entry = nextWord
+//     var wordNumber = myWords.indexOf(entry)
+//     roundsWords.splice(wordNumber, 1)
+//     console.log(entry)
+//   })
+//   console.log(word1)
+// }
+function words2 () {
   var roundsWords = myWords
-  words.forEach(function (entry) {
-    var nextWord = myWords[Math.floor(Math.random() * myWords.length)]
-    entry = nextWord
-    var wordNumber = myWords.indexOf(entry)
-    roundsWords.splice(wordNumber, 1)
-  })
-}
+  word1 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word1), 1)
+  console.log(word1)
+  word2 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word2), 1)
+  console.log(word2)
+  word3 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word3), 1)
+  console.log(word3)
+  word4 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word4), 1)
+  console.log(word4)
+} console.log(word1, word2, word3, word4)
 
 /* function choose () {
   pushButton1.watch(function (err, value) {
