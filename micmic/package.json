@@ -10,7 +10,8 @@
   "dependencies": {
     "aplay": "^1.2.0",
     "fs": "0.0.1-security",
-    "mic": "^2.1.2"
+    "mic": "^2.1.2",
+    "path": "^0.12.7"
   },
   "engine": "node >= 0.12.0"
 }
