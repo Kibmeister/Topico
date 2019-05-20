@@ -46,7 +46,7 @@ class Words {
   }
   // Returns words and paths to display in the GUI
   static wordsGUIQuery (callback) {
-    const sql = 'SELECT word, queword1, queword2, queword3;'
+    const sql = 'SELECT word, queword1, queword2, queword3 FROM Words;'
     db.getConnection((err, connection) => {
       connection.query(sql, (err, results, fields) => {
         callback(err, results)

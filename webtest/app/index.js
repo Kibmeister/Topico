@@ -32,16 +32,14 @@ app.get('/index', (request, response, next) => {
 app.get('/groups', (request, response, next) => {
   if (request.accepts('application/json') && !request.accepts('text/html')) {
     Words.wordsGUIQuery((err, dataWords) => {
-      console.log('dataWords: ' + dataWords)
       if (err) return next(err)
-      response.contentType('application/json')
-      const word = dataWords.word
+      console.log('tiss og bøsj' + dataWords[0])
       Words.recordingsGUIQuery(word, (err, recordings) => {
         if (err) throw err
-        response.contentType('application/json')
         response.end(JSON.stringify(recordings))
-        console.log(recordings)
+        // console.log(recordings)
       })
+      response.contentType('application/json')
       response.end(JSON.stringify(dataWords))
     })
   } else {
