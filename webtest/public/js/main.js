@@ -37,8 +37,8 @@ function group () {
       'Accept': 'application/json'
     }
   }).then((response) => {
-    response.json().then((dataWords) => {
-      divGroups.innerHTML = Handlebars.templates.groups({ words: dataWords })
+    response.json().then((dataWords, recordings) => {
+      divGroups.innerHTML = Handlebars.templates.groups({ words: dataWords }, { recordings: recordings })
     })
   })
 }
