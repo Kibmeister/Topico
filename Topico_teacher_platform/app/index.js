@@ -32,24 +32,28 @@ app.get('/index', (request, response, next) => {
 app.get('/groups', (request, response, next) => {
   if (request.accepts('application/json') && !request.accepts('text/html')) {
     Words.wordsGUIQuery((err, dataWords) => {
-      console.log(dataWords)
       if (err) return next(err)
-
+      /* loop that inputs main word from word table into Recordings table and
+      writes in the terminal, every rpath to the following main word */
+      for (let i = 0; dataWords.length; i++) {
+        Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
+          if (err) throw err
+          for (let j = 0; recordings.length; j++) {
+            if (dataWords[i].word === recordings[j].word) {
+              console.log(recordings[j].rpath)
+            }
+          }
+          response.end(JSON.stringify(recordings))
+        })
+      }
       response.contentType('application/json')
       response.end(JSON.stringify(dataWords))
-      // console.log(dataWords.word)
     })
-    /* Words.recordingsGUIQuery((err, dataRecording) => {
-      console.log('recording string' + dataRecording)
-      if (err) return next(err)
-
-      // response.contentType('application/json')
-      // response.end(JSON.stringify(dataWords))
-    }) */
   } else {
     response.render('index')
   }
 })
+
 // Return recordings for a word
 app.get('/grouprecordings', (request, response, next) => {
   if (request.accepts('application/json') && !request.accepts('text/html')) {
