@@ -32,31 +32,15 @@ app.get('/index', (request, response, next) => {
 app.get('/groups', (request, response, next) => {
   if (request.accepts('application/json') && !request.accepts('text/html')) {
     Words.wordsGUIQuery((err, dataWords) => {
-      console.log(dataWords)
       if (err) return next(err)
-
+      console.log('tiss og bøsj' + dataWords[0])
+      Words.recordingsGUIQuery(word, (err, recordings) => {
+        if (err) throw err
+        response.end(JSON.stringify(recordings))
+        // console.log(recordings)
+      })
       response.contentType('application/json')
       response.end(JSON.stringify(dataWords))
-      // console.log(dataWords.word)
-    })
-    /* Words.recordingsGUIQuery((err, dataRecording) => {
-      console.log('recording string' + dataRecording)
-      if (err) return next(err)
-
-      // response.contentType('application/json')
-      // response.end(JSON.stringify(dataWords))
-    }) */
-  } else {
-    response.render('index')
-  }
-})
-// Return recordings for a word
-app.get('/grouprecordings', (request, response, next) => {
-  if (request.accepts('application/json') && !request.accepts('text/html')) {
-    Words.recordingsGUIQuery((err, recordings) => {
-      if (err) throw err
-      response.contentType('application.json')
-      response.end(JSON.stringify(recordings))
     })
   } else {
     response.render('index')
