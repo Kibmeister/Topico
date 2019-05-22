@@ -37,11 +37,14 @@ app.get('/groups', (request, response, next) => {
       response.end(JSON.stringify(dataWords))
       /* loop that inputs main word from word table into Recordings table and
       writes in the terminal, every rpath to the following main word */
-      for (let i = 0; dataWords.length; i++) {
-        const word = 'bridge'
-        Words.recordingsGUIQuery(word, (err, recordings) => {
+      for (let i = 0; i < dataWords.length; i++) {
+        // const word = 'bridge'
+        Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
           if (err) throw err
-          for (let j = 0; recordings.length; j++) {
+          // console.log(recordings.length)
+          for (let j = 0; j < recordings.length; j++) {
+            console.log('dataword ' + dataWords[i].word)
+            console.log('recording ' + recordings[3])
             if (dataWords[i].word === recordings[j].word) {
               console.log(recordings[j].rpath)
             }
@@ -49,6 +52,7 @@ app.get('/groups', (request, response, next) => {
           // response.end(JSON.stringify(recordings))
         })
       }
+      // response.contentType('application/json')
     })
   } else {
     response.render('index')
