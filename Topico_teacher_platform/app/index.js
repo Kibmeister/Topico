@@ -40,13 +40,14 @@ app.get('/groups', (request, response, next) => {
       for (let i = 0; i < dataWords.length; i++) {
         // const word = 'bridge'
         Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
+          // console.log('Dataword: ', dataWords[i].word, '. Dataword recordings: ', recordings)
           if (err) throw err
           // console.log(recordings.length)
           for (let j = 0; j < recordings.length; j++) {
-            console.log('dataword ' + dataWords[i].word)
-            console.log('recording ' + recordings[3])
+            // console.log('dataword ' + dataWords[i].word)
+            // console.log('recording ' + recordings[3])
             if (dataWords[i].word === recordings[j].word) {
-              console.log(recordings[j].rpath)
+              console.log('usdfgbsijfodsfhi: ', recordings[j].rpath)
             }
           }
           // response.end(JSON.stringify(recordings))
