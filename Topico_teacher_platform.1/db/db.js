@@ -28,10 +28,10 @@ pool.getConnection((err, connection) => {
 
   // Create table Recording
   connection.query(
-    `CREATE TABLE IF NOT EXISTS Recordings (
+    `CREATE TABLE IF NOT EXISTS Recording (
       recording_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      word VARCHAR(16) REFERENCES Words(word),
-      rpath VARCHAR(200)
+      word VARCHAR(40) REFERENCES Words(word),
+      path VARCHAR(200)
     )`, (err) => {
       if (err) throw err
     }
