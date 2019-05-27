@@ -36,15 +36,10 @@ app.post(
   '/upload',
   upload.single('file'),
   (req, res) => {
-    //console.log('Requested file: ', req.file)
-    //console.log('Requested file path:', req.path)
-    // console.log('Requested file name:', req.name)
     var filePath = path.join(__dirname, req.path)
     fs.writeFileSync(filePath, req.file)
     const targetPath = path.join(__dirname, './uploads/', req.originalname)
-    console.log('Requested file: ', req.file)
     const tempPath = req.path
-
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)

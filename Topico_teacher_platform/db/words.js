@@ -56,7 +56,7 @@ class Words {
     })
   }
   static recordingsGUIQuery (word, callback) {
-    const sql = 'SELECT recording FROM recordings WHERE recording.word = ?;'
+    const sql = 'SELECT rpath, word FROM Recordings WHERE word = ? ;'
     db.getConnection((err, connection) => {
       connection.query(sql, [word], (err, results, field) => {
         callback(err, results)

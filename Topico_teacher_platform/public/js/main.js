@@ -22,6 +22,7 @@ buttonWordpool.addEventListener('click', () => {
   divDictionary.style.display = 'none'
   divWordPool.style.display = 'block'
   console.log('pool')
+  divWordPool.innerHTML = Handlebars.templates.wordpool()
 })
 buttonDictionary.addEventListener('click', () => {
   divGroups.style.display = 'none'
@@ -37,8 +38,12 @@ function group () {
       'Accept': 'application/json'
     }
   }).then((response) => {
-    response.json().then((dataWords) => {
-      divGroups.innerHTML = Handlebars.templates.groups({ words: dataWords })
+    response.json().then((data) => {
+      // console.log(data[1].dataWords)
+      console.log(data)
+      divGroups.innerHTML = Handlebars.templates.groups({ words: data[0].dataWords, rpath: data[1].dataWords
+      })
+      // divGroups.innerHTML = Handlebars.templates.groups({ rpath: data[1].dataWords })
     })
   })
 }

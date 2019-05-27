@@ -1,7 +1,6 @@
-
 {{#unless words}}
-  <p>No information available..</p>
-  {{/unless}}
+<p>No information available..</p>
+{{/unless}}
 {{#each words}}
 <div id="id_groupRecording">
   <h3 id="id_tableText">Component words and recording</h3>
@@ -37,10 +36,13 @@
       </tbody>
     </table>
   </div>
+  {{/each}}
   <div id="id_AudioControl">
+    {{#each rpath}}
     <audio controls>
       <source src={{rpath}} type="audio/mp3">
     </audio>
+    {{/each}}
   </div>
+
 </div>
-{{/each}}
