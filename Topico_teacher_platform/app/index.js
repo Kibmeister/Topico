@@ -35,38 +35,28 @@ app.get('/groups', (request, response, next) => {
       if (err) return next(err)
       response.contentType('application/json')
       let lydarray = []
-      let dataToSend = { // variable that hold a name and an array of objects
-        name: 'dataWords',
-        dataWords: dataWords
-      }
-      // response.send(JSON.stringify(dataToSend))
-      // console.log('dette er hele word poolen ' + JSON.stringify(dataToSend))
       /* loop that inputs main word from word table into Recordings table and
       writes in the terminal, every rpath to the following main word */
       for (let i = 0; i < dataWords.length; i++) {
-        // console.log(dataWords[i])
         Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
           if (err) return next(err)
           for (let j = 0; j < recordings.length; j++) {
             if (dataWords[i].word === recordings[j].word) {
               let lydstreng = recordings[j]
-              // console.log(recordings[j])
-              // add lydstreng til array
-              dataToSend = [{ // variable that hold a name and an array of objects
-                name: 'dataWords',
-                dataWords: dataWords
-              }, {
-                name: 'lydstreng',
-                lydstreng: lydstreng
-              }]
-
-              lydarray.push(dataToSend)
+              lydarray.push(lydstreng.rpath) // adds rpath to empty lydarray
             }
           }
+          console.log(lydarray)
+          dataWords[i].lydstreng = lydarray // adds array with "lydstrenge" to dataWords
         })
+        lydarray = [] // resets lydarray
       }
+      let dataToSend = { // variable that hold a name and an array of objects
+        dataWords
+      }
+      console.log(dataToSend)
       response.end(JSON.stringify(dataToSend))
-      console.log('dette er lydStreng og mainword' + JSON.stringify(dataToSend))
+      // console.log('dette er lydStreng og mainword' + JSON.stringify(dataToSend))
     })
   } else {
     response.render('index')
