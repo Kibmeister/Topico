@@ -10,9 +10,14 @@
   "dependencies": {
     "aplay": "^1.2.0",
     "fs": "0.0.1-security",
+<<<<<<< HEAD
+    "mic": "^2.1.2",
+    "path": "^0.12.7"
+=======
     "ip": "^1.1.5",
     "mic": "^2.1.2",
     "node-wav": "0.0.2"
+>>>>>>> 9cd76510aebf69fae6c8c14f0ab6c5e3c0a5d0d3
   },
   "engine": "node >= 0.12.0"
 }
