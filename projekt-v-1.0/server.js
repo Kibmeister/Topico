@@ -11,7 +11,7 @@ const app = express()
 
 // Start server and print server IP and port:
 const PORT = process.env.PORT || 8080
-require('http').createServer(app).listen(8080, () => {
+require('http').createServer(app).listen(PORT, () => {
   console.log(`Server hosted on ${require('ip').address()}:${PORT}`)
 })
 
@@ -37,10 +37,9 @@ app.post(
   (req, res) => {
     var filePath = path.join(__dirname, req.path)
     fs.writeFileSync(filePath, req.file)
-    const targetPath = path.join(__dirname, './uploads/testVoice')
+    const targetPath = path.join(__dirname, './uploads/testVoice.wav')
     console.log('Requested file: ', req.file)
     const tempPath = req.path
-
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
         if (err) return handleError(err, res)
@@ -56,8 +55,7 @@ app.post(
           .status(403)
       })
     }
-  }
-)
+  })
 
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req)
