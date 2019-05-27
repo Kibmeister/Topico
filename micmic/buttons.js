@@ -1,28 +1,41 @@
 'use strict'
-// var Gpio = require('onoff').Gpio
+var Gpio = require('onoff').Gpio
 var myWords = ['Wave', 'Kangaroo', 'this', 'Mad Men', 'Breaking Bad', 'Modern Family', 'Game of Thrones', 'Dexter']
-var word1
-var word2
-var word3
-var word4
-/* var pushButton1 = new Gpio(17, 'in', 'both') */
+var word1 = 'word1'
+var word2 = 'word2'
+var word3 = 'word3'
+var word4 = 'word4'
+var pushButton = new Gpio(2, 'in', 'both')
+
+pushButton.watch(function (err, value) {
+  if (err) throw err
+  if (value === 0) {
+    words()
+    console.log('Word disputing is initiated!')
+  }
+})
 
 words()
 
 function words () {
-  var words = [word1, word2, word3, word4]
   var roundsWords = myWords
-  console.log('The array is: ' + roundsWords)
-  words.forEach(function (entry) {
-    var nextWord = myWords[Math.floor(Math.random() * myWords.length)]
-    entry = nextWord
-    console.log('Word is: ' + entry)
-    var wordNumber = myWords.indexOf(entry)
-    console.log('Index number of word is ' + wordNumber)
-    roundsWords.splice(wordNumber, 1)
-    console.log('Removed ' + nextWord + ' from the array.')
-    console.log('The new array is: ' + roundsWords)
-  })
+  word1 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word1), 1)
+  console.log('--')
+  console.log(word1)
+  console.log('--')
+  word2 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word2), 1)
+  console.log(word2)
+  console.log('--')
+  word3 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word3), 1)
+  console.log(word3)
+  console.log('--')
+  word4 = myWords[Math.floor(Math.random() * myWords.length)]
+  roundsWords.splice(myWords.indexOf(word4), 1)
+  console.log(word4)
+  console.log('--')
 }
 
 /* function choose () {
