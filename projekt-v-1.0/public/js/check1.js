@@ -7,12 +7,12 @@ var lcd1 = new LCD(1, 0x27, 16, 2)
 var lcd2 = new LCD(1, 0x26, 16, 2)
 var lcd3 = new LCD(1, 0x25, 16, 2)
 var lcd4 = new LCD(1, 0x24, 16, 2)
-var lcdChain = [lcd1, lcd2, lcd3, lcd4]
+let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 const wordpool = require('./db/db').Words
 var myWords = wordpool.getWords(wordpool, (err, wordpool) => {
   if (err) console.log(err)
 })
-var queWords
+let queWords = []
 var chosenWord
 var word1 = 'word1'
 var word2 = 'word2'
@@ -202,5 +202,8 @@ micInputStream.on('processExitComplete', function () {
 
 process.on('SIGINT', function () {
   clearInterval()
+  lcdChain.forEach(function (i) {
+    i.off()
+  })
   process.nextTick(function () { process.exit(0) })
 })
