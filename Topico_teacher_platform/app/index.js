@@ -34,43 +34,57 @@ app.get('/groups', (request, response, next) => {
     Words.wordsGUIQuery((err, dataWords) => {
       if (err) return next(err)
       response.contentType('application/json')
-      response.end(JSON.stringify(dataWords))
+      let lydarray = []
+      let dataToSend = { // variable that hold a name and an array of objects
+        name: 'dataWords',
+        dataWords: dataWords
+      }
+      // response.send(JSON.stringify(dataToSend))
+      // console.log('dette er hele word poolen ' + JSON.stringify(dataToSend))
       /* loop that inputs main word from word table into Recordings table and
       writes in the terminal, every rpath to the following main word */
       for (let i = 0; i < dataWords.length; i++) {
-        // const word = 'bridge'
+        // console.log(dataWords[i])
         Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
-          // console.log('Dataword: ', dataWords[i].word, '. Dataword recordings: ', recordings)
-          if (err) throw err
-          // console.log(recordings.length)
+          if (err) return next(err)
           for (let j = 0; j < recordings.length; j++) {
-            // console.log('dataword ' + dataWords[i].word)
-            // console.log('recording ' + recordings[3])
             if (dataWords[i].word === recordings[j].word) {
-              console.log('usdfgbsijfodsfhi: ', recordings[j].rpath)
+              let lydstreng = recordings[j]
+              // console.log(recordings[j])
+              // add lydstreng til array
+              dataToSend = [{ // variable that hold a name and an array of objects
+                name: 'dataWords',
+                dataWords: dataWords
+              }, {
+                name: 'lydstreng',
+                lydstreng: lydstreng
+              }]
+
+              lydarray.push(dataToSend)
             }
           }
-          // response.end(JSON.stringify(recordings))
         })
       }
-      // response.contentType('application/json')
+      response.end(JSON.stringify(dataToSend))
+      console.log('dette er lydStreng og mainword' + JSON.stringify(dataToSend))
     })
   } else {
     response.render('index')
   }
 })
-
-// Return recordings for a word
-app.get('/grouprecordings', (request, response, next) => {
-  if (request.accepts('application/json') && !request.accepts('text/html')) {
-    Words.recordingsGUIQuery((err, recordings) => {
-      if (err) throw err
-      response.contentType('application.json')
-      response.end(JSON.stringify(recordings))
-    })
-  } else {
-    response.render('index')
+// save a mainword with three following quewords to the db
+app.post('/spawnPool', (request, response, next) => {
+  const spawn = {
+    add_mainWord: request.body.mainWord,
+    add_queWord1: request.body.helpWord1,
+    add_queWord2: request.body.helpWord2,
+    add_queWord3: request.body.helpWord3
   }
+  console.log(spawn)
+  Words.add(spawn, (err, spawn) => {
+    if (err) return next(err)
+    response.render('index')
+  })
 })
 app.listen(port, (err) => {
   if (err) return console.error(`An error occurred: ${err}`)
