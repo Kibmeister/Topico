@@ -2,15 +2,23 @@
 var Gpio = require('onoff').Gpio
 var mic = require('mic')
 var fs = require('fs')
-const LCDclass = require('./public/js/pi/lcd').LCDclass
 var LCD = require('lcdi2c')
+
+const wordpool = require('./db/words').Words
+const LCDclass = require('./public/js/pi/lcd').LCDclass
+
 var lcd1 = new LCD(1, 0x27, 16, 2)
 var lcd2 = new LCD(1, 0x26, 16, 2)
 var lcd3 = new LCD(1, 0x25, 16, 2)
 var lcd4 = new LCD(1, 0x24, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
-const wordpool = require('./db/words').Words
-var myWords = []
+
+let myWords = []
+wordpool.getWords(function (err, res, fields) {
+  if (err) throw err
+  myWords = res
+})
+console.log('wordpool :', wordpool)
 let queWords = []
 var chosenWord
 var word1 = 'word1'
