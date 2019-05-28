@@ -2,7 +2,7 @@
 var Gpio = require('onoff').Gpio
 var mic = require('mic')
 var fs = require('fs')
-const LCDclass = require(__dirname, '/public/js/pi/lcd.js').LCDclass
+const LCDclass = require('/public/js/pi/lcd.js').LCDclass
 var LCD = require('lcdi2c')
 var lcd1 = new LCD(1, 0x27, 16, 2)
 var lcd2 = new LCD(1, 0x26, 16, 2)
