@@ -2,6 +2,7 @@
 var Gpio = require('onoff').Gpio
 var mic = require('mic')
 var fs = require('fs')
+const LCDclass = require(__dirname, '/public/js/pi/lcd.js')
 var LCD = require('lcdi2c')
 var lcd1 = new LCD(1, 0x27, 16, 2)
 var lcd2 = new LCD(1, 0x26, 16, 2)
@@ -22,10 +23,11 @@ var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
 var fase = 0
 
-lcd1.clear()
-lcd2.clear()
-lcd3.clear()
-lcd4.clear()
+// lcd1.clear()
+// lcd2.clear()
+// lcd3.clear()
+// lcd4.clear()
+LCDclass.clearAll()
 
 var micInstance = mic({
   device: 'plughw:0,0',

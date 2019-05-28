@@ -75,6 +75,7 @@ app.get('/groups', (request, response, next) => {
             if (GUIEntry.word === recordingEntry.word) {
               GUIEntry.path.push(recordingEntry.rpath)
             }
+            console.log(GUIdata)
           })
         })
       })
