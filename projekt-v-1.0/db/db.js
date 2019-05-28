@@ -4,8 +4,7 @@ const mysql = require('mysql')
 let config = {
   user: 'pi',
   password: 'foobar',
-  database: 'itpdp',
-  host: '192.168.43.31' // IP of the computer hosting the SQL server
+  database: 'itpdp'
 }
 
 const pool = mysql.createPool(config)
