@@ -18,7 +18,7 @@ wordpool.getWords(function (err, res, fields) {
   if (err) throw err
   myWords = res
 })
-console.log('wordpool :', wordpool)
+console.log('wordpool :', myWords)
 let queWords = []
 var chosenWord
 var word1 = 'word1'
