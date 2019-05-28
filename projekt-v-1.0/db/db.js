@@ -5,10 +5,8 @@ let config = {
   user: 'pi',
   password: 'foobar',
   database: 'itpdp',
-  dateStrings: true,
   host: '192.168.43.31' // IP of the computer hosting the SQL server
 }
-// dateStrings: true is necessary as there's a bug in js mysql dates otherwise.
 
 const pool = mysql.createPool(config)
 

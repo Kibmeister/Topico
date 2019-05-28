@@ -14,10 +14,10 @@ var lcd4 = new LCD(1, 0x24, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
 let myWords = []
-wordpool.getWords(function (err, res, fields) {
-  if (err) throw err
-  myWords = res
-})
+// wordpool.getWords(function (err, res, fields) {
+//   if (err) throw err
+//   myWords = res
+// })
 console.log('wordpool :', myWords)
 let queWords = []
 var chosenWord
