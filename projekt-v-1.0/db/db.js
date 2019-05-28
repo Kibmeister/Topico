@@ -4,7 +4,8 @@ const mysql = require('mysql')
 let config = {
   user: 'pi',
   password: 'foobar',
-  database: 'itpdp'
+  database: 'itpdp',
+  host: '192.168.43.31'
 }
 
 const pool = mysql.createPool(config)
@@ -19,7 +20,7 @@ pool.getConnection((err, connection) => {
       queword1 VARCHAR(16),
       queword2 VARCHAR(16),
       queword3 VARCHAR(16)
-    )`, (err) => {
+    );`, (err) => {
       if (err) throw err
     }
   )
@@ -30,7 +31,7 @@ pool.getConnection((err, connection) => {
       recording_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
       word VARCHAR(16) REFERENCES Words(word),
       rpath VARCHAR(200)
-    )`, (err) => {
+    );`, (err) => {
       if (err) throw err
     }
   )
