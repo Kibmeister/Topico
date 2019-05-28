@@ -10,9 +10,7 @@ var lcd3 = new LCD(1, 0x25, 16, 2)
 var lcd4 = new LCD(1, 0x24, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 const wordpool = require('./db/words').Words
-var myWords = wordpool.getWords(wordpool, (err, wordpool) => {
-  if (err) console.log(err)
-})
+var myWords = []
 let queWords = []
 var chosenWord
 var word1 = 'word1'
