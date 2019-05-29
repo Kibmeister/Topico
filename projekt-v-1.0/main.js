@@ -67,7 +67,6 @@ function initiator () {
   console.log('state of the fase is: ', fase)
   if (fase === 1) {
     selectAllWords()
-    words()
   }
   if (fase === 3) {
     choose()
