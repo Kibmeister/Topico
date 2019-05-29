@@ -86,14 +86,13 @@ function selectAllWords () {
   WordsClass.getWords(function (err, res) {
     if (err) throw err
     let roundsWords = []
+    let fourWords = [
+      { word: word1, lcd: lcd1 },
+      { word: word2, lcd: lcd2 },
+      { word: word3, lcd: lcd3 },
+      { word: word4, lcd: lcd4 }]
     res.forEach(function (resEntry) {
       roundsWords.push(resEntry.word)
-      let fourWords = [
-        { word: word1, lcd: lcd1 },
-        { word: word2, lcd: lcd2 },
-        { word: word3, lcd: lcd3 },
-        { word: word4, lcd: lcd4 }]
-      console.log(fourWords)
       fourWords.forEach(function (wordlcd) {
         wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
         console.log('Set word to: ', wordlcd.word)
