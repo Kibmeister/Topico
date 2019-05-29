@@ -13,6 +13,7 @@ class LCDclass {
     lcdChain.forEach(function (lcd) {
       lcd.clear()
     })
+    console.log('Cleared all LCDs')
   }
 }
 

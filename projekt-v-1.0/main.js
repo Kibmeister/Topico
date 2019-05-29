@@ -4,7 +4,7 @@ var mic = require('mic')
 var fs = require('fs')
 var LCD = require('lcdi2c')
 
-// const wordpool = require('./db/words').Words
+const wordpool = require('./db/words').Words
 const LCDclass = require('./public/js/pi/lcd').LCDclass
 
 var lcd1 = new LCD(1, 0x27, 16, 2)
@@ -18,7 +18,6 @@ let myWords = []
 //   if (err) throw err
 //   myWords = res
 // })
-console.log('wordpool :', myWords)
 let queWords = []
 var chosenWord
 var word1 = 'word1'
