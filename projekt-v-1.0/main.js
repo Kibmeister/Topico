@@ -144,7 +144,7 @@ function choose () {
 
 function queWord () {
   console.log('quewords is initiated')
-  queWords = wordpool.getQueWords(chosenWord)
+  queWords = allWords.getQueWords(chosenWord)
 
   setTimeout(() => {
     lcdChain.indexOf(1).clear()
@@ -165,53 +165,53 @@ function queWord () {
   fase++
 }
 
-function startRecording () {
-  pushButton2.watch(function (err, value) {
-    if (err) throw err
-    if (fase === 7) {
-      micInstance.start()
-    }
-  })
-  micInstance.stop()
-}
+// function startRecording () {
+//   pushButton2.watch(function (err, value) {
+//     if (err) throw err
+//     if (fase === 7) {
+//       micInstance.start()
+//     }
+//   })
+//   micInstance.stop()
+// }
 
-micInputStream.pipe(outputFileStream)
+// micInputStream.pipe(outputFileStream)
 
-micInputStream.on('data', function (data) {
-  console.log('Recieved Input Stream: ' + data.length)
-})
+// micInputStream.on('data', function (data) {
+//   console.log('Recieved Input Stream: ' + data.length)
+// })
 
-micInputStream.on('error', function (err) {
-  console.log('Error in Input Stream: ' + err)
-})
+// micInputStream.on('error', function (err) {
+//   console.log('Error in Input Stream: ' + err)
+// })
 
-micInputStream.on('startComplete', function () {
-  console.log('Got SIGNAL startComplete')
-  setTimeout(function () {
-    micInstance.stop()
-  }, 20000)
-})
+// micInputStream.on('startComplete', function () {
+//   console.log('Got SIGNAL startComplete')
+//   setTimeout(function () {
+//     micInstance.stop()
+//   }, 20000)
+// })
 
-micInputStream.on('stopComplete', function () {
-  console.log('Got SIGNAL stopComplete')
-  lcd1.clear()
-  lcd1.println('Want to try again?', 1)
-  lcd2.clear()
-  lcd2.println('Want to try again?', 1)
-  lcd3.clear()
-  lcd3.println('Want to try again?', 1)
-  lcd4.clear()
-  lcd4.println('Want to try again?', 1)
-})
+// micInputStream.on('stopComplete', function () {
+//   console.log('Got SIGNAL stopComplete')
+//   lcd1.clear()
+//   lcd1.println('Want to try again?', 1)
+//   lcd2.clear()
+//   lcd2.println('Want to try again?', 1)
+//   lcd3.clear()
+//   lcd3.println('Want to try again?', 1)
+//   lcd4.clear()
+//   lcd4.println('Want to try again?', 1)
+// })
 
-/* micInputStream.on('silence', function () {
-  console.log('Got SIGNAL silence')
-  micInstance.stop()
-}) */
+// /* micInputStream.on('silence', function () {
+//   console.log('Got SIGNAL silence')
+//   micInstance.stop()
+// }) */
 
-micInputStream.on('processExitComplete', function () {
-  console.log('Got SIGNAL processExitComplete')
-})
+// micInputStream.on('processExitComplete', function () {
+//   console.log('Got SIGNAL processExitComplete')
+// })
 
 process.on('SIGINT', function () {
   clearInterval()
