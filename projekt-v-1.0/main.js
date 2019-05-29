@@ -86,8 +86,11 @@ function initiator () {
 function selectAllWords () {
   WordsClass.getWords(function (err, res) {
     if (err) throw err
-    allWords = res
-    console.log('res: ', res)
+    let roundsWords = []
+    res.forEach(function (resEntry) {
+      roundsWords.push(res.word)
+      console.log('RoundsWords: ', roundsWords)
+    })
   })
   console.log('allWords after function: ', allWords)
 }
