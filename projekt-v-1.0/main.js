@@ -14,7 +14,6 @@ var lcd3 = new LCD(1, 0x25, 16, 2)
 var lcd4 = new LCD(1, 0x23, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
-let allWords = []
 // wordpool.getWords(function (err, res, fields) {
 //   if (err) throw err
 //   myWords = res
@@ -26,7 +25,7 @@ var word2 = 'word2'
 var word3 = 'word3'
 var word4 = 'word4'
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
-var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
+// var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
 var fase = 0
 
 // lcd1.clear()
@@ -94,10 +93,9 @@ function selectAllWords () {
     res.forEach(function (resEntry) {
       roundsWords.push(resEntry.word)
     })
-    console.log('RoundsWords: ', roundsWords)
+    let allWords = roundsWords
     fourWords.forEach(function (wordlcd) {
       wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
-      console.log('Set word to: ', wordlcd.word, '----END----')
       roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
       wordlcd.lcd.println(wordlcd.word, 1)
     })
