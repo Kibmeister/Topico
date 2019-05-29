@@ -22,7 +22,7 @@ class Words {
       if (err) throw err
     })
   }
-  // Returns words and their mainwords
+  // Returns words
   static getWords (callback) {
     const sql = 'SELECT word FROM words'
     db.getConnection((err, connection) => {

@@ -1,10 +1,10 @@
 'use strict'
 var Gpio = require('onoff').Gpio
-var mic = require('mic')
-var fs = require('fs')
+// var mic = require('mic')
+// var fs = require('fs')
 var LCD = require('lcdi2c')
 
-const wordpool = require('./db/words').Words
+const WordsClass = require('./db/words').Words
 const LCDclass = require('./public/js/pi/lcd').LCDclass
 
 var lcd1 = new LCD(1, 0x27, 16, 2)
@@ -13,11 +13,11 @@ var lcd3 = new LCD(1, 0x25, 16, 2)
 var lcd4 = new LCD(1, 0x24, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
-let myWords = []
-wordpool.getWords(function (err, res, fields) {
-  if (err) throw err
-  myWords = res
-})
+let allWords = []
+// wordpool.getWords(function (err, res, fields) {
+//   if (err) throw err
+//   myWords = res
+// })
 let queWords = []
 var chosenWord
 var word1 = 'word1'
@@ -34,18 +34,19 @@ var fase = 0
 // lcd4.clear()
 LCDclass.clearAll()
 
-var micInstance = mic({
-  device: 'plughw:0,0',
-  fileType: 'wav',
-  rate: '44100',
-  channels: '1',
-  debug: true,
-  exitOnSilence: 6
-})
-var micInputStream = micInstance.getAudioStream()
+// var micInstance = mic({
+//   device: 'plughw:0,0',
+//   fileType: 'wav',
+//   rate: '44100',
+//   channels: '1',
+//   debug: true,
+//   exitOnSilence: 6
+// })
+// var micInputStream = micInstance.getAudioStream()
 
-var outputFileStream = fs.WriteStream('voice2.wav')
+// var outputFileStream = fs.WriteStream('voice2.wav')
 
+// Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   console.log(value)
   if (err) throw err
@@ -53,6 +54,11 @@ pushButton1.watch(function (err, value) {
   fase++
   initiator()
 })
+WordsClass.getWords(function (err, words) {
+  if (err) throw err
+  allWords = words
+})
+console.log(allWords)
 
 function initiator () {
   console.log('state of the fase is: ', fase)
@@ -75,7 +81,7 @@ function initiator () {
 
 function words () {
   console.log('Stage 1')
-  var roundsWords = myWords
+  var roundsWords = allWords
   word1 = myWords[Math.floor(Math.random() * myWords.length)]
   roundsWords.splice(myWords.indexOf(word1), 1)
   console.log('--')
