@@ -88,14 +88,20 @@ function selectAllWords () {
     if (err) throw err
     let roundsWords = []
     res.forEach(function (resEntry) {
-      console.log(resEntry)
       roundsWords.push(resEntry.word)
-      console.log('RoundsWords: ', roundsWords)
+      let fourWords = [
+        { word: word1, lcd: lcd1 },
+        { word: word2, lcd: lcd2 },
+        { word: word3, lcd: lcd3 },
+        { word: word4, lcd: lcd4 }]
+      fourWords.forEach(function (wordlcd) {
+        wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
+        wordlcd.lcd.println(word1, 1)
+        console.log(wordlcd)
+      })
     })
   })
-  console.log('allWords after function: ', allWords)
 }
-console.log('allWords before function: ', allWords)
 
 function words () {
   console.log('Stage 1')
