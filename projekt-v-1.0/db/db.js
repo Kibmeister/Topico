@@ -10,7 +10,7 @@ let config = {
 
 const pool = mysql.createPool(config)
 
-pool.getConnection((err, connection) => {
+pool.getConnection(function (err, connection) {
   if (err) return (err)
 
   // Create table Words
