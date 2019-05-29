@@ -98,9 +98,11 @@ function words () {
       wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
       roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
       wordlcd.lcd.println(wordlcd.word, 1)
+      console.log('111Four words: ', word1, word2, word3, word4)
     })
   })
   fase++
+  console.log('222Four words: ', word1, word2, word3, word4)
 }
 
 // function words () {
@@ -127,7 +129,7 @@ function words () {
 // }
 
 function choose () {
-  console.log('Four words: ', word1, word2, word3, word4)
+  console.log('333Four words: ', word1, word2, word3, word4)
   console.log('stage 2')
   var word = [word1, word2, word3, word4]
   // adding the LED to make shit happen
