@@ -7,7 +7,7 @@ const lcd3 = new LCD(1, 0x25, 16, 2)
 const lcd4 = new LCD(1, 0x23, 16, 2)
 const lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
-class LCDclass {
+class LCDClass {
   // clears all LCDs
   static clearAll () {
     lcdChain.forEach(function (lcd) {
@@ -17,4 +17,4 @@ class LCDclass {
   }
 }
 
-module.exports.LCDclass = LCDclass
+module.exports.LCDclass = LCDClass
