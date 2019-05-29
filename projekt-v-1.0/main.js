@@ -94,6 +94,7 @@ function selectAllWords () {
         { word: word2, lcd: lcd2 },
         { word: word3, lcd: lcd3 },
         { word: word4, lcd: lcd4 }]
+      console.log(fourWords)
       fourWords.forEach(function (wordlcd) {
         wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
         wordlcd.lcd.println(wordlcd.word, 1)
