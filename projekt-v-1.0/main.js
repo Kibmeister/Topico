@@ -56,7 +56,7 @@ pushButton1.watch(function (err, value) {
   initiator()
 })
 WordsClass.getWords(function (err, res) {
-  console.log('Words: ', words)
+  console.log('Words: ', res)
   if (err) throw err
   allWords = res
 })
