@@ -44,7 +44,6 @@ class Words {
       if (err) throw err
     })
   }
-  // Returns words and paths to display in the GUI
   static wordsGUIQuery (callback) {
     const sql = 'SELECT word, queword1, queword2, queword3 FROM words;'
     db.getConnection((err, connection) => {
@@ -55,10 +54,10 @@ class Words {
       if (err) throw err
     })
   }
-  static recordingsGUIQuery (word, callback) {
-    const sql = 'SELECT rpath, word FROM Recordings WHERE word = ? ;'
+  static recordingsGUIQuery (callback) {
+    const sql = 'SELECT word, rpath FROM Recordings;'
     db.getConnection((err, connection) => {
-      connection.query(sql, [word], (err, results, field) => {
+      connection.query(sql, (err, results, fields) => {
         callback(err, results)
         connection.release()
       })

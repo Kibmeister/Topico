@@ -36,13 +36,12 @@
       </tbody>
     </table>
   </div>
-  {{/each}}
+  {{#each path}}
   <div id="id_AudioControl">
-    {{#each rpath}}
     <audio controls>
-      <source src={{rpath}} type="audio/mp3">
+      <source src={{this}} type="audio/wav">
     </audio>
-    {{/each}}
   </div>
-
+  {{/each}}
 </div>
+{{/each}}

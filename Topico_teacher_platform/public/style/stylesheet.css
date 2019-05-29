@@ -121,3 +121,31 @@ th{
     margin-top: 0;
   }
 }
+#id_entries_list{
+margin-top: 10px;
+background-color: #A9A9A9;
+display: grid;
+padding: 10px;
+min-height: 70%;    
+height: 100%;
+margin: 5px;
+border-radius: 5px;
+
+}
+.dictionary_mainWord{
+padding: 10px;
+margin: 5px;
+border-radius: 5px;
+font-size: 20px;
+text-align: center;
+text-transform: uppercase;
+outline: none;
+background-color: gray;
+color: #fff;
+grid-column: 1;
+
+}.audio_container{
+margin-left: 30px;
+grid-column: 2;
+margin: auto;
+}

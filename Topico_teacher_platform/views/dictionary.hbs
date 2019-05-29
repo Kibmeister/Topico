@@ -1,12 +1,12 @@
-{{#unless entries}}
+{{#unless pair}}
 <p>No entries to show..</p>
 {{/unless}}
-{{#each entries}}
+{{#each pair}}
 <div id="id_entries_list">
-  <div class="dictionary_mainWord">{{entries_mainWord}}</div>
+  <div class="dictionary_mainWord">{{word}}</div>
   <div class="audio_container">
     <audio controls>
-      <source src="{{entries_audio}}" type="audio/mp3">
+      <source src="{{rpath}}" type="audio/wav">
     </audio>
   </div>
 </div>

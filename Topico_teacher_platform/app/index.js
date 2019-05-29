@@ -24,46 +24,38 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.get('/', (request, response, next) => {
   response.redirect('/index')
 })
-// find most recent registered values in database
+
 app.get('/index', (request, response, next) => {
   response.render('index')
 })
 // #1 Get one pool of words
 app.get('/groups', (request, response, next) => {
   if (request.accepts('application/json') && !request.accepts('text/html')) {
-    Words.wordsGUIQuery((err, dataWords) => {
-      if (err) return next(err)
-      response.contentType('application/json')
-      let lydarray = []
-      /* loop that inputs main word from word table into Recordings table and
-      writes in the terminal, every rpath to the following main word */
-      for (let i = 0; i < dataWords.length; i++) {
-        Words.recordingsGUIQuery(dataWords[i].word, (err, recordings) => {
-          if (err) return next(err)
-          for (let j = 0; j < recordings.length; j++) {
-            if (dataWords[i].word === recordings[j].word) {
-              let lydstreng = recordings[j]
-              lydarray.push(lydstreng.rpath) // adds rpath to empty lydarray
+    Words.wordsGUIQuery((err, res) => {
+      if (err) throw err
+      let dataWords = []
+      Array.prototype.push.apply(dataWords, res)
+      Words.recordingsGUIQuery((err, res2) => {
+        if (err) throw err
+        let dataRecordings = []
+        Array.prototype.push.apply(dataRecordings, res2)
+        let GUIdata = res
+        GUIdata.forEach(function (GUIEntry) {
+          GUIEntry.path = []
+          dataRecordings.forEach(function (recordingEntry) {
+            if (GUIEntry.word === recordingEntry.word) {
+              GUIEntry.path.push(recordingEntry.rpath)
             }
-          }
-          console.log(lydarray)
-          dataWords[i].lydstreng = lydarray // adds array with "lydstrenge" to dataWords
+          })
         })
-        lydarray = [] // resets lydarray
-      }
-      let dataToSend = { // variable that hold a name and an array of objects
-        dataWords
-      }
-      console.log(dataToSend)
-      response.end(JSON.stringify(dataToSend))
-      // console.log('dette er lydStreng og mainword' + JSON.stringify(dataToSend))
+        // console.log(GUIdata)
+        response.end(JSON.stringify(GUIdata))
+      })
     })
-  } else {
-    response.render('index')
   }
 })
-// save a mainword with three following quewords to the db
-app.post('/spawnPool', (request, response, next) => {
+// #2 Save a mainword with three following quewords to the db
+app.post('/index', (request, response, next) => {
   const spawn = {
     add_mainWord: request.body.mainWord,
     add_queWord1: request.body.helpWord1,
@@ -76,6 +68,19 @@ app.post('/spawnPool', (request, response, next) => {
     response.render('index')
   })
 })
+// #3 Get one pair of mainword and voicerecording
+app.get('/dictionary', (request, response, next) => {
+  if (request.accepts('application/json') && !request.accepts('text/html')) {
+    Words.recordingsGUIQuery((err, data) => {
+      if (err) return next(err)
+      response.contentType('application/json')
+      response.end(JSON.stringify(data))
+    })
+  } else {
+    response.render('index')
+  }
+})
+
 app.listen(port, (err) => {
   if (err) return console.error(`An error occurred: ${err}`)
   console.log(`Listening on http://localhost:${port}/`)

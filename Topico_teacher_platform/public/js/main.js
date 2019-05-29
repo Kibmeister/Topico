@@ -1,6 +1,7 @@
 'use strict'
 
 // retreving id form buttons and handlebar divs
+group()
 
 const buttonGroups = document.querySelector('#bt_groups')
 const buttonWordpool = document.querySelector('#bt_wordpool')
@@ -29,6 +30,7 @@ buttonDictionary.addEventListener('click', () => {
   divWordPool.style.display = 'none'
   divDictionary.style.display = 'block'
   console.log('dictionary')
+  dictionary()
 })
 
 function group () {
@@ -39,11 +41,21 @@ function group () {
     }
   }).then((response) => {
     response.json().then((data) => {
-      // console.log(data[1].dataWords)
-      console.log(data)
-      divGroups.innerHTML = Handlebars.templates.groups({ words: data[0].dataWords, rpath: data[1].dataWords
-      })
-      // divGroups.innerHTML = Handlebars.templates.groups({ rpath: data[1].dataWords })
+      // console.log(data)
+      divGroups.innerHTML = Handlebars.templates.groups({ words: data, rpath: data })
+    })
+  })
+}
+function dictionary () {
+  fetch('/dictionary', {
+    method: 'get',
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then((response) => {
+    response.json().then((data) => {
+      // console.log(data)
+      divDictionary.innerHTML = Handlebars.templates.dictionary({ pair: data })
     })
   })
 }
