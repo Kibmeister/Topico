@@ -101,7 +101,6 @@ function words () {
     })
   })
   fase++
-  console.log('222Four words: ', fourWords.word)
 }
 
 // function words () {
@@ -128,11 +127,11 @@ function words () {
 // }
 
 function choose () {
-  console.log('333Four words: ', fourWords.word)
   console.log('stage 2')
-  var word = [word1, word2, word3, word4]
+  console.log(word1, word2, word3, word4)
   // adding the LED to make shit happen
-  chosenWord = word[Math.floor(Math.random() * word.length)]
+  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)].word
+  console.log(chosenWord)
   if (chosenWord === word1) {
     lcd3.clear()
     lcd2.clear()
