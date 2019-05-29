@@ -95,7 +95,7 @@ function selectAllWords () {
       roundsWords.push(resEntry.word)
       fourWords.forEach(function (wordlcd) {
         wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
-        console.log('Set word to: ', wordlcd.word)
+        console.log('Set word to: ', wordlcd.word, '----END----')
         roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
         wordlcd.lcd.println(wordlcd.word, 1)
       })
