@@ -66,6 +66,7 @@ pushButton1.watch(function (err, value) {
 function initiator () {
   console.log('state of the fase is: ', fase)
   if (fase === 1) {
+    selectAllWords()
     words()
   }
   if (fase === 3) {
@@ -82,17 +83,16 @@ function initiator () {
   }
 }
 
-function words () {
-  console.log('Stage 1')
-  WordsClass.getWords(function (err, res, fields) {
+function selectAllWords () {
+  WordsClass.getWords(function (err, res) {
     if (err) throw err
+    allWords = res
     console.log('res: ', res)
-    res.word.forEach(function (wordEntry) {
-      console.log(wordEntry)
-    })
   })
 }
-function words1 () {
+console.log('allWords after function: ', allWords)
+
+function words () {
   console.log('Stage 1')
   var roundsWords = [allWords]
   word1 = allWords[Math.floor(Math.random() * allWords.length)]
