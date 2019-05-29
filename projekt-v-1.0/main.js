@@ -88,7 +88,8 @@ function selectAllWords () {
     if (err) throw err
     let roundsWords = []
     res.forEach(function (resEntry) {
-      roundsWords.push(res.word)
+      console.log(resEntry)
+      roundsWords.push(resEntry.word)
       console.log('RoundsWords: ', roundsWords)
     })
   })
