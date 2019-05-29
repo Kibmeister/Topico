@@ -86,6 +86,7 @@ function words () {
   console.log('Stage 1')
   WordsClass.getWords(function (err, res, fields) {
     if (err) throw err
+    console.log('res: ', res)
     res.word.forEach(function (wordEntry) {
       console.log(wordEntry)
     })
