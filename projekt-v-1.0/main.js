@@ -89,8 +89,9 @@ function selectAllWords () {
     allWords = res
     console.log('res: ', res)
   })
+  console.log('allWords after function: ', allWords)
 }
-console.log('allWords after function: ', allWords)
+console.log('allWords before function: ', allWords)
 
 function words () {
   console.log('Stage 1')
