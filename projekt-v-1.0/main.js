@@ -93,12 +93,13 @@ function selectAllWords () {
       { word: word4, lcd: lcd4 }]
     res.forEach(function (resEntry) {
       roundsWords.push(resEntry.word)
-      fourWords.forEach(function (wordlcd) {
-        wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
-        console.log('Set word to: ', wordlcd.word, '----END----')
-        roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
-        wordlcd.lcd.println(wordlcd.word, 1)
-      })
+    })
+    console.log('RoundsWords: ', roundsWords)
+    fourWords.forEach(function (wordlcd) {
+      wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
+      console.log('Set word to: ', wordlcd.word, '----END----')
+      roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
+      wordlcd.lcd.println(wordlcd.word, 1)
     })
   })
 }
