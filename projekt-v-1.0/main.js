@@ -128,7 +128,6 @@ function words () {
 
 function choose () {
   console.log('stage 2')
-  console.log(word1, word2, word3, word4)
   // adding the LED to make shit happen
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)].word
   console.log(chosenWord)
