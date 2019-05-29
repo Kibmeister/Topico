@@ -65,7 +65,7 @@ pushButton1.watch(function (err, value) {
 function initiator () {
   console.log('state of the fase is: ', fase)
   if (fase === 1) {
-    selectAllWords()
+    words()
   }
   if (fase === 3) {
     choose()
@@ -81,7 +81,7 @@ function initiator () {
   }
 }
 
-function selectAllWords () {
+function words () {
   WordsClass.getWords(function (err, res) {
     if (err) throw err
     let roundsWords = []
@@ -100,6 +100,7 @@ function selectAllWords () {
       wordlcd.lcd.println(wordlcd.word, 1)
     })
   })
+  fase++
 }
 
 // function words () {
