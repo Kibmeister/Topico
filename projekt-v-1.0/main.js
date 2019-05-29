@@ -55,12 +55,13 @@ pushButton1.watch(function (err, value) {
   fase++
   initiator()
 })
-WordsClass.getWords(function (err, res) {
-  console.log('Words: ', res)
-  if (err) throw err
-  allWords = res
-})
-console.log('allWords: ', allWords)
+// WordsClass.getWords(function (err, res) {
+//   console.log('Words: ', res)
+//   if (err) throw err
+//   allWords = res
+// })
+// console.log('allWords: ', allWords)
+// Returns { word: 'word' } objects
 
 function initiator () {
   console.log('state of the fase is: ', fase)
@@ -83,7 +84,16 @@ function initiator () {
 
 function words () {
   console.log('Stage 1')
-  var roundsWords = allWords
+  WordsClass.getWords(function (err, res, fields) {
+    if (err) throw err
+    res.word.forEach(function (wordEntry) {
+      console.log(wordEntry)
+    })
+  })
+}
+function words1 () {
+  console.log('Stage 1')
+  var roundsWords = [allWords]
   word1 = allWords[Math.floor(Math.random() * allWords.length)]
   roundsWords.splice(allWords.indexOf(word1), 1)
   console.log('--')
