@@ -5,12 +5,13 @@ var Gpio = require('onoff').Gpio
 var LCD = require('lcdi2c')
 
 const WordsClass = require('./db/words').Words
-const LCDclass = require('./public/js/pi/lcd').LCDclass
+const LCDClass = require('./public/js/pi/lcd').LCDClass
+const MicClass = require('./public/js/pi/mic').MicClass
 
 var lcd1 = new LCD(1, 0x27, 16, 2)
 var lcd2 = new LCD(1, 0x26, 16, 2)
 var lcd3 = new LCD(1, 0x25, 16, 2)
-var lcd4 = new LCD(1, 0x24, 16, 2)
+var lcd4 = new LCD(1, 0x23, 16, 2)
 let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
 let allWords = []
@@ -32,7 +33,7 @@ var fase = 0
 // lcd2.clear()
 // lcd3.clear()
 // lcd4.clear()
-LCDclass.clearAll()
+LCDClass.clearAll()
 
 // var micInstance = mic({
 //   device: 'plughw:0,0',
@@ -72,10 +73,10 @@ function initiator () {
     queWord()
   }
   if (fase === 7) {
-    startRecording()
+    MicClass.startRecording()
   }
   if (fase === 8) {
-    micInstance.stop()
+    MicClass.stopRecording()
   }
 }
 
@@ -144,7 +145,7 @@ function choose () {
 
 function queWord () {
   console.log('quewords is initiated')
-  queWords = allWords.getQueWords(chosenWord)
+  queWords = WordsClass.getQueWords(chosenWord)
 
   setTimeout(() => {
     lcdChain.indexOf(1).clear()
