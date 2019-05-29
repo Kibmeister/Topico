@@ -4,7 +4,8 @@ const mysql = require('mysql')
 let config = {
   user: 'pi',
   password: 'foobar',
-  database: 'itpdp'
+  database: 'itpdp',
+  host: '192.168.43.31'
 }
 
 const pool = mysql.createPool(config)
