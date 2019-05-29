@@ -82,21 +82,21 @@ function initiator () {
 function words () {
   console.log('Stage 1')
   var roundsWords = allWords
-  word1 = myWords[Math.floor(Math.random() * myWords.length)]
-  roundsWords.splice(myWords.indexOf(word1), 1)
+  word1 = allWords[Math.floor(Math.random() * allWords.length)]
+  roundsWords.splice(allWords.indexOf(word1), 1)
   console.log('--')
   lcd1.println(word1, 1)
   console.log('--')
-  word2 = myWords[Math.floor(Math.random() * myWords.length)]
-  roundsWords.splice(myWords.indexOf(word2), 1)
+  word2 = allWords[Math.floor(Math.random() * allWords.length)]
+  roundsWords.splice(allWords.indexOf(word2), 1)
   lcd2.println(word2, 1)
   console.log('--')
-  word3 = myWords[Math.floor(Math.random() * myWords.length)]
-  roundsWords.splice(myWords.indexOf(word3), 1)
+  word3 = allWords[Math.floor(Math.random() * allWords.length)]
+  roundsWords.splice(allWords.indexOf(word3), 1)
   lcd3.println(word3, 1)
   console.log('--')
-  word4 = myWords[Math.floor(Math.random() * myWords.length)]
-  roundsWords.splice(myWords.indexOf(word4), 1)
+  word4 = allWords[Math.floor(Math.random() * allWords.length)]
+  roundsWords.splice(allWords.indexOf(word4), 1)
   lcd4.println(word4)
   console.log('--')
   fase++
