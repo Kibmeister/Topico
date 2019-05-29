@@ -17,4 +17,4 @@ class LCDClass {
   }
 }
 
-module.exports.LCDclass = LCDClass
+module.exports.LCDClass = LCDClass
