@@ -55,11 +55,12 @@ pushButton1.watch(function (err, value) {
   fase++
   initiator()
 })
-WordsClass.getWords(function (err, words) {
+WordsClass.getWords(function (err, res) {
+  console.log('Words: ', words)
   if (err) throw err
-  allWords = words
+  allWords = res
 })
-console.log(allWords)
+console.log('allWords: ', allWords)
 
 function initiator () {
   console.log('state of the fase is: ', fase)
