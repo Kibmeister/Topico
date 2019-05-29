@@ -11,7 +11,7 @@ let config = {
 const pool = mysql.createPool(config)
 
 pool.getConnection((err, connection) => {
-  if (err) throw err
+  if (err) return (err)
 
   // Create table Words
   connection.query(
