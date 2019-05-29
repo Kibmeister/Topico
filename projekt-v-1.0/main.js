@@ -24,6 +24,11 @@ var word1 = 'word1'
 var word2 = 'word2'
 var word3 = 'word3'
 var word4 = 'word4'
+let fourWords = [
+  { word: word1, lcd: lcd1 },
+  { word: word2, lcd: lcd2 },
+  { word: word3, lcd: lcd3 },
+  { word: word4, lcd: lcd4 }]
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 // var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
 var fase = 0
@@ -85,11 +90,6 @@ function words () {
   WordsClass.getWords(function (err, res) {
     if (err) throw err
     let roundsWords = []
-    let fourWords = [
-      { word: word1, lcd: lcd1 },
-      { word: word2, lcd: lcd2 },
-      { word: word3, lcd: lcd3 },
-      { word: word4, lcd: lcd4 }]
     res.forEach(function (resEntry) {
       roundsWords.push(resEntry.word)
     })
@@ -127,6 +127,7 @@ function words () {
 // }
 
 function choose () {
+  console.log('Four words: ', word1, word2, word3, word4)
   console.log('stage 2')
   var word = [word1, word2, word3, word4]
   // adding the LED to make shit happen
