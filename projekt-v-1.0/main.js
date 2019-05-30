@@ -182,7 +182,7 @@ function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
-    console.log('Quewords response: ', res)
+    console.log('Quewords response: ', res.queword1, res.queword2, res.queword3)
     queWords.push(res.queword1, res.queword2, res.queword3)
     console.log('Quewords: ', queWords)
     setTimeout(() => {
