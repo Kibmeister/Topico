@@ -19,7 +19,7 @@ let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 //   myWords = res
 // })
 let queWords = []
-var chosenWord
+let chosenWord
 var word1 = 'word1'
 var word2 = 'word2'
 var word3 = 'word3'
@@ -128,13 +128,15 @@ function words () {
 
 function choose () {
   console.log('Stage 2')
-  console.log('Word test: ', fourWords[0].word)
+  // Select a word at random for the group:
+  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
+  console.log('Chosen word: ', chosenWord)
 }
 
 function choose2 () {
   console.log('stage 2')
   // adding the LED to make shit happen
-  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)].word
+  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
   console.log(chosenWord)
   if (chosenWord === word1) {
     lcd3.clear()
