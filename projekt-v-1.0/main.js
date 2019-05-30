@@ -120,10 +120,17 @@ function queWord () {
     console.log(queWords[1].word)
     console.log(queWords[2].word)
     console.log(queWords[3].word)
+    for (var i = 1; i < 4; i++) {
+      setTimeout(() => {
+        queWords[i].lcd.println('Hint word:', 1)
+        queWords[i].lcd.println(queWords[i].word, 2)
+      }, i * 10000)
+    }
   })
+  phase++
 }
 
-function queWord2 () {
+function queWordddd2 () {
   console.log('quewords is initiated')
   queWords = WordsClass.getQueWords(chosenWord)
 
