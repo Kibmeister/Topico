@@ -110,9 +110,8 @@ function queWord () {
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response: ', res)
-    console.log('Fourwords: ', fourWords)
     queWords = [
-      { word: chosenWord, lcd: lcd1 },
+      { word: chosenWord.word, lcd: lcd1 },
       { word: res.queword1, lcd: lcd2 },
       { word: res.queWord2, lcd: lcd3 },
       { word: res.queword3, lcd: lcd4 }]
