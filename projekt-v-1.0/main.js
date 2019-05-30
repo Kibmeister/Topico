@@ -180,6 +180,7 @@ function choose () {
 
 function queWord () {
   console.log('quewords is initiated')
+  console.log('ChosenWord: ', chosenWord)
   WordsClass.getQueWords(chosenWord, function (err, res) {
     res.forEach(function (entry) {
       console.log(entry)
