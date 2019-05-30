@@ -181,7 +181,7 @@ function choose () {
 function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord, function (err, res) {
-    console.log(res)
+    console.log(res.queWord1)
     if (err) return err
     queWords = res
     setTimeout(() => {
