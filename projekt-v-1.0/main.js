@@ -31,7 +31,7 @@ let fourWords = [
   { word: word4, lcd: lcd4 }]
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 // var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
-var fase = 0
+var phase = 0
 
 // lcd1.clear()
 // lcd2.clear()
@@ -55,7 +55,7 @@ LCDClass.clearAll()
 pushButton1.watch(function (err, value) {
   if (err) throw err
   console.log('Button is pushed!')
-  fase++
+  phase++
   initiator()
 })
 // WordsClass.getWords(function (err, res) {
@@ -67,20 +67,20 @@ pushButton1.watch(function (err, value) {
 // Returns { word: 'word' } objects
 
 function initiator () {
-  console.log('state of the fase is: ', fase)
-  if (fase === 1) {
+  console.log('Current phase: ', phase)
+  if (phase === 1) {
     words()
   }
-  if (fase === 3) {
+  if (phase === 3) {
     choose()
   }
-  if (fase === 5) {
+  if (phase === 5) {
     queWord()
   }
-  if (fase === 7) {
+  if (phase === 7) {
     MicClass.startRecording()
   }
-  if (fase === 8) {
+  if (phase === 8) {
     MicClass.stopRecording()
   }
 }
@@ -97,10 +97,9 @@ function words () {
       wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
       roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
       wordlcd.lcd.println(wordlcd.word, 1)
-      console.log('Word of this round: ', wordlcd.word)
     })
   })
-  fase++
+  phase++
 }
 
 // function words () {
@@ -123,19 +122,17 @@ function words () {
 //   roundsWords.splice(allWords.indexOf(word4), 1)
 //   lcd4.println(word4)
 //   console.log('--')
-//   fase++
+//   phase++
 // }
 
 function choose () {
   console.log('Stage 2')
   // Select a word at random for the group:
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
-  console.log('Length of fourwords array: ', fourWords.length)
-  console.log('Chosen word: ', chosenWord)
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
-  fase++
+  phase++
 }
 
 // function choose2 () {
@@ -175,14 +172,14 @@ function choose () {
 //     lcd4.println(word3, 2)
 //     lcdChain = [lcd4, lcd1, lcd2, lcd3]
 //   }
-//   fase++
+//   phase++
 // }
 
 function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
-    console.log('Quewords response: ', res.queword1, res.queword2, res.queword3)
+    console.log('Response: ', res)
     queWords.push(res.queword1, res.queword2, res.queword3)
     console.log('Quewords: ', queWords)
     setTimeout(() => {
@@ -211,13 +208,13 @@ function queWord2 () {
     console.log('Q3')
   }, 30000)
   clearTimeout()
-  fase++
+  phase++
 }
 
 // function startRecording () {
 //   pushButton2.watch(function (err, value) {
 //     if (err) throw err
-//     if (fase === 7) {
+//     if (phase === 7) {
 //       micInstance.start()
 //     }
 //   })
