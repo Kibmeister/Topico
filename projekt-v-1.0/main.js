@@ -180,13 +180,11 @@ function queWord () {
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response: ', res)
-    queWords = [
-      res.queword1,
-      res.queword2,
-      res.queword3]
     console.log('Quewords: ', queWords)
     setTimeout(() => {
-      console.log(queWords)
+      for (var i = 0; i < res.length; i++) {
+        console.log(res[i])
+      }
     }, 10000)
   })
 }
