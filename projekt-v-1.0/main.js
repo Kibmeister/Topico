@@ -121,7 +121,7 @@ function queWord () {
         queWords[i].lcd.println('Hint:', 1)
         queWords[i].lcd.println(queWords[i].word, 2)
         console.log('Ran queloop ', i, ' times.')
-      })
+      }, 2000)
     }
   })
 }
