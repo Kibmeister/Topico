@@ -22,14 +22,14 @@ buttonWordpool.addEventListener('click', () => {
   divGroups.style.display = 'none'
   divDictionary.style.display = 'none'
   divWordPool.style.display = 'block'
-  console.log('pool')
   divWordPool.innerHTML = Handlebars.templates.wordpool()
+  var buttonForm = document.querySelector('#bt_pool')
+  buttonForm.addEventListener('click', dataForm)
 })
 buttonDictionary.addEventListener('click', () => {
   divGroups.style.display = 'none'
   divWordPool.style.display = 'none'
   divDictionary.style.display = 'block'
-  console.log('dictionary')
   dictionary()
 })
 
@@ -58,4 +58,39 @@ function dictionary () {
       divDictionary.innerHTML = Handlebars.templates.dictionary({ pair: data })
     })
   })
+}
+
+var xhr = new XMLHttpRequest()
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText) // 'This is the returned text.'
+    } else {
+      console.log('Error: ' + xhr.status) // An error occurred during the request.
+    }
+  }
+}
+
+function dataForm () {
+  // var input, text
+
+  let inputMainword = document.getElementById('id_mainWord').value
+  let inputHelpword1 = document.getElementById('id_helpWord1').value
+  let inputHelpword2 = document.getElementById('id_helpWord2').value
+  let inputHelpword3 = document.getElementById('id_helpWord3').value
+
+  console.log(inputMainword)
+  console.log(inputHelpword1)
+  console.log(inputHelpword2)
+  console.log(inputHelpword3)
+
+  xhr.open('POST', '/index', true)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+  xhr.send(JSON.stringify({
+    main: inputMainword,
+    help1: inputHelpword1,
+    help2: inputHelpword2,
+    help3: inputHelpword3
+  }))
 }
