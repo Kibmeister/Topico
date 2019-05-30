@@ -109,16 +109,18 @@ function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
-    console.log('Response[0]', res[0])
+    console.log('Response[0]:', res[0])
     queWords = [
       { word: chosenWord.word, lcd: lcd1 },
       { word: res[0].queword1, lcd: lcd2 },
-      { word: res[0].queWord2, lcd: lcd3 },
+      { word: res[0].queword2, lcd: lcd3 },
       { word: res[0].queword3, lcd: lcd4 }]
     console.log('Quewords: ', queWords)
     setTimeout(() => {
-      for (var i = 0; i < res.length; i++) {
-        console.log(res[i])
+      for (var i = 0; i < 3; i++) {
+        queWords[i++].lcd.println('You got:', 1)
+        queWords[i++].lcd.println(queWords[i++].word, 2)
+        console.log('Ran queloop ', i, ' times.')
       }
     }, 10000)
   })
