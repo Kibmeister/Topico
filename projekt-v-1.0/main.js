@@ -127,6 +127,11 @@ function words () {
 // }
 
 function choose () {
+  console.log('Stage 2')
+  console.log('Word test: ', fourWords[0].word)
+}
+
+function choose2 () {
   console.log('stage 2')
   // adding the LED to make shit happen
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)].word
