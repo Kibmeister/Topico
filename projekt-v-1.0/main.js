@@ -58,13 +58,6 @@ pushButton1.watch(function (err, value) {
   phase++
   initiator()
 })
-// WordsClass.getWords(function (err, res) {
-//   console.log('Words: ', res)
-//   if (err) throw err
-//   allWords = res
-// })
-// console.log('allWords: ', allWords)
-// Returns { word: 'word' } objects
 
 function initiator () {
   console.log('Current phase: ', phase)
@@ -102,29 +95,6 @@ function words () {
   phase++
 }
 
-// function words () {
-//   console.log('Stage 1')
-//   var roundsWords = [allWords]
-//   word1 = allWords[Math.floor(Math.random() * allWords.length)]
-//   roundsWords.splice(allWords.indexOf(word1), 1)
-//   console.log('--')
-//   lcd1.println(word1, 1)
-//   console.log('--')
-//   word2 = allWords[Math.floor(Math.random() * allWords.length)]
-//   roundsWords.splice(allWords.indexOf(word2), 1)
-//   lcd2.println(word2, 1)
-//   console.log('--')
-//   word3 = allWords[Math.floor(Math.random() * allWords.length)]
-//   roundsWords.splice(allWords.indexOf(word3), 1)
-//   lcd3.println(word3, 1)
-//   console.log('--')
-//   word4 = allWords[Math.floor(Math.random() * allWords.length)]
-//   roundsWords.splice(allWords.indexOf(word4), 1)
-//   lcd4.println(word4)
-//   console.log('--')
-//   phase++
-// }
-
 function choose () {
   console.log('Stage 2')
   // Select a word at random for the group:
@@ -135,55 +105,17 @@ function choose () {
   phase++
 }
 
-// function choose2 () {
-//   console.log('stage 2')
-//   // adding the LED to make shit happen
-//   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
-//   console.log(chosenWord)
-//   if (chosenWord === word1) {
-//     lcd3.clear()
-//     lcd2.clear()
-//     lcd4.clear()
-//     lcd1.println('you got:', 1)
-//     lcd1.println(word1, 2)
-//     lcdChain = [lcd1, lcd2, lcd3, lcd4]
-//   }
-//   if (chosenWord === word2) {
-//     lcd3.clear()
-//     lcd1.clear()
-//     lcd4.clear()
-//     lcd2.println('you got:', 1)
-//     lcd2.println(word2, 2)
-//     lcdChain = [lcd2, lcd3, lcd4, lcd1]
-//   }
-//   if (chosenWord === word3) {
-//     lcd1.clear()
-//     lcd2.clear()
-//     lcd4.clear()
-//     lcd3.println('you got:', 1)
-//     lcd3.println(word3, 2)
-//     lcdChain = [lcd3, lcd4, lcd1, lcd2]
-//   }
-//   if (chosenWord === word4) {
-//     lcd1.clear()
-//     lcd2.clear()
-//     lcd3.clear()
-//     lcd4.println('you got:', 1)
-//     lcd4.println(word3, 2)
-//     lcdChain = [lcd4, lcd1, lcd2, lcd3]
-//   }
-//   phase++
-// }
-
 function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response: ', res)
     console.log('Fourwords: ', fourWords)
-    // queWords.push(
-    //   { queword: res.queword1, lcd
-    //     res.queword2, res.queword3)
+    queWords = [
+      { word: chosenWord, lcd: lcd1 },
+      { word: res.queword1, lcd: lcd2 },
+      { word: res.queWord2, lcd: lcd3 },
+      { word: res.queword3, lcd: lcd4 }]
     console.log('Quewords: ', queWords)
     setTimeout(() => {
       for (var i = 0; i < res.length; i++) {
