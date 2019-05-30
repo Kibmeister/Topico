@@ -181,14 +181,12 @@ function choose () {
 function queWord () {
   console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
-    res.forEach(function (entry) {
-      console.log(entry)
-      if (err) return err
-      queWords = res
-      setTimeout(() => {
-        console.log(queWords)
-      }, 10000)
-    })
+    if (err) return err
+    queWords.push(res.queword1, res.queword2, res.queword3)
+    console.log('Quewords: ', queWords)
+    setTimeout(() => {
+      console.log(queWords)
+    }, 10000)
   })
 }
 
