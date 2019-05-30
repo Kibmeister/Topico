@@ -110,11 +110,14 @@ function queWord () {
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response: ', res)
+    console.log('Response[0]', res[0])
+    let blabla = res
+    console.log(blabla)
     queWords = [
       { word: chosenWord.word, lcd: lcd1 },
-      { word: res.queword1, lcd: lcd2 },
-      { word: res.queWord2, lcd: lcd3 },
-      { word: res.queword3, lcd: lcd4 }]
+      { word: blabla.queword1, lcd: lcd2 },
+      { word: blabla.queWord2, lcd: lcd3 },
+      { word: blabla.queword3, lcd: lcd4 }]
     console.log('Quewords: ', queWords)
     setTimeout(() => {
       for (var i = 0; i < res.length; i++) {
