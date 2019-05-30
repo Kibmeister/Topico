@@ -122,11 +122,11 @@ function queWord () {
     console.log(queWords[3].word)
     for (var i = 1; i < 4; i++) {
       var j = i
-      console.log('j = ', j)
+      console.log('i = ', i)
       setTimeout(() => {
-        console.log('i =', i)
-        queWords[i].lcd.println('Hint word:', 1)
-        queWords[i].lcd.println(queWords[i].word, 2)
+        console.log('j =', j)
+        queWords[j].lcd.println('Hint word:', 1)
+        queWords[j].lcd.println(queWords[j].word, 2)
       }, j * 10000)
     }
   })
