@@ -116,13 +116,13 @@ function queWord () {
       { word: res[0].queword2, lcd: lcd3 },
       { word: res[0].queword3, lcd: lcd4 }]
     console.log('Quewords: ', queWords)
-    setTimeout(() => {
-      for (var i = 1; i < 4; i++) {
+    for (var i = 2; i < 5; i++) {
+      setTimeout(() => {
         queWords[i].lcd.println('Hint:', 1)
         queWords[i].lcd.println(queWords[i].word, 2)
         console.log('Ran queloop ', i, ' times.')
-      }
-    }, 10000)
+      })
+    }
   })
 }
 
