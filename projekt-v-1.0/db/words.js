@@ -41,7 +41,7 @@ class Words {
         callback(err, results)
         connection.release()
       })
-      if (err) throw err
+      if (err) return err
     })
   }
   // Returns words and paths to display in the GUI

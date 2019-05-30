@@ -134,47 +134,48 @@ function choose () {
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
-}
-
-function choose2 () {
-  console.log('stage 2')
-  // adding the LED to make shit happen
-  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
-  console.log(chosenWord)
-  if (chosenWord === word1) {
-    lcd3.clear()
-    lcd2.clear()
-    lcd4.clear()
-    lcd1.println('you got:', 1)
-    lcd1.println(word1, 2)
-    lcdChain = [lcd1, lcd2, lcd3, lcd4]
-  }
-  if (chosenWord === word2) {
-    lcd3.clear()
-    lcd1.clear()
-    lcd4.clear()
-    lcd2.println('you got:', 1)
-    lcd2.println(word2, 2)
-    lcdChain = [lcd2, lcd3, lcd4, lcd1]
-  }
-  if (chosenWord === word3) {
-    lcd1.clear()
-    lcd2.clear()
-    lcd4.clear()
-    lcd3.println('you got:', 1)
-    lcd3.println(word3, 2)
-    lcdChain = [lcd3, lcd4, lcd1, lcd2]
-  }
-  if (chosenWord === word4) {
-    lcd1.clear()
-    lcd2.clear()
-    lcd3.clear()
-    lcd4.println('you got:', 1)
-    lcd4.println(word3, 2)
-    lcdChain = [lcd4, lcd1, lcd2, lcd3]
-  }
   fase++
 }
+
+// function choose2 () {
+//   console.log('stage 2')
+//   // adding the LED to make shit happen
+//   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
+//   console.log(chosenWord)
+//   if (chosenWord === word1) {
+//     lcd3.clear()
+//     lcd2.clear()
+//     lcd4.clear()
+//     lcd1.println('you got:', 1)
+//     lcd1.println(word1, 2)
+//     lcdChain = [lcd1, lcd2, lcd3, lcd4]
+//   }
+//   if (chosenWord === word2) {
+//     lcd3.clear()
+//     lcd1.clear()
+//     lcd4.clear()
+//     lcd2.println('you got:', 1)
+//     lcd2.println(word2, 2)
+//     lcdChain = [lcd2, lcd3, lcd4, lcd1]
+//   }
+//   if (chosenWord === word3) {
+//     lcd1.clear()
+//     lcd2.clear()
+//     lcd4.clear()
+//     lcd3.println('you got:', 1)
+//     lcd3.println(word3, 2)
+//     lcdChain = [lcd3, lcd4, lcd1, lcd2]
+//   }
+//   if (chosenWord === word4) {
+//     lcd1.clear()
+//     lcd2.clear()
+//     lcd3.clear()
+//     lcd4.println('you got:', 1)
+//     lcd4.println(word3, 2)
+//     lcdChain = [lcd4, lcd1, lcd2, lcd3]
+//   }
+//   fase++
+// }
 
 function queWord () {
   console.log('quewords is initiated')
