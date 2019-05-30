@@ -132,7 +132,8 @@ function choose () {
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
   console.log('Chosen word: ', chosenWord)
   LCDClass.clearAll()
-  chosenWord.lcd.println('You got:', 1, chosenWord.word, 2)
+  chosenWord.lcd.println('You got:', 1)
+  chosenWord.lcd.println(chosenWord.word, 2)
 }
 
 function choose2 () {
