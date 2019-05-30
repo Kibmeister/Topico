@@ -35,6 +35,7 @@ class Words {
   }
   // Returns the quewords of a word
   static getQueWords (word, callback) {
+    console.log('Querying database for: ', word)
     const sql = 'SELECT queword1, queword2, queword3 FROM words WHERE word = ?'
     db.getConnection((err, connection) => {
       connection.query(sql, [word], (err, results, field) => {
