@@ -121,11 +121,13 @@ function queWord () {
     console.log(queWords[2].word)
     console.log(queWords[3].word)
     for (var i = 1; i < 4; i++) {
+      var j = i
+      console.log('j = ', j)
       setTimeout(() => {
         console.log('i =', i)
         queWords[i].lcd.println('Hint word:', 1)
         queWords[i].lcd.println(queWords[i].word, 2)
-      }, i * 10000)
+      }, j * 10000)
     }
   })
   phase++
