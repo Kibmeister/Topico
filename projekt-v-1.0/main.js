@@ -53,7 +53,6 @@ LCDClass.clearAll()
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
-  console.log(value)
   if (err) throw err
   console.log('Button is pushed!')
   fase++
@@ -98,6 +97,7 @@ function words () {
       wordlcd.word = roundsWords[Math.floor(Math.random() * allWords.length)]
       roundsWords.splice(allWords.indexOf(wordlcd.word), 1)
       wordlcd.lcd.println(wordlcd.word, 1)
+      console.log('Word of this round: ', wordlcd.word)
     })
   })
   fase++
@@ -130,6 +130,7 @@ function choose () {
   console.log('Stage 2')
   // Select a word at random for the group:
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
+  console.log('Length of fourwords array: ', fourWords.length)
   console.log('Chosen word: ', chosenWord)
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
