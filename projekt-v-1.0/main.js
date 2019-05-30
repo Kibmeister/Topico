@@ -181,9 +181,9 @@ function queWord () {
     if (err) return err
     console.log('Response: ', res)
     console.log('Fourwords: ', fourWords)
-    queWords.push(
-      { queword: res.queword1, lcd: 
-        res.queword2, res.queword3)
+    // queWords.push(
+    //   { queword: res.queword1, lcd
+    //     res.queword2, res.queword3)
     console.log('Quewords: ', queWords)
     setTimeout(() => {
       for (var i = 0; i < res.length; i++) {
