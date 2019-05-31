@@ -109,9 +109,9 @@ function choose () {
     console.log('fourWords: ', fourWords)
     queWords = [
       chosenWord, console.log('Screen 1: ', chosenWord),
-      fourWords[(fourWords.indexOf(chosenWord) + 1) % 4],
-      fourWords[(fourWords.indexOf(chosenWord) + 2) % 4],
-      fourWords[(fourWords.indexOf(chosenWord) + 3) % 4]]
+      res[(fourWords.indexOf(chosenWord) + 1) % 4],
+      res[(fourWords.indexOf(chosenWord) + 2) % 4],
+      res[(fourWords.indexOf(chosenWord) + 3) % 4]]
     console.log('Quewords: ', queWords)
     phase++
   })
