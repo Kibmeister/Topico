@@ -107,6 +107,7 @@ function choose () {
     if (err) return err
     console.log('Response[0]:', res[0])
     console.log('fourwords: ', fourWords)
+    console.log('Checking fourWords for index of ', chosenWord)
     console.log('Index of word: ', (fourWords.indexOf((chosenWord) + 1) % 4))
     queWords = [
       chosenWord,
