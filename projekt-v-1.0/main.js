@@ -102,7 +102,18 @@ function choose () {
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
-  phase++
+  console.log('quewords is initiated')
+  WordsClass.getQueWords(chosenWord.word, function (err, res) {
+    if (err) return err
+    console.log('Response[0]:', res[0])
+    queWords = [
+      chosenWord,
+      fourWords[(fourWords.indexOf(chosenWord) + 1) % 4],
+      fourWords[(fourWords.indexOf(chosenWord) + 2) % 4],
+      fourWords[(fourWords.indexOf(chosenWord) + 3) % 4]]
+    console.log('Quewords: ', queWords)
+    phase++
+  })
 }
 
 function queWord () {
@@ -116,19 +127,6 @@ function queWord () {
       { word: res[0].queword2, lcd: lcd3 },
       { word: res[0].queword3, lcd: lcd4 }]
     console.log('Quewords: ', queWords)
-    console.log(queWords[0].word)
-    console.log(queWords[1].word)
-    console.log(queWords[2].word)
-    console.log(queWords[3].word)
-    for (var i = 1; i < 4; i++) {
-      var j = i
-      console.log('i = ', i)
-      setTimeout(() => {
-        console.log('j =', j)
-        queWords[j].lcd.println('Hint word:', 1)
-        queWords[j].lcd.println(queWords[j].word, 2)
-      }, j * 10000)
-    }
   })
   phase++
 }
