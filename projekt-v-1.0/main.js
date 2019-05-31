@@ -106,7 +106,7 @@ function choose () {
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response[0]:', res[0])
-    console.log(fourWords)
+    console.log('fourwords: ', fourWords)
     queWords = [
       chosenWord,
       { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd },
