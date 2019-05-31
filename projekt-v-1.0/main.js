@@ -100,6 +100,8 @@ function choose () {
   // Select a word at random for the group:
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
   LCDClass.clearAll()
+  console.log('Checking fourWords for index of ', chosenWord)
+  console.log('Index of word: ', (fourWords.indexOf((chosenWord) + 1) % 4))
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
   console.log('quewords is initiated')
@@ -107,8 +109,6 @@ function choose () {
     if (err) return err
     console.log('Response[0]:', res[0])
     console.log('fourwords: ', fourWords)
-    console.log('Checking fourWords for index of ', chosenWord)
-    console.log('Index of word: ', (fourWords.indexOf((chosenWord) + 1) % 4))
     queWords = [
       chosenWord,
       { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd },
