@@ -101,7 +101,7 @@ function choose () {
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
   LCDClass.clearAll()
   console.log('Checking fourWords for index of ', chosenWord)
-  console.log('Index of word: ', (fourWords.indexOf((chosenWord) + 1) % 4))
+  console.log('Index of word: ', (fourWords.word.indexOf((chosenWord.word) + 1) % 4))
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
   console.log('quewords is initiated')
