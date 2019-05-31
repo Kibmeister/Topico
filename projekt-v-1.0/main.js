@@ -106,8 +106,9 @@ function choose () {
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response[0]:', res[0])
+    console.log('fourWords: ', fourWords)
     queWords = [
-      chosenWord,
+      chosenWord, console.log('Screen 1: ', chosenWord),
       fourWords[(fourWords.indexOf(chosenWord) + 1) % 4],
       fourWords[(fourWords.indexOf(chosenWord) + 2) % 4],
       fourWords[(fourWords.indexOf(chosenWord) + 3) % 4]]
@@ -118,17 +119,6 @@ function choose () {
 
 function queWord () {
   console.log('quewords is initiated')
-  WordsClass.getQueWords(chosenWord.word, function (err, res) {
-    if (err) return err
-    console.log('Response[0]:', res[0])
-    queWords = [
-      { word: chosenWord.word, lcd: lcd1 },
-      { word: res[0].queword1, lcd: lcd2 },
-      { word: res[0].queword2, lcd: lcd3 },
-      { word: res[0].queword3, lcd: lcd4 }]
-    console.log('Quewords: ', queWords)
-  })
-  phase++
 }
 
 function queWordddd2 () {
