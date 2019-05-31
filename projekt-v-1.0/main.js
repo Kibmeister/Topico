@@ -99,9 +99,9 @@ function choose () {
   console.log('Stage 2')
   // Select a word at random for the group:
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
-  LCDClass.clearAll()
   console.log('Checking fourWords for index of ', chosenWord)
-  console.log('Index of word: ', (fourWords.word.indexOf((chosenWord.word) + 1) % 4))
+  console.log('Index of word: ', (fourWords.indexOf((chosenWord) + 1) % 4))
+  LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
   console.log('quewords is initiated')
