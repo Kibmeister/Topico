@@ -18,13 +18,24 @@ buttonGroups.addEventListener('click', () => {
   divGroups.style.display = 'block'
   group()
 })
+
 buttonWordpool.addEventListener('click', () => {
   divGroups.style.display = 'none'
   divDictionary.style.display = 'none'
   divWordPool.style.display = 'block'
   divWordPool.innerHTML = Handlebars.templates.wordpool()
   var buttonForm = document.querySelector('#bt_pool')
-  buttonForm.addEventListener('click', dataForm)
+  buttonForm.addEventListener('click', () => {
+    dataForm()
+    let inputMainword = document.getElementById('id_mainWord')
+    let inputHelpword1 = document.getElementById('id_helpWord1')
+    let inputHelpword2 = document.getElementById('id_helpWord2')
+    let inputHelpword3 = document.getElementById('id_helpWord3')
+    inputMainword.value = ''
+    inputHelpword1.value = ''
+    inputHelpword2.value = ''
+    inputHelpword3.value = ''
+  })
 })
 buttonDictionary.addEventListener('click', () => {
   divGroups.style.display = 'none'
@@ -65,9 +76,10 @@ var xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      console.log(xhr.responseText) // 'This is the returned text.'
+      window.alert('Your wordpool was successfully uploadet to the cloud') // 'This is the returned text.'
     } else {
       console.log('Error: ' + xhr.status) // An error occurred during the request.
+      window.alert('Ops, something went wrong')
     }
   }
 }
