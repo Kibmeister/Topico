@@ -6,11 +6,10 @@ const LCD = require('./public/js/pi/lcd')
 const LCDClass = LCD.LCDClass
 const micInstance = require('./public/js/pi/mic')
 
-var lcd1 = LCD.lcd1
-var lcd2 = LCD.lcd2
-var lcd3 = LCD.lcd3
-var lcd4 = LCD.lcd4
-console.log('LCDs: ', lcd1, lcd2, lcd3, lcd4)
+const lcd1 = LCD.lcd1
+const lcd2 = LCD.lcd2
+const lcd3 = LCD.lcd3
+const lcd4 = LCD.lcd4
 
 let chosenWord
 var wordIndex
@@ -30,18 +29,6 @@ var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 var phase = 0
 
 LCDClass.clearAll()
-
-// var micInstance = mic({
-//   device: 'plughw:0,0',
-//   fileType: 'wav',
-//   rate: '44100',
-//   channels: '1',
-//   debug: true,
-//   exitOnSilence: 6
-// })
-// var micInputStream = micInstance.getAudioStream()
-
-// var outputFileStream = fs.WriteStream('voice2.wav')
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
@@ -122,54 +109,6 @@ function queWord () {
   clearTimeout()
   phase++
 }
-
-// function startRecording () {
-//   pushButton2.watch(function (err, value) {
-//     if (err) throw err
-//     if (phase === 7) {
-//       micInstance.start()
-//     }
-//   })
-//   micInstance.stop()
-// }
-
-// micInputStream.pipe(outputFileStream)
-
-// micInputStream.on('data', function (data) {
-//   console.log('Recieved Input Stream: ' + data.length)
-// })
-
-// micInputStream.on('error', function (err) {
-//   console.log('Error in Input Stream: ' + err)
-// })
-
-// micInputStream.on('startComplete', function () {
-//   console.log('Got SIGNAL startComplete')
-//   setTimeout(function () {
-//     micInstance.stop()
-//   }, 20000)
-// })
-
-// micInputStream.on('stopComplete', function () {
-//   console.log('Got SIGNAL stopComplete')
-//   lcd1.clear()
-//   lcd1.println('Want to try again?', 1)
-//   lcd2.clear()
-//   lcd2.println('Want to try again?', 1)
-//   lcd3.clear()
-//   lcd3.println('Want to try again?', 1)
-//   lcd4.clear()
-//   lcd4.println('Want to try again?', 1)
-// })
-
-// /* micInputStream.on('silence', function () {
-//   console.log('Got SIGNAL silence')
-//   micInstance.stop()
-// }) */
-
-// micInputStream.on('processExitComplete', function () {
-//   console.log('Got SIGNAL processExitComplete')
-// })
 
 process.on('SIGINT', function () {
   clearInterval()
