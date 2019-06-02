@@ -109,13 +109,12 @@ function choose () {
         queWords = [
           chosenWord,
           console.log('Index of queword 1: ', fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)]),
-          { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)].lcd },
+          { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)] },
           console.log('Index of queword 2: ', fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)]),
-          { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)].lcd },
+          { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)] },
           console.log('Index of queword 3: ', fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)]),
-          { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)].lcd }]
+          { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)] }]
       }
-      console.log('Index of queword 1: ', fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)])
     })
   })
   LCDClass.clearAll()
