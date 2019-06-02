@@ -18,8 +18,8 @@ let lcdChain = [lcd1, lcd2, lcd3, lcd4]
 //   if (err) throw err
 //   myWords = res
 // })
-let queWords = []
 let chosenWord
+var wordIndex
 var word1 = 'word1'
 var word2 = 'word2'
 var word3 = 'word3'
@@ -97,93 +97,61 @@ function words () {
 
 function choose () {
   console.log('Stage 2')
-  console.log('Fourwords: ', fourWords)
-  let wordIndex = Math.floor(Math.random() * fourWords.length)
+  wordIndex = Math.floor(Math.random() * fourWords.length)
   chosenWord = fourWords[wordIndex]
-  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex)
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
-  chosenWord.lcd.println(chosenWord.word)
-  WordsClass.getQueWords(chosenWord.word, function (err, res) {
-    if (err) return err
-    let wordQuewords = []
-    wordQuewords.push(chosenWord)
-    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[((wordIndex + 1) % 4)].lcd })
-    console.log('First added entry and wordIndex value: ', (wordIndex + 1) % 4, wordIndex)
-    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[((wordIndex + 2) % 4)].lcd })
-    console.log('Second added entry and wordIndex value: ', (wordIndex + 2) % 4, wordIndex)
-    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[((wordIndex + 3) % 4)].lcd })
-    console.log('Third added entry and wordIndex value: ', (wordIndex + 3) % 4, wordIndex)
-    console.log('WordQuewords: ', wordQuewords)
-  })
-}
-
-function choosetyui () {
-  console.log('Stage 2')
-  // Select a word at random for the group:
-  chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
-  console.log('quewords is initiated')
-  WordsClass.getQueWords(chosenWord.word, function (err, res) {
-    if (err) return err
-    console.log('Chosenword: ', chosenWord)
-    console.log('fourwords: ', fourWords)
-    fourWords.forEach(function (wordEntry) {
-      if (wordEntry.word === chosenWord.word) {
-        queWords = [
-          chosenWord,
-          console.log('Index of queword 1: ', fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)]),
-          { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)] },
-          console.log('Index of queword 2: ', fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)]),
-          { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)] },
-          console.log('Index of queword 3: ', fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)]),
-          { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)] }]
-      }
-    })
-  })
-  LCDClass.clearAll()
+  chosenWord.lcd.println(chosenWord.word, 2)
 }
 
 function queWord () {
-  console.log('quewords function is initiated')
-  //   WordsClass.getQueWords(chosenWord.word, function (err, res) {
-  //     if (err) return err
-  //     console.log('Response[0]:', res[0])
-  //     console.log('fourwords: ', fourWords)
-  //     fourWords.forEach(function (wordEntry) {
-  //       if (wordEntry.word === chosenWord.word) {
-  //         queWords = [
-  //           chosenWord,
-  //           { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd },
-  //           { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((chosenWord) + 2) % 4)].lcd },
-  //           { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((chosenWord) + 3) % 4)].lcd }]
-  //         // word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd }
-  //       }
-  //     })
-  //  })
-}
-
-function queWordddd2 () {
-  console.log('quewords is initiated')
-  queWords = WordsClass.getQueWords(chosenWord)
-
+  console.log('queWord() initiated!')
+  let wordQuewords = []
+  WordsClass.getQueWords(chosenWord.word, function (err, res) {
+    if (err) return err
+    wordQuewords.push(chosenWord)
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[((wordIndex + 1) % 4)].lcd })
+    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[((wordIndex + 2) % 4)].lcd })
+    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[((wordIndex + 3) % 4)].lcd })
+  })
   setTimeout(() => {
-    lcdChain.indexOf(1).clear()
-    lcdChain.indexOf(1).println(queWords.indexOf(0), 2)
-    console.log('Q1')
+    wordQuewords[1].lcd.println('First queword:', 1)
+    wordQuewords[1].lcd.println(wordQuewords.word, 2)
   }, 10000)
   setTimeout(() => {
-    lcdChain.indexOf(2).clear()
-    lcdChain.indexOf(2).println(queWords.indexOf(1), 2)
-    console.log('Q2')
+    wordQuewords[2].lcd.println('First queword:', 1)
+    wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
   }, 20000)
   setTimeout(() => {
-    lcdChain.indexOf(3).clear()
-    lcdChain.indexOf(3).println(queWords.indexOf(2), 2)
-    console.log('Q3')
+    wordQuewords[3].lcd.println('First queword:', 1)
+    wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
   }, 30000)
   clearTimeout()
   phase++
 }
+
+// function queWordddd2 () {
+//   console.log('quewords is initiated')
+//   queWords = WordsClass.getQueWords(chosenWord)
+
+//   setTimeout(() => {
+//     lcdChain.indexOf(1).clear()
+//     lcdChain.indexOf(1).println(queWords.indexOf(0), 2)
+//     console.log('Q1')
+//   }, 10000)
+//   setTimeout(() => {
+//     lcdChain.indexOf(2).clear()
+//     lcdChain.indexOf(2).println(queWords.indexOf(1), 2)
+//     console.log('Q2')
+//   }, 20000)
+//   setTimeout(() => {
+//     lcdChain.indexOf(3).clear()
+//     lcdChain.indexOf(3).println(queWords.indexOf(2), 2)
+//     console.log('Q3')
+//   }, 30000)
+//   clearTimeout()
+//   phase++
+// }
 
 // function startRecording () {
 //   pushButton2.watch(function (err, value) {
