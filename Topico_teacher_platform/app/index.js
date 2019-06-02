@@ -58,16 +58,13 @@ app.get('/groups', (request, response, next) => {
 })
 // #2 Save a mainword with three following quewords to the db
 app.post('/index', (request, response, next) => {
-  console.log('main: ' + request.body.main,
-    'help1: ' + request.body.help1,
-    'help2: ' + request.body.help2,
-    'help3: ' + request.body.help3)
   const spawn = {
     word: request.body.main,
     queWord1: request.body.help1,
     queWord2: request.body.help2,
     queWord3: request.body.help3
   }
+  console.log(spawn)
   Words.add(spawn, (err, spawn) => {
     if (err) return next(err)
     response.redirect('/index')

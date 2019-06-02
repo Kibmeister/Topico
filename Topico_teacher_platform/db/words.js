@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS Words(
 
 class Words {
   // Adds a word
-  static add (word, queword1, queword2, queword3, callback) {
+  static add (spawn, callback) {
     const sql = 'INSERT INTO words(word, queword1, queword2, queword3) VALUES (?, ?, ?, ?)'
     db.getConnection((err, connection) => {
-      connection.query(sql, [word, queword1, queword2, queword3], (err, results, fields) => {
+      connection.query(sql, [spawn.word, spawn.queWord1, spawn.queWord2, spawn.queWord3], (err, results, fields) => {
         callback(err, results)
         connection.release()
       })
