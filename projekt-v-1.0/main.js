@@ -97,6 +97,23 @@ function words () {
 
 function choose () {
   console.log('Stage 2')
+  var wordIndex = [Math.floor(Math.random() * fourWords.length)]
+  chosenWord = fourWords[wordIndex]
+  WordsClass.getQueWords(chosenWord.word, function (err, res) {
+    if (err) return err
+    console.log('ChosenWord: ', chosenWord)
+    console.log('Fourwords: ', fourWords)
+    for (var i = 0; i < wordIndex; i++) {
+      let lastElement = fourWords[3]
+      fourWords.pop(lastElement)
+      fourWords.unshift(lastElement)
+      console.log('Moved this element to first in array: ', lastElement)
+    }
+  })
+}
+
+function choosetyui () {
+  console.log('Stage 2')
   // Select a word at random for the group:
   chosenWord = fourWords[Math.floor(Math.random() * fourWords.length)]
   console.log('quewords is initiated')
