@@ -14,8 +14,7 @@ console.log('Attempting upload to: ', ipAdress, ':', port)
 
 class UploadFile {
   static UploadFile () {
-    var audioData = fs.readFileSync(filePath)
-
+    var audioData = fs.readFile(filePath)
     var form = new FormData()
     form.append('file', audioData, {
       filename: 'voice2.wav',
