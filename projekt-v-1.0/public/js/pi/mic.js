@@ -11,17 +11,9 @@ var micInstance = mic({
   debug: false,
   exitOnSilence: 6
 })
+
 var micInputStream = micInstance.getAudioStream()
 var outputFileStream = fs.WriteStream('voice2.wav')
-
-class MicClass {
-  static startRecording () {
-    micInstance.start()
-  }
-  static stopRecording () {
-    micInstance.stop()
-  }
-}
 
 micInputStream.pipe(outputFileStream)
 
@@ -41,5 +33,4 @@ micInputStream.on('startComplete', function () {
   }, 20000)
 })
 
-module.exports.micClass = MicClass
 module.exports = micInstance
