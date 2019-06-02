@@ -98,7 +98,7 @@ function words () {
 function choose () {
   console.log('Stage 2')
   console.log('Fourwords: ', fourWords)
-  let wordIndex = [Math.floor(Math.random() * fourWords.length) - 1]
+  let wordIndex = Math.floor(Math.random() * fourWords.length)
   chosenWord = fourWords[wordIndex]
   console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex[0])
   LCDClass.clearAll()
@@ -108,12 +108,12 @@ function choose () {
     if (err) return err
     let wordQuewords = []
     wordQuewords.push(chosenWord)
-    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[((wordIndex[0] + 1) % 4)].lcd })
-    console.log('First added entry and wordIndex value: ', (wordIndex[0] + 1) % 4, wordIndex[0])
-    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[((wordIndex[0] + 2) % 4)].lcd })
-    console.log('Second added entry and wordIndex value: ', (wordIndex[0] + 2) % 4, wordIndex[0])
-    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[((wordIndex[0] + 3) % 4)].lcd })
-    console.log('Third added entry and wordIndex value: ', (wordIndex[0] + 3) % 4, wordIndex[0])
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[((wordIndex + 1) % 4)].lcd })
+    console.log('First added entry and wordIndex value: ', (wordIndex + 1) % 4, wordIndex)
+    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[((wordIndex + 2) % 4)].lcd })
+    console.log('Second added entry and wordIndex value: ', (wordIndex + 2) % 4, wordIndex)
+    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[((wordIndex + 3) % 4)].lcd })
+    console.log('Third added entry and wordIndex value: ', (wordIndex + 3) % 4, wordIndex)
     console.log('WordQuewords: ', wordQuewords)
   })
 }
