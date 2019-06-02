@@ -116,8 +116,7 @@ function queWord () {
     fourWords.forEach(function (wordEntry) {
       if (wordEntry.word === chosenWord.word) {
         queWords = [
-          chosenWord,
-          { word: res[0].queword1, lcd: }
+          chosenWord
         ]
       }
     })
