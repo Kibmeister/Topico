@@ -108,9 +108,9 @@ function choose () {
       if (wordEntry.word === chosenWord.word) {
         queWords = [
           chosenWord,
-          { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd },
-          { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((chosenWord) + 2) % 4)].lcd },
-          { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((chosenWord) + 3) % 4)].lcd }]
+          { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((wordEntry) + 1) % 4)].lcd },
+          { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((wordEntry) + 2) % 4)].lcd },
+          { word: res[0].queword3, lcd: fourWords[(fourWords.indexOf((wordEntry) + 3) % 4)].lcd }]
         // word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd }
       }
     })
@@ -118,8 +118,8 @@ function choose () {
   LCDClass.clearAll()
 }
 
-// function queWord () {
-//   console.log('quewords is initiated')
+function queWord () {
+  console.log('quewords function is initiated')
 //   WordsClass.getQueWords(chosenWord.word, function (err, res) {
 //     if (err) return err
 //     console.log('Response[0]:', res[0])
@@ -134,8 +134,8 @@ function choose () {
 //         // word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd }
 //       }
 //     })
-//   })
-// }
+//  })
+}
 
 function queWordddd2 () {
   console.log('quewords is initiated')
