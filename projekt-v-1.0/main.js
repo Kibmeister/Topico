@@ -106,7 +106,7 @@ function choose () {
   LCDClass.clearAll()
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
-    let wordQuewords
+    let wordQuewords = []
     wordQuewords.push(chosenWord)
     wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 1) % 4].lcd })
     wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 2) % 4].lcd })
