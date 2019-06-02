@@ -97,18 +97,21 @@ function words () {
 
 function choose () {
   console.log('Stage 2')
+  console.log('Fourwords: ', fourWords)
   var wordIndex = [Math.floor(Math.random() * fourWords.length)]
   chosenWord = fourWords[wordIndex]
+  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex)
+  chosenWord.lcd.println('You got:', 1)
+  chosenWord.lcd.println(chosenWord.word)
+  LCDClass.clearAll()
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
-    console.log('ChosenWord: ', chosenWord)
-    console.log('Fourwords: ', fourWords)
-    for (var i = 0; i < wordIndex; i++) {
-      let lastElement = fourWords[3]
-      fourWords.pop(lastElement)
-      fourWords.unshift(lastElement)
-      console.log('Moved this element to first in array: ', lastElement)
-    }
+    let wordQuewords
+    wordQuewords.push(chosenWord)
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 1) % 4].lcd })
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 2) % 4].lcd })
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 3) % 4].lcd })
+    console.log('WordQuewords: ', wordQuewords)
   })
 }
 
