@@ -17,6 +17,7 @@ var lcd1 = LCDClass.lcd1
 var lcd2 = LCDClass.lcd2
 var lcd3 = LCDClass.lcd3
 var lcd4 = LCDClass.lcd4
+console.log('LCDs: ', lcd1, lcd2, lcd3, lcd4)
 
 // wordpool.getWords(function (err, res, fields) {
 //   if (err) throw err
