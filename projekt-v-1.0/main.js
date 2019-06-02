@@ -105,22 +105,29 @@ function choose () {
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
   console.log('quewords is initiated')
+}
+
+function queWord () {
+  console.log('quewords is initiated')
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     console.log('Response[0]:', res[0])
     console.log('fourwords: ', fourWords)
+    fourWords.forEach(function (wordEntry) {
+      if (wordEntry.word === chosenWord.word) {
+        queWords = [
+          chosenWord,
+          { word: res[0].queword1, lcd: }
+        ]
+      }
+    })
     queWords = [
       chosenWord,
       { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd },
       { word: res[0].queword2, lcd: fourWords[(fourWords.indexOf((chosenWord) + 2) % 4)].lcd },
       { word: res[0].queword1, lcd: fourWords[(fourWords.indexOf((chosenWord) + 1) % 4)].lcd }]
     console.log('Quewords: ', queWords)
-    phase++
   })
-}
-
-function queWord () {
-  console.log('quewords is initiated')
 }
 
 function queWordddd2 () {
