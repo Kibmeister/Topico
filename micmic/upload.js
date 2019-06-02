@@ -16,11 +16,11 @@ class UploadFile {
   static UploadFile () {
     var audioData = fs.readFile(filePath)
     var form = new FormData()
-    form.append('file', audioData, {
-      filename: 'voice2.wav',
-      contentType: 'audio/wav',
-      knownLength: audioData.length
-    })
+    form.append('file', audioData)
+    //   filename: 'voice2.wav',
+    //   contentType: 'audio/wav',
+    //   knownLength: audioData.length
+    // })
 
     console.log(form)
 
@@ -62,7 +62,5 @@ class UploadFile {
     console.log('File sent!')**/
   }
 }
-
-UploadFile.UploadFile()
 
 module.exports.UploadFile = UploadFile

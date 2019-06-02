@@ -90,10 +90,12 @@ const upload = multer({
 })
 
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
-  console.log(req)
-  let uploadLocation = path.join(__dirname, '/uploads/', req.file.originalname)
+  console.log(req.body)
+  let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
   // where to save the file to. make sure the incoming name has a .wav extension
 
-  fs.writeFileSync(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer))) // write the blob to the server as a file
+  fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
+    if (err) throw err
+  }) // write the blob to the server as a file
   res.sendStatus(200) // send back that everything went ok
 })

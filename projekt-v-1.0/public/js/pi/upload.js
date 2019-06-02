@@ -3,8 +3,8 @@
 // Initialize requires:
 const fs = require('fs')
 const FormData = require('form-data')
-const path = require('path')
-const filePath = path.join(__dirname, 'voice2.wav')
+// const path = require('path')
+// const filePath = path.join(__dirname, 'voice2.wav')
 var ipAdress = require('ip').address()
 var port = '8080'
 
@@ -13,22 +13,23 @@ var port = '8080'
 console.log('Attempting upload to: ', ipAdress, ':', port)
 
 class UploadFile {
-  static UploadFile () {
-    var audioData = fs.readFileSync(filePath)
-
-    var form = new FormData()
-    form.append('file', audioData, {
-      filename: 'voice2.wav',
-      contentType: 'audio/wav',
-      knownLength: audioData.length
-    })
-
-    console.log(form)
-
-    form.submit('http://' + ipAdress + ':' + port + '/uploadAudio', function (err, res) {
+  static UploadFile (filepath) {
+    fs.readFile(filepath, function (err, data) {
       if (err) throw err
-      // res – response object (http.IncomingMessage)  //
-      res.resume()
+      console.log('readFile data:  ', data)
+
+      var form = new FormData()
+      form.append('file', data, {
+        filename: 'voice2.wav',
+        contentType: 'audio/wav',
+        knownLength: data.length
+      })
+      console.log(form)
+      form.submit('http://' + ipAdress + ':' + port + '/uploadAudio', function (err, res) {
+        if (err) throw err
+        // res – response object (http.IncomingMessage)  //
+        res.resume()
+      })
     })
 
     /*
@@ -64,6 +65,6 @@ class UploadFile {
   }
 }
 
-UploadFile.UploadFile()
+// UploadFile.UploadFile()
 
 module.exports.UploadFile = UploadFile

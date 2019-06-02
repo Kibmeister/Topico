@@ -31,14 +31,15 @@ const upload = multer({
 })
 
 // Method to handle incoming file uploads:
-/*
+
 app.post(
   '/upload',
   upload.single('file'),
   (req, res) => {
+    console.log('Req: ', req)
     var filePath = path.join(__dirname, req.path)
     fs.writeFileSync(filePath, req.file)
-    const targetPath = path.join(__dirname, './uploads/', req.originalname)
+    const targetPath = path.join(__dirname, './uploads/voice2.wav')
     const tempPath = req.path
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.rename(tempPath, targetPath, err => {
@@ -56,7 +57,7 @@ app.post(
       })
     }
   }
-) */
+)
 
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req)
