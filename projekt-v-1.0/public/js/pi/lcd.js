@@ -24,7 +24,7 @@ class LCDClass {
 }
 
 module.exports.LCDClass = LCDClass
-module.exports.lcd1 = lcd1
-module.exports.lcd2 = lcd2
-module.exports.lcd3 = lcd3
-module.exports.lcd4 = lcd4
+exports.lcd1 = lcd1
+exports.lcd2 = lcd2
+exports.lcd3 = lcd3
+exports.lcd4 = lcd4

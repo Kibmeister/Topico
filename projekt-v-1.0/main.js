@@ -2,10 +2,11 @@
 var Gpio = require('onoff').Gpio
 // var mic = require('mic')
 // var fs = require('fs')
-var LCD = require('lcdi2c')
+// var LCD = require('lcdi2c')
 
 const WordsClass = require('./db/words').Words
-const LCDClass = require('./public/js/pi/lcd').LCDClass
+const LCD = require('./public/js/pi/lcd')
+const LCDClass = LCD.LCDClass
 const micInstance = require('./public/js/pi/mic')
 
 // var lcd1 = new LCD(1, 0x27, 16, 2)
@@ -13,10 +14,10 @@ const micInstance = require('./public/js/pi/mic')
 // var lcd3 = new LCD(1, 0x25, 16, 2)
 // var lcd4 = new LCD(1, 0x23, 16, 2)
 
-var lcd1 = LCDClass.lcd1
-var lcd2 = LCDClass.lcd2
-var lcd3 = LCDClass.lcd3
-var lcd4 = LCDClass.lcd4
+var lcd1 = LCD.lcd1
+var lcd2 = LCD.lcd2
+var lcd3 = LCD.lcd3
+var lcd4 = LCD.lcd4
 console.log('LCDs: ', lcd1, lcd2, lcd3, lcd4)
 
 // wordpool.getWords(function (err, res, fields) {
