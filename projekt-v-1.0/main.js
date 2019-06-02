@@ -116,14 +116,14 @@ function queWord () {
   })
   setTimeout(() => {
     wordQuewords[1].lcd.println('First queword:', 1)
-    wordQuewords[1].lcd.println(wordQuewords.word, 2)
+    wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
   }, 10000)
   setTimeout(() => {
-    wordQuewords[2].lcd.println('First queword:', 1)
+    wordQuewords[2].lcd.println('Second queword:', 1)
     wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
   }, 20000)
   setTimeout(() => {
-    wordQuewords[3].lcd.println('First queword:', 1)
+    wordQuewords[3].lcd.println('Third queword:', 1)
     wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
   }, 30000)
   clearTimeout()
