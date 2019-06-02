@@ -40,4 +40,3 @@ pool.getConnection(function (err, connection) {
 })
 
 module.exports = pool
-module.exports = config
