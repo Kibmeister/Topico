@@ -67,14 +67,15 @@ function initiator () {
     queWord()
   }
   if (phase === 7) {
-    micInstance.startRecording()
+    micInstance.start()
   }
   if (phase === 8) {
-    micInstance.stopRecording()
+    micInstance.stop()
   }
 }
 
 function words () {
+  console.log('words() called')
   WordsClass.getWords(function (err, res) {
     if (err) throw err
     let roundsWords = []
@@ -92,7 +93,7 @@ function words () {
 }
 
 function choose () {
-  console.log('Stage 2')
+  console.log('Choose() called')
   wordIndex = Math.floor(Math.random() * fourWords.length)
   chosenWord = fourWords[wordIndex]
   LCDClass.clearAll()
@@ -101,7 +102,7 @@ function choose () {
 }
 
 function queWord () {
-  console.log('queWord() initiated!')
+  console.log('queWord() called')
   let wordQuewords = []
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
@@ -125,29 +126,6 @@ function queWord () {
   clearTimeout()
   phase++
 }
-
-// function queWordddd2 () {
-//   console.log('quewords is initiated')
-//   queWords = WordsClass.getQueWords(chosenWord)
-
-//   setTimeout(() => {
-//     lcdChain.indexOf(1).clear()
-//     lcdChain.indexOf(1).println(queWords.indexOf(0), 2)
-//     console.log('Q1')
-//   }, 10000)
-//   setTimeout(() => {
-//     lcdChain.indexOf(2).clear()
-//     lcdChain.indexOf(2).println(queWords.indexOf(1), 2)
-//     console.log('Q2')
-//   }, 20000)
-//   setTimeout(() => {
-//     lcdChain.indexOf(3).clear()
-//     lcdChain.indexOf(3).println(queWords.indexOf(2), 2)
-//     console.log('Q3')
-//   }, 30000)
-//   clearTimeout()
-//   phase++
-// }
 
 // function startRecording () {
 //   pushButton2.watch(function (err, value) {
