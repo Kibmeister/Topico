@@ -108,12 +108,12 @@ function choose () {
     if (err) return err
     let wordQuewords = []
     wordQuewords.push(chosenWord)
-    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 1) % 4].lcd })
-    console.log('First added entry: ', (wordIndex + 1) % 4)
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[((wordIndex + 1) % 4)].lcd })
+    console.log('First added entry and wordIndex value: ', (wordIndex + 1) % 4, wordIndex)
     wordQuewords.push({ word: res[0].queword2, lcd: fourWords[(wordIndex + 2) % 4].lcd })
-    console.log('Second added entry: ', (wordIndex + 2) % 4)
+    console.log('Second added entry and wordIndex value: ', (wordIndex + 2) % 4, wordIndex)
     wordQuewords.push({ word: res[0].queword3, lcd: fourWords[(wordIndex + 3) % 4].lcd })
-    console.log('Third added entry: ', (wordIndex + 3) % 4)
+    console.log('Third added entry and wordIndex value: ', (wordIndex + 3) % 4, wordIndex)
     console.log('WordQuewords: ', wordQuewords)
   })
 }
