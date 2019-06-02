@@ -8,11 +8,15 @@ const WordsClass = require('./db/words').Words
 const LCDClass = require('./public/js/pi/lcd').LCDClass
 const micInstance = require('./public/js/pi/mic')
 
-var lcd1 = new LCD(1, 0x27, 16, 2)
-var lcd2 = new LCD(1, 0x26, 16, 2)
-var lcd3 = new LCD(1, 0x25, 16, 2)
-var lcd4 = new LCD(1, 0x23, 16, 2)
-let lcdChain = [lcd1, lcd2, lcd3, lcd4]
+// var lcd1 = new LCD(1, 0x27, 16, 2)
+// var lcd2 = new LCD(1, 0x26, 16, 2)
+// var lcd3 = new LCD(1, 0x25, 16, 2)
+// var lcd4 = new LCD(1, 0x23, 16, 2)
+
+var lcd1 = LCDClass.lcd1
+var lcd2 = LCDClass.lcd2
+var lcd3 = LCDClass.lcd3
+var lcd4 = LCDClass.lcd4
 
 // wordpool.getWords(function (err, res, fields) {
 //   if (err) throw err
@@ -177,8 +181,6 @@ function queWord () {
 
 process.on('SIGINT', function () {
   clearInterval()
-  lcdChain.forEach(function (i) {
-    i.off()
-  })
+  LCDClass.turnAllOff()
   process.nextTick(function () { process.exit(0) })
 })

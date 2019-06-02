@@ -15,6 +15,12 @@ class LCDClass {
     })
     console.log('Cleared all LCDs')
   }
+  static turnAllOff () {
+    LCDClass.clearAll()
+    lcdChain.forEach(function (lcd) {
+      lcd.off()
+    })
+  }
 }
 
 module.exports.LCDClass = LCDClass
