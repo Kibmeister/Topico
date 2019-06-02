@@ -2,10 +2,10 @@
 var Gpio = require('onoff').Gpio
 
 const WordsClass = require('./db/words').Words
-const LCD = require('./public/js/pi/lcd')
-const LCDClass = LCD.LCDClass
 const micInstance = require('./public/js/pi/mic')
 
+const LCD = require('./public/js/pi/lcd')
+const LCDClass = LCD.LCDClass
 const lcd1 = LCD.lcd1
 const lcd2 = LCD.lcd2
 const lcd3 = LCD.lcd3
