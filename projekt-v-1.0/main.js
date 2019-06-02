@@ -108,11 +108,11 @@ function choose () {
     if (err) return err
     let wordQuewords = []
     wordQuewords.push(chosenWord)
-    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex - 1) % 4].lcd })
+    wordQuewords.push({ word: res[0].queword1, lcd: fourWords[(wordIndex + 1) % 4].lcd })
     console.log('Pushed entry: ', (wordIndex + 1) % 4)
-    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[(wordIndex) % 4].lcd })
+    wordQuewords.push({ word: res[0].queword2, lcd: fourWords[(wordIndex + 2) % 4].lcd })
     console.log('Pushed entry: ', (wordIndex + 2) % 4)
-    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[(wordIndex + 1) % 4].lcd })
+    wordQuewords.push({ word: res[0].queword3, lcd: fourWords[(wordIndex + 3) % 4].lcd })
     console.log('Pushed entry: ', (wordIndex + 3) % 4)
     console.log('WordQuewords: ', wordQuewords)
   })
