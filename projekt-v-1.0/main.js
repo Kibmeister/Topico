@@ -1,18 +1,10 @@
 'use strict'
 var Gpio = require('onoff').Gpio
-// var mic = require('mic')
-// var fs = require('fs')
-// var LCD = require('lcdi2c')
 
 const WordsClass = require('./db/words').Words
 const LCD = require('./public/js/pi/lcd')
 const LCDClass = LCD.LCDClass
 const micInstance = require('./public/js/pi/mic')
-
-// var lcd1 = new LCD(1, 0x27, 16, 2)
-// var lcd2 = new LCD(1, 0x26, 16, 2)
-// var lcd3 = new LCD(1, 0x25, 16, 2)
-// var lcd4 = new LCD(1, 0x23, 16, 2)
 
 var lcd1 = LCD.lcd1
 var lcd2 = LCD.lcd2
@@ -20,21 +12,19 @@ var lcd3 = LCD.lcd3
 var lcd4 = LCD.lcd4
 console.log('LCDs: ', lcd1, lcd2, lcd3, lcd4)
 
-// wordpool.getWords(function (err, res, fields) {
-//   if (err) throw err
-//   myWords = res
-// })
 let chosenWord
 var wordIndex
 var word1 = 'word1'
 var word2 = 'word2'
 var word3 = 'word3'
 var word4 = 'word4'
+
 let fourWords = [
   { word: word1, lcd: lcd1 },
   { word: word2, lcd: lcd2 },
   { word: word3, lcd: lcd3 },
   { word: word4, lcd: lcd4 }]
+
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 // var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
 var phase = 0
