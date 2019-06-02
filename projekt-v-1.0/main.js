@@ -100,7 +100,7 @@ function choose () {
   console.log('Fourwords: ', fourWords)
   let wordIndex = Math.floor(Math.random() * fourWords.length)
   chosenWord = fourWords[wordIndex]
-  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex[0])
+  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex)
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word)
