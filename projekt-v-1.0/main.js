@@ -98,9 +98,9 @@ function words () {
 function choose () {
   console.log('Stage 2')
   console.log('Fourwords: ', fourWords)
-  var wordIndex = [Math.floor(Math.random() * fourWords.length) - 1]
+  let wordIndex = [Math.floor(Math.random() * fourWords.length) - 1]
   chosenWord = fourWords[wordIndex]
-  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex)
+  console.log('Chosenword: ', chosenWord, 'Index of chosenWord: ', wordIndex[0])
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word)
