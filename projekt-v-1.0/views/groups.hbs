@@ -1,0 +1,47 @@
+{{#unless words}}
+<p>No information available..</p>
+{{/unless}}
+{{#each words}}
+<div id="id_groupRecording">
+  <h3 id="id_tableText">Component words and recording</h3>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Order of words</th>
+          <th>Words in use</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <table>
+          <td>Main word</td>
+          <td>{{word}}</td>
+          </tr>
+          <tr>
+            <td>First helpword</td>
+            <td>{{queword1}}</td>
+          </tr>
+          <tr>
+            <td>Second helpword</td>
+            <td>{{queword2}}</td>
+          </tr>
+          <tr>
+            <td>Third helpword</td>
+            <td>{{queword3}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  {{#each path}}
+  <div id="id_AudioControl">
+    <audio controls>
+      <source src={{this}} type="audio/wav">
+    </audio>
+  </div>
+  {{/each}}
+</div>
+{{/each}}

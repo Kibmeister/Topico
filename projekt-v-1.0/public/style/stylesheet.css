@@ -1,0 +1,151 @@
+/* Body properties */
+body{
+  background-color: #e8effc;
+  font-family:"Century Gothic", arial, sans-serif;;
+}
+#id_innpakning{
+  width: 900px;
+  min-height: 800px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin: auto;
+}#id_topptekst{
+  margin: auto;
+  padding: 10px;
+  background-color:#6495ed;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 500px;
+  }
+#id_innholdpakning{
+  display: flex;
+  background-color: rgb(242, 242, 242);
+  min-height: 700px;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding-left: 7%;
+  padding-top: 20px;
+}#id_section_choice {
+  padding: 10px;
+  width: 25%;
+  min-height: 70%;
+  display: grid;
+  grid-column: 1;
+  height: 100%;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  
+}#id_general_information{
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  margin: 5px;
+  min-height: 70%;
+  width: 65%;
+  display: inline-block;
+}#id_wordpool{
+  display: none;
+}#id_dictionary{
+  display: none;
+}#id_tableText{
+  font-size: 20px;
+  color:bla;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color:gray;
+ }
+.tbl-content{
+  margin-top: 0px;
+  border: 1px solid gray;
+  background-color:#A9A9A9;
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 15px;
+  color: #fff;
+  border-bottom: solid 1px gray;
+}#id_AudioControl{
+  margin: 0 auto;
+  margin-top: 40px;
+  display: table;
+}#id_formWordPool {
+  border-radius: 5px;
+  padding: 20px;
+}#id_formText{
+  font-size: 20px;
+  color:bla;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+#id_entries_list{
+margin-top: 10px;
+background-color: #A9A9A9;
+display: grid;
+padding: 10px;
+min-height: 70%;    
+height: 100%;
+margin: 5px;
+border-radius: 5px;
+
+}
+.dictionary_mainWord{
+padding: 10px;
+margin: 5px;
+border-radius: 5px;
+font-size: 20px;
+text-align: center;
+text-transform: uppercase;
+outline: none;
+background-color: gray;
+color: #fff;
+grid-column: 1;
+
+}.audio_container{
+margin-left: 30px;
+grid-column: 2;
+margin: auto;
+}
