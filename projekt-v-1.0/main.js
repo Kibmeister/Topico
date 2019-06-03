@@ -1,7 +1,9 @@
 'use strict'
 var Gpio = require('onoff').Gpio
 
-const UploadFile = require('./public/js/pi/upload.js').UploadFile
+const UploadFile = require('./public/js/pi/upload.js')
+const UploadFileClass = UploadFile.UploadFile
+const filepath = UploadFile.filepath
 const WordsClass = require('./db/words').Words
 const micInstance = require('./public/js/pi/mic')
 
@@ -53,7 +55,7 @@ function initiator () {
   if (phase === 7) {
     micInstance.start()
     setTimeout(() => {
-      UploadFile.UploadFile()
+      UploadFileClass.UploadFile(filepath, chosenWord.word)
     }, 25000)
   }
   if (phase === 8) {

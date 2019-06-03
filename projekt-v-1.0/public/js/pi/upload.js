@@ -8,13 +8,11 @@ const path = require('path')
 // var ipAdress = require('ip').address()
 var ipAdress = '192.168.43.31'
 var port = '8080'
-var chosenWord = require('../../../main.js').chosenWord || 'Bridge'
-const filepath = path.join(__dirname, '/temp/tempFile.wav')
 
 // https://www.npmjs.com/package/form-data
 
 class UploadFile {
-  static UploadFile () {
+  static UploadFile (filepath, word) {
     console.log('Attempting upload to: ', ipAdress, ':', port)
     fs.readFile(filepath, function (err, data) {
       if (err) console.error(err)
@@ -26,7 +24,7 @@ class UploadFile {
         contentType: 'multipart/form-data',
         knownLength: data.length
       })
-      form.append('chosenWord', chosenWord)
+      form.append('chosenWord', word)
       console.log(form)
       form.submit('http://' + ipAdress + ':' + port + '/uploadAudio', function (err, res) {
         if (err) throw err
