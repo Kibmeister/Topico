@@ -3,7 +3,6 @@
 // Initialize requires:
 const fs = require('fs')
 const FormData = require('form-data')
-const path = require('path')
 
 // var ipAdress = require('ip').address()
 var ipAdress = '192.168.43.31'
