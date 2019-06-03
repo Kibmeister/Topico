@@ -15,7 +15,7 @@ var micInstance = mic({
 })
 
 var micInputStream = micInstance.getAudioStream()
-var outputFileStream = fs.WriteStream(__dirname, '/temp/tempFile.wav')
+var outputFileStream = fs.WriteStream(path.join(__dirname, '/temp/tempFile.wav'))
 
 micInputStream.pipe(outputFileStream)
 

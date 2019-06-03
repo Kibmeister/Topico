@@ -60,6 +60,7 @@ app.get('/groups', (request, response, next) => {
 })
 // #2 Save a mainword with three following quewords to the db
 app.post('/index', (request, response, next) => {
+  console.log('index POST route.')
   const spawn = {
     word: request.body.main,
     queWord1: request.body.help1,

@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS Words(
 
 class Words {
   // Adds a word
-  static add (word, queword1, queword2, queword3, callback) {
+  static add (spawn, callback) {
     const sql = 'INSERT INTO words(word, queword1, queword2, queword3) VALUES (?, ?, ?, ?)'
     db.getConnection((err, connection) => {
-      connection.query(sql, [word, queword1, queword2, queword3], (err, results, fields) => {
+      connection.query(sql, [spawn.word, spawn.queword1, spawn.queword2, spawn.queword3], (err, results, fields) => {
         callback(err, results)
         connection.release()
       })
@@ -55,10 +55,10 @@ class Words {
       if (err) throw err
     })
   }
-  static recordingsGUIQuery (word, callback) {
-    const sql = 'SELECT recording WHERE recording.word = ?;'
+  static recordingsGUIQuery (callback) {
+    const sql = 'SELECT word, rpath FROM Recordings;'
     db.getConnection((err, connection) => {
-      connection.query(sql, [word], (err, results, field) => {
+      connection.query(sql, (err, results, fields) => {
         callback(err, results)
         connection.release()
       })
