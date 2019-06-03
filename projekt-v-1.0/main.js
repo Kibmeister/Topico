@@ -11,7 +11,7 @@ const lcd2 = LCD.lcd2
 const lcd3 = LCD.lcd3
 const lcd4 = LCD.lcd4
 
-let chosenWord
+let chosenWord = { word: 'chosenWord', lcd: 'chosenLCD' }
 var wordIndex
 var word1 = 'word1'
 var word2 = 'word2'
@@ -115,3 +115,5 @@ process.on('SIGINT', function () {
   LCDClass.turnAllOff()
   process.nextTick(function () { process.exit(0) })
 })
+
+exports.chosenWord = chosenWord.word
