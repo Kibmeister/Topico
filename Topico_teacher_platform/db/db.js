@@ -5,7 +5,8 @@ let config = {
   user: 'pi',
   password: 'foobar',
   database: 'itpdp',
-  dateStrings: true
+  dateStrings: true,
+  host: '192.168.43.31'
 }
 // dateStrings: true is necessary as there's a bug in js mysql dates otherwise.
 

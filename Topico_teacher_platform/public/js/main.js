@@ -26,36 +26,32 @@ buttonWordpool.addEventListener('click', () => {
   divWordPool.innerHTML = Handlebars.templates.wordpool()
   var buttonForm = document.querySelector('#bt_pool')
   buttonForm.addEventListener('click', function (buttonForm) {
-    let inputMainword = document.getElementById('id_mainWord').value
+    let inputMainword = document.getElementById('id_mainWord')
     let inputHelpword1 = document.getElementById('id_helpWord1')
     let inputHelpword2 = document.getElementById('id_helpWord2')
     let inputHelpword3 = document.getElementById('id_helpWord3')
-    console.log(inputMainword.length)
-    if ((inputMainword.value === '') || (inputMainword.length > '16')) {
+
+    if ((inputMainword.value === '') || (inputMainword.value.length > '16')) {
       buttonForm.preventDefault()
-      inputMainword.innerHTML = 'Please add a valid main word!'
-    } else {
-      inputMainword.innerHTML = ''
+      window.swal('¡Un problemo!', ' Main word too long or no value!')
     }
-    if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
+    if ((inputHelpword1.value === '') || (inputHelpword1.value.lenght > '16')) {
       buttonForm.preventDefault()
-      inputHelpword1.textContent = 'Please add a valid helpword'
-    } else {
-      inputHelpword1.textContent = ''
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
     }
-    if ((inputHelpword2.value === '') || (inputHelpword2.lenght > '16')) {
+    if ((inputHelpword2.value === '') || (inputHelpword2.value.lenght > '16')) {
       buttonForm.preventDefault()
-      inputHelpword2.textContent = 'Please add a valid helpword'
-    } else {
-      inputHelpword2.textContent = ''
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
     }
-    if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
+    if ((inputHelpword3.value === '') || (inputHelpword3.value.lenght > '16')) {
       buttonForm.preventDefault()
-      inputHelpword3.textContent = 'Please add a valid helpword'
-    } else {
-      inputHelpword3.textContent = ''
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
     }
-    // dataForm(inputMainword, inputHelpword1, inputHelpword2, inputHelpword3)
+    dataForm(inputMainword.value, inputHelpword1.value, inputHelpword2.value, inputHelpword3.value)
+    inputMainword.value = ''
+    inputHelpword1.value = ''
+    inputHelpword2.value = ''
+    inputHelpword3.value = ''
   })
 })
 
@@ -98,10 +94,10 @@ var xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      window.alert('Your wordpool was successfully uploadet to the cloud') // 'This is the returned text.'
+      window.swal('¡Muy bien!', 'Your wordpool was successfully uploadet to the cloud') // 'This is the returned text.'
     } else {
       console.log('Error: ' + xhr.status) // An error occurred during the request.
-      window.alert('Ops, something went wrong')
+      window.swal('Un error', 'Ops, something went wrong')
     }
   }
 }
@@ -109,17 +105,17 @@ xhr.onreadystatechange = function () {
 function dataForm (inputMainword, inputHelpword1, inputHelpword2, inputHelpword3) {
   // var input, text
 
-  console.log(inputMainword.value)
-  console.log(inputHelpword1.value)
-  console.log(inputHelpword2.value)
-  console.log(inputHelpword3.value)
+  console.log(inputMainword)
+  console.log(inputHelpword1)
+  console.log(inputHelpword2)
+  console.log(inputHelpword3)
 
   xhr.open('POST', '/index', true)
   xhr.setRequestHeader('Content-Type', 'application/json')
   xhr.send(JSON.stringify({
-    main: inputMainword.value,
-    help1: inputHelpword1.value,
-    help2: inputHelpword2.value,
-    help3: inputHelpword3.value
+    main: inputMainword,
+    help1: inputHelpword1,
+    help2: inputHelpword2,
+    help3: inputHelpword3
   }))
 }
