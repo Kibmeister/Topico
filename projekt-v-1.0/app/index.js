@@ -90,7 +90,6 @@ const upload = multer()
 
 app.post('/uploadAudio', upload.single('file'), async function (req, res) {
   console.log(req.file)
-  console.log(req.file.path)
   console.log(req.file.buffer)
   let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
   // where to save the file to. make sure the incoming name has a .wav extension
