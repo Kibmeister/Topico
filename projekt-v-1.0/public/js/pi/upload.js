@@ -18,7 +18,7 @@ class UploadFile {
       var form = new FormData()
       form.append('file', data, {
         filename: 'voice2.wav',
-        contentType: 'audio/wav',
+        contentType: 'multipart/form-data',
         knownLength: data.length
       })
       console.log(form)

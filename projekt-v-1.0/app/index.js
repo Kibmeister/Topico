@@ -86,12 +86,12 @@ app.get('/dictionary', (request, response, next) => {
   }
 })
 
-const upload = multer({
-  dest: (__dirname, '/temp')
-})
+const upload = multer()
 
-app.post('/uploadAudio', upload.single('file'), function (req, res) {
-  console.log(req.body)
+app.post('/uploadAudio', upload.single('file'), async function (req, res) {
+  console.log(req.file)
+  console.log(req.file.path)
+  console.log(req.file.buffer)
   let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
   // where to save the file to. make sure the incoming name has a .wav extension
 
