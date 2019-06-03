@@ -52,7 +52,9 @@ function initiator () {
   }
   if (phase === 7) {
     micInstance.start()
-    UploadFile.UploadFile()
+    setTimeout(() => {
+      UploadFile.UploadFile()
+    }, 25000)
   }
   if (phase === 8) {
     micInstance.stop()
