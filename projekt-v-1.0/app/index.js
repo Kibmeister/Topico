@@ -88,7 +88,7 @@ app.get('/dictionary', (request, response, next) => {
 
 const upload = multer()
 
-app.post('/uploadAudio', upload.single('file'), async function (req, res) {
+app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req.file)
   console.log(req.file.buffer)
   let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
