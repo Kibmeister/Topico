@@ -25,18 +25,41 @@ buttonWordpool.addEventListener('click', () => {
   divWordPool.style.display = 'block'
   divWordPool.innerHTML = Handlebars.templates.wordpool()
   var buttonForm = document.querySelector('#bt_pool')
-  buttonForm.addEventListener('click', () => {
-    dataForm()
+  buttonForm.addEventListener('click', (e) => {
     let inputMainword = document.getElementById('id_mainWord')
     let inputHelpword1 = document.getElementById('id_helpWord1')
     let inputHelpword2 = document.getElementById('id_helpWord2')
     let inputHelpword3 = document.getElementById('id_helpWord3')
-    inputMainword.value = ''
-    inputHelpword1.value = ''
-    inputHelpword2.value = ''
-    inputHelpword3.value = ''
+    console.log(inputMainword.length)
+
+    if ((inputMainword.value === '') || (inputMainword.length > '16')) {
+      e.preventDefault()
+      inputMainword.textContent = 'Please add a valid main word!'
+    } else {
+      inputMainword.textContent = ''
+    }
+    if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
+      e.preventDefault()
+      inputHelpword1.textContent = 'Please add a valid helpword'
+    } else {
+      inputHelpword1.textContent = ''
+    }
+    if ((inputHelpword2.value === '') || (inputHelpword2.lenght > '16')) {
+      e.preventDefault()
+      inputHelpword2.textContent = 'Please add a valid helpword'
+    } else {
+      inputHelpword2.textContent = ''
+    }
+    if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
+      e.preventDefault()
+      inputHelpword3.textContent = 'Please add a valid helpword'
+    } else {
+      inputHelpword3.textContent = ''
+    }
+    // dataForm(inputMainword, inputHelpword1, inputHelpword2, inputHelpword3)
   })
 })
+
 buttonDictionary.addEventListener('click', () => {
   divGroups.style.display = 'none'
   divWordPool.style.display = 'none'
@@ -84,25 +107,20 @@ xhr.onreadystatechange = function () {
   }
 }
 
-function dataForm () {
+function dataForm (inputMainword, inputHelpword1, inputHelpword2, inputHelpword3) {
   // var input, text
 
-  let inputMainword = document.getElementById('id_mainWord').value
-  let inputHelpword1 = document.getElementById('id_helpWord1').value
-  let inputHelpword2 = document.getElementById('id_helpWord2').value
-  let inputHelpword3 = document.getElementById('id_helpWord3').value
-
-  console.log(inputMainword)
-  console.log(inputHelpword1)
-  console.log(inputHelpword2)
-  console.log(inputHelpword3)
+  console.log(inputMainword.value)
+  console.log(inputHelpword1.value)
+  console.log(inputHelpword2.value)
+  console.log(inputHelpword3.value)
 
   xhr.open('POST', '/index', true)
   xhr.setRequestHeader('Content-Type', 'application/json')
   xhr.send(JSON.stringify({
-    main: inputMainword,
-    help1: inputHelpword1,
-    help2: inputHelpword2,
-    help3: inputHelpword3
+    main: inputMainword.value,
+    help1: inputHelpword1.value,
+    help2: inputHelpword2.value,
+    help3: inputHelpword3.value
   }))
 }
