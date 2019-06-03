@@ -24,9 +24,9 @@ class UploadFile {
       form.append('file', data, {
         filename: 'voice2.wav',
         contentType: 'multipart/form-data',
-        knownLength: data.length,
-        chosenWord: chosenWord
+        knownLength: data.length
       })
+      form.append('chosenWord', chosenWord)
       console.log(form)
       form.submit('http://' + ipAdress + ':' + port + '/uploadAudio', function (err, res) {
         if (err) throw err
