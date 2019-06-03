@@ -3,7 +3,8 @@
 // Initialize requires:
 const fs = require('fs')
 const FormData = require('form-data')
-var ipAdress = require('ip').address()
+// var ipAdress = require('ip').address()
+var ipAdress = '192.168.43.31'
 var port = '8080'
 
 // https://www.npmjs.com/package/form-data
