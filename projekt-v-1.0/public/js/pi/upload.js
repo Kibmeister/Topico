@@ -30,38 +30,38 @@ class UploadFile {
         res.resume()
       })
     })
-
-    /*
-    // Build the post string from an object
-    // console.log('Loading file from: ', filePath)
-    var postData = fs.readFileSync(filePath)
-    console.log('PostData: ', postData)
-    // An object of options to indicate where to post to
-    var postOptions = {
-      method: 'POST',
-      host: ipAdress,
-      port: port,
-      path: '/upload',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    console.log('postOptions completed!')
-
-    // Set up the request
-    var postReq = http.request(postOptions, function (res) {
-      console.log('Setting up request')
-      res.setEncoding('utf8')
-      /*
-      res.on('data', function (chunk) {
-      }) */
-    // })
-    // console.log('PostReq:', postReq)
-    /*
-    postReq.write(JSON.stringify({ cmd: "fetchAudio" audioFile: postData.toString() }))
-    postReq.end()
-    console.log('File sent!')**/
+    console.log('Upload complete!')
   }
+  /*
+  // Build the post string from an object
+  // console.log('Loading file from: ', filePath)
+  var postData = fs.readFileSync(filePath)
+  console.log('PostData: ', postData)
+  // An object of options to indicate where to post to
+  var postOptions = {
+    method: 'POST',
+    host: ipAdress,
+    port: port,
+    path: '/upload',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  console.log('postOptions completed!')
+
+  // Set up the request
+  var postReq = http.request(postOptions, function (res) {
+    console.log('Setting up request')
+    res.setEncoding('utf8')
+    /*
+    res.on('data', function (chunk) {
+    }) */
+  // })
+  // console.log('PostReq:', postReq)
+  /*
+  postReq.write(JSON.stringify({ cmd: "fetchAudio" audioFile: postData.toString() }))
+  postReq.end()
+  console.log('File sent!')**/
 }
 
 // UploadFile.UploadFile()
