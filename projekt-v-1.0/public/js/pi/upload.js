@@ -29,8 +29,8 @@ class UploadFile {
         // res – response object (http.IncomingMessage)  //
         res.resume()
       })
+      console.log('Upload complete!')
     })
-    console.log('Upload complete!')
   }
   /*
   // Build the post string from an object

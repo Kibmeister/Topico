@@ -3,4 +3,3 @@ const path = require('path')
 
 UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
 console.log('Attempting upload from: ', __dirname, '/temp/tempFile.wav')
-// Assumes a server.js is running locally
