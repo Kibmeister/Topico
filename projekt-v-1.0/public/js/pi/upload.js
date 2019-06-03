@@ -13,7 +13,7 @@ class UploadFile {
   static UploadFile (filepath) {
     console.log('Attempting upload to: ', ipAdress, ':', port)
     fs.readFile(filepath, function (err, data) {
-      if (err) throw err
+      if (err) console.error(err)
       console.log('readFile data:  ', data)
 
       var form = new FormData()
