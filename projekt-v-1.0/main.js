@@ -1,7 +1,7 @@
 'use strict'
 var Gpio = require('onoff').Gpio
 
-const UploadFile = require('./upload.js').UploadFile
+const UploadFile = require('./public/js/pi/upload.js').UploadFile
 const WordsClass = require('./db/words').Words
 const micInstance = require('./public/js/pi/mic')
 
