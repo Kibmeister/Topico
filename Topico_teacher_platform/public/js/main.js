@@ -25,33 +25,32 @@ buttonWordpool.addEventListener('click', () => {
   divWordPool.style.display = 'block'
   divWordPool.innerHTML = Handlebars.templates.wordpool()
   var buttonForm = document.querySelector('#bt_pool')
-  buttonForm.addEventListener('click', (e) => {
-    let inputMainword = document.getElementById('id_mainWord')
+  buttonForm.addEventListener('click', function (buttonForm) {
+    let inputMainword = document.getElementById('id_mainWord').value
     let inputHelpword1 = document.getElementById('id_helpWord1')
     let inputHelpword2 = document.getElementById('id_helpWord2')
     let inputHelpword3 = document.getElementById('id_helpWord3')
     console.log(inputMainword.length)
-
     if ((inputMainword.value === '') || (inputMainword.length > '16')) {
-      e.preventDefault()
-      inputMainword.textContent = 'Please add a valid main word!'
+      buttonForm.preventDefault()
+      inputMainword.innerHTML = 'Please add a valid main word!'
     } else {
-      inputMainword.textContent = ''
+      inputMainword.innerHTML = ''
     }
     if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
-      e.preventDefault()
+      buttonForm.preventDefault()
       inputHelpword1.textContent = 'Please add a valid helpword'
     } else {
       inputHelpword1.textContent = ''
     }
     if ((inputHelpword2.value === '') || (inputHelpword2.lenght > '16')) {
-      e.preventDefault()
+      buttonForm.preventDefault()
       inputHelpword2.textContent = 'Please add a valid helpword'
     } else {
       inputHelpword2.textContent = ''
     }
     if ((inputHelpword1.value === '') || (inputHelpword1.lenght > '16')) {
-      e.preventDefault()
+      buttonForm.preventDefault()
       inputHelpword3.textContent = 'Please add a valid helpword'
     } else {
       inputHelpword3.textContent = ''
