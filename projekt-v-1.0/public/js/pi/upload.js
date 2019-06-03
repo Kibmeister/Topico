@@ -28,8 +28,8 @@ class UploadFile {
         if (err) throw err
         // res – response object (http.IncomingMessage)  //
         res.resume()
+        console.log('Upload complete!')
       })
-      console.log('Upload complete!')
     })
   }
   /*
