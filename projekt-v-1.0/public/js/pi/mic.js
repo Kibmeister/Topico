@@ -35,7 +35,7 @@ micInputStream.on('startComplete', function () {
   }, 20000)
 })
 
-micInputStream.on('processExitComplete', function () {
-  UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
-})
+// micInputStream.on('processExitComplete', function () {
+//   UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
+// })
 module.exports = micInstance
