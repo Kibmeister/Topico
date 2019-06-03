@@ -3,17 +3,14 @@
 // Initialize requires:
 const fs = require('fs')
 const FormData = require('form-data')
-// const path = require('path')
-// const filePath = path.join(__dirname, 'voice2.wav')
 var ipAdress = require('ip').address()
 var port = '8080'
 
 // https://www.npmjs.com/package/form-data
 
-console.log('Attempting upload to: ', ipAdress, ':', port)
-
 class UploadFile {
   static UploadFile (filepath) {
+    console.log('Attempting upload to: ', ipAdress, ':', port)
     fs.readFile(filepath, function (err, data) {
       if (err) throw err
       console.log('readFile data:  ', data)
