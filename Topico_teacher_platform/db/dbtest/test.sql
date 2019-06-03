@@ -29,4 +29,5 @@ CREATE TABLE IF NOT EXISTS Recordings (
 
 INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath');
 INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath2');
-INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath3')
+INSERT INTO Recordings(word, rpath) VALUES ('Bridge', 'Bridgepath3');
+INSERT INTO Recordings(word, rpath) VALUES ('Bridge', '/recordings/voice2.wav');
