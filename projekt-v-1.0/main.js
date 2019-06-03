@@ -3,7 +3,7 @@ var Gpio = require('onoff').Gpio
 
 const UploadFile = require('./public/js/pi/upload.js')
 const UploadFileClass = UploadFile.UploadFile
-const filepath = UploadFile.filepath
+var filepath
 const WordsClass = require('./db/words').Words
 const micInstance = require('./public/js/pi/mic')
 
