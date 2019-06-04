@@ -3,7 +3,7 @@
 // Initialize requires:
 const fs = require('fs')
 const FormData = require('form-data')
-const filepath = require('./temp')
+const filepath = require('path').join(__dirname, '/temp/tempFile.wav')
 
 // var ipAdress = require('ip').address()
 var ipAdress = '192.168.43.31'
