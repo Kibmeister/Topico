@@ -1,5 +1,4 @@
 const UploadFile = require('./upload.js').UploadFile
-const word = 'Bridge'
 
-UploadFile.UploadFile(word)
+UploadFile.UploadFile('Fuck')
 console.log('Attempting upload test')

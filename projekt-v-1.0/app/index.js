@@ -97,15 +97,15 @@ app.post('/uploadAudio', upload.single('file'), function (req, res) {
   fs.readdir(recordingsdir, function (err, files) {
     console.log(files)
     if (err) throw err
-    recordingNo = files.length
+    recordingNo = files.length.toString().concat('.wav')
     console.log(recordingNo)
     console.log(recordingsdir)
-    let uploadLocation = path.join(__dirname, recordingsdir, recordingNo, '.wav')
+    let uploadLocation = path.join(__dirname, '..', recordingsdir, recordingNo)
     console.log(uploadLocation)
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
-      fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
+      fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), { flag: 'w' }, function (err) {
         if (err) throw err
-        let recordingPath = path.join('/public/recordings/', recordingNo, '.wav')
+        let recordingPath = path.join('/recordings/', recordingNo)
         console.log('Adding', req.body.chosenWord, recordingPath, 'to recordings.')
         Recordings.add(req.body.chosenWord, recordingPath, function (err) {
           if (err) throw err

@@ -35,13 +35,12 @@ LCDClass.clearAll()
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  console.log('Button is pushed!')
+  console.log('Button is pushed, phase: ', phase)
   phase++
   initiator()
 })
 
 function initiator () {
-  console.log('Current phase: ', phase)
   if (phase === 1) {
     words()
   }
