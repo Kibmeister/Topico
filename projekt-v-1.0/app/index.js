@@ -97,7 +97,7 @@ app.post('/uploadAudio', upload.single('file'), function (req, res) {
   fs.readdir(recordingsdir, function (err, files) {
     console.log(files)
     if (err) throw err
-    recordingNo = files.length.toString().concat('.wav')
+    recordingNo = (files.length.toString() + 1).concat('.wav')
     console.log(recordingNo)
     console.log(recordingsdir)
     let uploadLocation = path.join(__dirname, '..', recordingsdir, recordingNo)
@@ -111,7 +111,7 @@ app.post('/uploadAudio', upload.single('file'), function (req, res) {
           if (err) throw err
         })
       })
-      res.sendStatus(200) // send back that everything went ok
+      res.sendStatus(200)
     } else {
       fs.unlink(req.path, function (err) {
         if (err) return err
