@@ -92,12 +92,19 @@ const upload = multer()
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req.file)
   console.log(req.body.chosenWord)
-  let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
+  var recordingsdir = ('../public/recordings')
+  var recordingNo
+  fs.readdir(recordingsdir, function (err, files) {
+    if (err) throw err
+    recordingNo = files.length
+  })
+  let uploadLocation = path.join(__dirname, recordingsdir, recordingNo, '.wav')
   if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
     fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
       if (err) throw err
-      console.log('Adding', req.body.chosenWord, uploadLocation, 'to recordings.')
-      Recordings.add(req.body.chosenWord, uploadLocation, function (err) {
+      let recordingPath = path.join('/public/recordings/', recordingNo, '.wav')
+      console.log('Adding', req.body.chosenWord, recordingPath, 'to recordings.')
+      Recordings.add(req.body.chosenWord, recordingPath, function (err) {
         if (err) throw err
       })
     })
