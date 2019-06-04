@@ -7,7 +7,9 @@ const multer = require('multer')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const Words = require('../db/words').Words
+const DB = require('../db/words')
+const Words = DB.Words
+const Recordings = DB.Recordings
 
 // Initialize express:
 const app = express()
@@ -92,10 +94,17 @@ app.post('/uploadAudio', upload.single('file'), function (req, res) {
   console.log(req.file)
   console.log(req.body.chosenWord)
   let uploadLocation = path.join(__dirname, '../public/recordings/', req.file.originalname)
-  // where to save the file to. make sure the incoming name has a .wav extension
-
-  fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
-    if (err) throw err
-  }) // write the blob to the server as a file
-  res.sendStatus(200) // send back that everything went ok
+  if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
+    fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
+      if (err) throw err
+      console.log('Adding', req.body.chosenWord, uploadLocation, 'to recordings.')
+      Recordings.add(req.body.chosenWord, uploadLocation)
+    })
+    res.sendStatus(200) // send back that everything went ok
+  } else {
+    fs.unlink(req.path, function (err) {
+      if (err) return err
+      res.sendStatus(403)
+    })
+  }
 })
