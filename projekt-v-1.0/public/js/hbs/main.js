@@ -25,18 +25,36 @@ buttonWordpool.addEventListener('click', () => {
   divWordPool.style.display = 'block'
   divWordPool.innerHTML = Handlebars.templates.wordpool()
   var buttonForm = document.querySelector('#bt_pool')
-  buttonForm.addEventListener('click', () => {
-    dataForm()
+  buttonForm.addEventListener('click', function (buttonForm) {
     let inputMainword = document.getElementById('id_mainWord')
     let inputHelpword1 = document.getElementById('id_helpWord1')
     let inputHelpword2 = document.getElementById('id_helpWord2')
     let inputHelpword3 = document.getElementById('id_helpWord3')
+
+    if ((inputMainword.value === '') || (inputMainword.value.length > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Main word too long or no value!')
+    }
+    if ((inputHelpword1.value === '') || (inputHelpword1.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
+    }
+    if ((inputHelpword2.value === '') || (inputHelpword2.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
+    }
+    if ((inputHelpword3.value === '') || (inputHelpword3.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
+    }
+    dataForm(inputMainword.value, inputHelpword1.value, inputHelpword2.value, inputHelpword3.value)
     inputMainword.value = ''
     inputHelpword1.value = ''
     inputHelpword2.value = ''
     inputHelpword3.value = ''
   })
 })
+
 buttonDictionary.addEventListener('click', () => {
   divGroups.style.display = 'none'
   divWordPool.style.display = 'none'
@@ -76,21 +94,16 @@ var xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      window.alert('Your wordpool was successfully uploadet to the cloud') // 'This is the returned text.'
+      window.swal('¡Muy bien!', 'Your wordpool was successfully uploadet to the cloud') // 'This is the returned text.'
     } else {
       console.log('Error: ' + xhr.status) // An error occurred during the request.
-      window.alert('Ops, something went wrong')
+      window.swal('Un error', 'Ops, something went wrong')
     }
   }
 }
 
-function dataForm () {
+function dataForm (inputMainword, inputHelpword1, inputHelpword2, inputHelpword3) {
   // var input, text
-
-  let inputMainword = document.getElementById('id_mainWord').value
-  let inputHelpword1 = document.getElementById('id_helpWord1').value
-  let inputHelpword2 = document.getElementById('id_helpWord2').value
-  let inputHelpword3 = document.getElementById('id_helpWord3').value
 
   console.log(inputMainword)
   console.log(inputHelpword1)
