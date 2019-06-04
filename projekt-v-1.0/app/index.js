@@ -7,9 +7,8 @@ const multer = require('multer')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const DB = require('../db/words')
-const Words = DB.Words
-const Recordings = DB.Recordings
+const Words = require('../db/words').Words
+const Recordings = require('../db/recording').Recordings
 
 // Initialize express:
 const app = express()
