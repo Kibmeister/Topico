@@ -97,7 +97,9 @@ app.post('/uploadAudio', upload.single('file'), function (req, res) {
     fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), function (err) {
       if (err) throw err
       console.log('Adding', req.body.chosenWord, uploadLocation, 'to recordings.')
-      Recordings.add(req.body.chosenWord, uploadLocation)
+      Recordings.add(req.body.chosenWord, uploadLocation, function (err) {
+        if (err) throw err
+      })
     })
     res.sendStatus(200) // send back that everything went ok
   } else {
