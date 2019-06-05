@@ -43,7 +43,7 @@ buttonWordpool.addEventListener('click', () => {
           if ((inputHelpword3.value === '') || (inputHelpword3.value.lenght > '16')) {
             buttonForm.preventDefault()
             window.swal('¡Un problemo!', ' Help word too long or no value!')
-            dataForm(inputMainword, inputHelpword1, inputHelpword2, inputHelpword3)
+            dataForm(inputMainword.value, inputHelpword1.value, inputHelpword2.value, inputHelpword3.value)
           }
         }
       }

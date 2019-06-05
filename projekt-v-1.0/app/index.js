@@ -90,23 +90,16 @@ app.get('/dictionary', (request, response, next) => {
 const upload = multer()
 
 app.post('/uploadAudio', upload.single('file'), function (req, res) {
-  console.log(req.file)
-  console.log(req.body.chosenWord)
   var recordingsdir = ('./public/recordings')
   var recordingNo
   fs.readdir(recordingsdir, function (err, files) {
-    console.log(files)
     if (err) throw err
     recordingNo = (files.length.toString() + 1).concat('.wav')
-    console.log(recordingNo)
-    console.log(recordingsdir)
     let uploadLocation = path.join(__dirname, '..', recordingsdir, recordingNo)
-    console.log(uploadLocation)
     if (path.extname(req.file.originalname).toLowerCase() === '.wav') {
       fs.writeFile(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer)), { flag: 'w' }, function (err) {
         if (err) throw err
         let recordingPath = path.join('/recordings/', recordingNo)
-        console.log('Adding', req.body.chosenWord, recordingPath, 'to recordings.')
         Recordings.add(req.body.chosenWord, recordingPath, function (err) {
           if (err) throw err
         })
