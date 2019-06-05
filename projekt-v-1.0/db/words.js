@@ -20,7 +20,7 @@ class Words {
           callback(err, results)
           connection.release()
         })
-      } catch (ER_DUP_ENTRY) {
+      } catch (err) {
         console.log('MYSQL ERROR DETECTED!!')
         connection.release()
       }

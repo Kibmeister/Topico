@@ -34,24 +34,18 @@ buttonWordpool.addEventListener('click', () => {
     if ((inputMainword.value === '') || (inputMainword.value.length > '16')) {
       buttonForm.preventDefault()
       window.swal('¡Un problemo!', ' Main word too long or no value!')
-      if ((inputHelpword1.value === '') || (inputHelpword1.value.lenght > '16')) {
-        buttonForm.preventDefault()
-        window.swal('¡Un problemo!', ' Help word too long or no value!')
-        if ((inputHelpword2.value === '') || (inputHelpword2.value.lenght > '16')) {
-          buttonForm.preventDefault()
-          window.swal('¡Un problemo!', ' Help word too long or no value!')
-          if ((inputHelpword3.value === '') || (inputHelpword3.value.lenght > '16')) {
-            buttonForm.preventDefault()
-            window.swal('¡Un problemo!', ' Help word too long or no value!')
-            dataForm(inputMainword.value, inputHelpword1.value, inputHelpword2.value, inputHelpword3.value)
-          }
-        }
-      }
+    } if ((inputHelpword1.value === '') || (inputHelpword1.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
+    } if ((inputHelpword2.value === '') || (inputHelpword2.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
     }
-    inputMainword.value = ''
-    inputHelpword1.value = ''
-    inputHelpword2.value = ''
-    inputHelpword3.value = ''
+    if ((inputHelpword3.value === '') || (inputHelpword3.value.lenght > '16')) {
+      buttonForm.preventDefault()
+      window.swal('¡Un problemo!', ' Help word too long or no value!')
+    }
+    dataForm(inputMainword.value, inputHelpword1.value, inputHelpword2.value, inputHelpword3.value)
   })
 })
 
