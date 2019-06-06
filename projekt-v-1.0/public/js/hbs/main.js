@@ -112,4 +112,5 @@ function dataForm (inputMainword, inputHelpword1, inputHelpword2, inputHelpword3
     help2: inputHelpword2,
     help3: inputHelpword3
   }))
+  console.log('Dataform sent successfully!')
 }
