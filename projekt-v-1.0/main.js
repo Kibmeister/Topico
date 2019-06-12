@@ -28,7 +28,7 @@ let fourWords = [
 
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
 // var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
-var pushButton2 = new Gpio(4, 'in', 'falling', { debounceTimeout: 5000 })
+var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000 })
 // Output is sent after holding the button for 5 seconds
 var phase = 0
 
