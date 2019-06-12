@@ -15,15 +15,10 @@ class Words {
   static add (spawn, callback) {
     const sql = 'INSERT INTO words(word, queword1, queword2, queword3) VALUES (?, ?, ?, ?)'
     db.getConnection((err, connection) => {
-      try {
-        connection.query(sql, [spawn.word, spawn.queWord1, spawn.queWord2, spawn.queWord3], (err, results, fields) => {
-          callback(err, results)
-          connection.release()
-        })
-      } catch (err) {
-        console.log('MYSQL ERROR DETECTED!!')
+      connection.query(sql, [spawn.word, spawn.queWord1, spawn.queWord2, spawn.queWord3], (err, results, fields) => {
+        callback(err, results)
         connection.release()
-      }
+      })
       if (err) throw err
     })
   }

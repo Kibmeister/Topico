@@ -5,10 +5,11 @@ let config = {
   user: 'pi',
   password: 'foobar',
   database: 'itpdp',
-  host: '192.168.1.63'
+  host: '192.168.43.31'
 }
 
 const pool = mysql.createPool(config)
+console.log(pool)
 
 pool.getConnection(function (err, connection) {
   if (err) return (err)
