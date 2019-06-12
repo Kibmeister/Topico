@@ -5,5 +5,5 @@ var pushButton1 = new Gpio(4, 'in', 'rising')
 
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  console.log(value)
+  setInterval(_ => console.log(value), 200)
 })
