@@ -5,5 +5,7 @@ var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
 
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  console.log(value)
+  if (value === 1) {
+    console.log(value)
+  }
 })
