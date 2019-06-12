@@ -63,16 +63,20 @@ function initiator () {
       pushButton1.watch(function (err, value) {
         if (err) throw err
         micInstance.stop()
+        console.log('micInstance stopped')
         LCDClass.clearAll()
         LCDClass.writeToAll('Click to submit', 1)
         LCDClass.writeToAll('Hold to rerecord', 2)
+        console.log('Please select whether to upload or record again')
         pushButton1.watch(function (err, value) {
           if (err) throw err
+          console.log('Upload selected')
           UploadFileClass.UploadFile(chosenWord.word)
           phase++
         })
         pushButton2.watch(function (err, value) {
           if (err) throw err
+          console.log('Record again selected')
           LCDClass.clearAll()
           phase--
         })
