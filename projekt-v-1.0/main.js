@@ -26,23 +26,19 @@ let fourWords = [
   { word: word3, lcd: lcd3 },
   { word: word4, lcd: lcd4 }]
 
-var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
-// var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
-var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000 })
-// Output is sent after holding the button for 5 seconds
+var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
+// var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
 var phase = 0
 
 LCDClass.clearAll()
+LCDClass.writeToAll('Press to start', 1)
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
-  console.log('pushbutton 1 pressed')
   if (err) throw err
-  if (phase !== 4) {
-    phase++
-    initiator()
-    console.log('Button is pushed, phase: ', phase)
-  }
+  initiator()
+  console.log('Button is pushed, phase: ', phase)
+  if (phase !== 4) { phase++ }
 })
 
 function initiator () {
@@ -56,40 +52,17 @@ function initiator () {
     queWord()
   }
   if (phase === 4) {
-    pushButton1.watch(function (err, value) {
+    pushButton1.watch((err, value) => {
       if (err) throw err
-      micInstance.start()
-      console.log('Recording started')
-      pushButton1.watch(function (err, value) {
-        if (err) throw err
-        micInstance.stop()
-        console.log('micInstance stopped')
-        LCDClass.clearAll()
-        LCDClass.writeToAll('Click to submit', 1)
-        LCDClass.writeToAll('Hold to rerecord', 2)
-        console.log('Please select whether to upload or record again')
-        pushButton1.watch(function (err, value) {
-          if (err) throw err
-          console.log('Upload selected')
-          UploadFileClass.UploadFile(chosenWord.word)
-          phase++
-        })
-        pushButton2.watch(function (err, value) {
-          if (err) throw err
-          console.log('Record again selected')
-          LCDClass.clearAll()
-          phase--
-        })
-      })
     })
     // micInstance.start()
     // setTimeout(() => {
     //   UploadFileClass.UploadFile(chosenWord.word)
     // }, 25000)
   }
-  if (phase === 5) {
-    console.log('phase 5 reached!')
-  }
+  // if (phase === 8) {
+  //   micInstance.stop()
+  // }
 }
 
 function words () {
