@@ -36,6 +36,7 @@ LCDClass.clearAll()
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
+  console.log('pushbutton 1 pressed')
   if (err) throw err
   if (phase !== 4) {
     phase++
@@ -58,6 +59,7 @@ function initiator () {
     pushButton1.watch(function (err, value) {
       if (err) throw err
       micInstance.start()
+      console.log('Recording started')
       pushButton1.watch(function (err, value) {
         if (err) throw err
         micInstance.stop()
