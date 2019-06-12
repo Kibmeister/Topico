@@ -1,7 +1,7 @@
 'use strict'
 
 var Gpio = require('onoff').Gpio
-var pushButton1 = new Gpio(4, 'in', 'both', { debounceTimeout: 20 })
+var pushButton1 = new Gpio(4, 'in', 'both', { debounceTimeout: 100 })
 
 pushButton1.watch(function (err, value) {
   if (err) throw err
