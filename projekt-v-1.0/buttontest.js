@@ -8,7 +8,7 @@ var pushButton1 = new Gpio(4, 'in', 'both')
 //   console.log(value)
 // })
 
-pushButton1.readSync((err, res) => {
+pushButton1.readSync(function (err, res) {
   if (err) throw err
   console.log(res)
 })
