@@ -38,9 +38,9 @@ LCDClass.clearAll()
 pushButton1.watch(function (err, value) {
   if (err) throw err
   if (phase !== 4) {
+    phase++
     initiator()
     console.log('Button is pushed, phase: ', phase)
-    phase++
   }
 })
 
