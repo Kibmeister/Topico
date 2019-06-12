@@ -9,6 +9,11 @@ const lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
 class LCDClass {
   // clears all LCDs
+  static writeToAll (text, line) {
+    lcdChain.forEach(function (lcd) {
+      lcd.println(text, line)
+    })
+  }
   static clearAll () {
     lcdChain.forEach(function (lcd) {
       lcd.clear()

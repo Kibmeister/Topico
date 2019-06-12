@@ -9,7 +9,6 @@ let config = {
 }
 
 const pool = mysql.createPool(config)
-console.log(pool)
 
 pool.getConnection(function (err, connection) {
   if (err) return (err)

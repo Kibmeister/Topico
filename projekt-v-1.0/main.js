@@ -26,8 +26,10 @@ let fourWords = [
   { word: word3, lcd: lcd3 },
   { word: word4, lcd: lcd4 }]
 
-var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 20 })
-// var pushButton2 = new Gpio(6, 'in', 'rising', { debounceTimeout: 20 })
+var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
+// var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
+var pushButton2 = new Gpio(4, 'in', 'falling', { debounceTimeout: 5000 })
+// Output is sent after holding the button for 5 seconds
 var phase = 0
 
 LCDClass.clearAll()
@@ -35,29 +37,52 @@ LCDClass.clearAll()
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  console.log('Button is pushed, phase: ', phase)
-  phase++
-  initiator()
+  if (phase !== 4) {
+    initiator()
+    console.log('Button is pushed, phase: ', phase)
+    phase++
+  }
 })
 
 function initiator () {
   if (phase === 1) {
     words()
   }
-  if (phase === 3) {
+  if (phase === 2) {
     choose()
   }
-  if (phase === 5) {
+  if (phase === 3) {
     queWord()
   }
-  if (phase === 7) {
-    micInstance.start()
-    setTimeout(() => {
-      UploadFileClass.UploadFile(chosenWord.word)
-    }, 25000)
+  if (phase === 4) {
+    pushButton1.watch(function (err, value) {
+      if (err) throw err
+      micInstance.start()
+      pushButton1.watch(function (err, value) {
+        if (err) throw err
+        micInstance.stop()
+        LCDClass.clearAll()
+        LCDClass.writeToAll('Click to submit', 1)
+        LCDClass.writeToAll('Hold to rerecord', 2)
+        pushButton1.watch(function (err, value) {
+          if (err) throw err
+          UploadFileClass.UploadFile(chosenWord.word)
+          phase++
+        })
+        pushButton2.watch(function (err, value) {
+          if (err) throw err
+          LCDClass.clearAll()
+          phase--
+        })
+      })
+    })
+    // micInstance.start()
+    // setTimeout(() => {
+    //   UploadFileClass.UploadFile(chosenWord.word)
+    // }, 25000)
   }
-  if (phase === 8) {
-    micInstance.stop()
+  if (phase === 5) {
+    console.log('phase 5 reached!')
   }
 }
 
@@ -76,7 +101,6 @@ function words () {
       wordlcd.lcd.println(wordlcd.word, 1)
     })
   })
-  phase++
 }
 
 function choose () {
@@ -111,7 +135,6 @@ function queWord () {
     wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
   }, 30000)
   clearTimeout()
-  phase++
 }
 
 process.on('SIGINT', function () {

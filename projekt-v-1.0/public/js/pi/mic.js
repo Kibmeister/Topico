@@ -16,12 +16,7 @@ var micInstance = mic({
 
 var micInputStream = micInstance.getAudioStream()
 var outputFileStream = fs.WriteStream(path.join(__dirname, '/temp/tempFile.wav'))
-
 micInputStream.pipe(outputFileStream)
-
-micInputStream.on('data', function (data) {
-  console.log('Recieved Input Stream: ' + data.length)
-})
 
 micInputStream.on('error', function (err) {
   console.log('Error in Input Stream: ' + err)
@@ -37,6 +32,5 @@ micInputStream.on('startComplete', function () {
 
 micInputStream.on('processExitComplete', function () {
   UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
-  console.log('ofs: ', outputFileStream)
 })
 module.exports = micInstance
