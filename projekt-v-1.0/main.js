@@ -65,6 +65,7 @@ function initiator () {
   }
   if (phase === 5) {
     micInstance.stop()
+    LCDClass.clearAll()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
   }
@@ -76,11 +77,9 @@ function initiator () {
     })
     // If the button is held for 5 seconds, the game goes back to phase 3,
     // and is increased to stage 4 once the above input is recieved.
-    pushButton2.watch(function (err) {
-      console.log('button 2 pushed')
+    pushButton2.watch((err, value) => {
       if (err) throw err
-      delay = 0
-      phase = 3
+      console.log(value)
     })
   }
   // micInstance.start()
