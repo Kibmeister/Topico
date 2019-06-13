@@ -33,7 +33,7 @@ let fourWords = [
 
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
 // Output is sent 1s after releasing the button
-var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000, activeLow: true })
+var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000 })
 // Output is sent after holding the button for 5 seconds
 var phase = 1
 
@@ -77,6 +77,7 @@ function initiator () {
     // If the button is held for 5 seconds, the game goes back to phase 3,
     // and is increased to stage 4 once the above input is recieved.
     pushButton2.watch(function (err) {
+      console.log('button 2 pushed')
       if (err) throw err
       delay = 0
       phase = 3
