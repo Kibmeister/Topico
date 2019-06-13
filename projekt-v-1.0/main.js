@@ -44,7 +44,14 @@ LCDClass.writeToAll('Press to start', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
   if (err) throw err
-  if (phase !== 6) { initiator(); phase++; console.log('Button is pushed, phase: ', phase) }
+  if (phase !== 6) { initiator(); phase++; console.log('Button is pushed, phase: ', phase) } else {
+    UploadFileClass.UploadFile(chosenWord.word)
+  }
+})
+
+pushButton2.watch(function (err) {
+  if (err) throw err
+  phase = 3
 })
 
 // Function to control different stages of the interaction:
@@ -69,19 +76,9 @@ function initiator () {
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
   }
-  if (phase === 6) {
-    // If the button is pushed, the audio file is uploaded:
-    pushButton1.watch(function (err) {
-      console.log('phase 6 buttonpush1')
-      if (err) throw err
-      UploadFileClass.UploadFile(chosenWord.word)
-    })
-    // If the button is held for 5 seconds, the game goes back to phase 3,
-    // and is increased to stage 4 once the above input is recieved.
-    pushButton2.watch((err, value) => {
-      if (err) throw err
-      console.log(value)
-    })
+  if (phase === 7) {
+    LCDClass.writeToAll('Press to start', 1)
+    LCDClass.writeToAll('a new round', 2)
   }
   // micInstance.start()
   // setTimeout(() => {
