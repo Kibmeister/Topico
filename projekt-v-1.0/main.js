@@ -72,6 +72,7 @@ function initiator () {
   if (phase === 6) {
     // If the button is pushed, the audio file is uploaded:
     pushButton1.watch(function (err) {
+      console.log('phase 6 buttonpush1')
       if (err) throw err
       UploadFileClass.UploadFile(chosenWord.word)
     })
