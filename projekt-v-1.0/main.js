@@ -101,6 +101,7 @@ function initiator () {
 
 // Queries words from database and prints 4 random to the LCDs:
 function words () {
+  LCDClass.clearAll()
   console.log('words() called')
   WordsClass.getWords(function (err, res) {
     if (err) throw err
