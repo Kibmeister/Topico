@@ -1,5 +1,7 @@
 'use strict'
 var Gpio = require('onoff').Gpio
+// Class serial
+
 
 // Class constants
 const UploadFile = require('./public/js/pi/upload.js')
