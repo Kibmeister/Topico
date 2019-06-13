@@ -42,7 +42,7 @@ LCDClass.clearAll()
 LCDClass.writeToAll('Press to start', 1)
 
 // Prevent button repeated presses:
-pushButton1.watch(function (err, value) {
+pushButton1.watch(function (err) {
   if (err) throw err
   if (phase !== 6) { initiator(); phase++; console.log('Button is pushed, phase: ', phase) }
 })
@@ -70,7 +70,7 @@ function initiator () {
   }
   if (phase === 6) {
     // If the button is pushed, the audio file is uploaded:
-    pushButton1.watch(function (err, value) {
+    pushButton1.watch(function (err) {
       if (err) throw err
       UploadFileClass.UploadFile(chosenWord.word)
     })
