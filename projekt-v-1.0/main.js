@@ -44,9 +44,10 @@ LCDClass.writeToAll('Press to start', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
   if (err) throw err
-  if (phase !== 6) { initiator(); phase++; console.log('Button is pushed, phase: ', phase) } else {
+  if (phase !== 6) { initiator(); console.log('Button is pushed, phase: ', phase) } else {
     UploadFileClass.UploadFile(chosenWord.word)
   }
+  phase++
 })
 
 pushButton2.watch(function (err) {
