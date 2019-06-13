@@ -44,7 +44,7 @@ LCDClass.writeToAll('Press to start', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  if (phase !== 6) { initiator() }
+  if (phase !== 11) { initiator() }
   console.log('Button is pushed, phase: ', phase)
 })
 
@@ -55,26 +55,26 @@ function initiator () {
     words()
     phase++
   }
-  if (phase === 2) {
+  if (phase === 3) {
     choose()
     phase++
   }
-  if (phase === 3) {
+  if (phase === 5) {
     queWord()
     phase++
   }
-  if (phase === 4) {
+  if (phase === 7) {
     clearTimeout()
     micInstance.start()
     phase++
   }
-  if (phase === 5) {
+  if (phase === 9) {
     micInstance.stop()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
     phase++
   }
-  if (phase === 6) {
+  if (phase === 11) {
     // If the button is pushed, the audio file is uploaded:
     pushButton1.watch(function (err, value) {
       if (err) throw err
@@ -86,7 +86,7 @@ function initiator () {
     pushButton2.watch(function (err) {
       if (err) throw err
       delay = 0
-      phase = 3
+      phase = 5
     })
   }
   // micInstance.start()
