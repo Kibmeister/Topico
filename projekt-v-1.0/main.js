@@ -44,8 +44,7 @@ LCDClass.writeToAll('Press to start', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  if (phase !== 6) { initiator(); phase++ }
-  console.log('Button is pushed, phase: ', phase)
+  if (phase !== 6) { initiator(); phase++; console.log('Button is pushed, phase: ', phase) }
 })
 
 // Function to control different stages of the interaction:
