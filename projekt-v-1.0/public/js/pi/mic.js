@@ -23,11 +23,7 @@ micInputStream.on('error', function (err) {
 })
 
 micInputStream.on('startComplete', function () {
-  console.log('Got SIGNAL startComplete')
-  setTimeout(function () {
-    micInstance.stop()
-    console.log('Stopped recording after 20 seconds')
-  }, 20000)
+  console.log('Started audio recording')
 })
 
 micInputStream.on('processExitComplete', function () {

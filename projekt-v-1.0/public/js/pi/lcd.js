@@ -8,18 +8,20 @@ const lcd4 = new LCD(1, 0x23, 16, 2)
 const lcdChain = [lcd1, lcd2, lcd3, lcd4]
 
 class LCDClass {
-  // clears all LCDs
+  // Writes identical text to all LCD screens
   static writeToAll (text, line) {
     lcdChain.forEach(function (lcd) {
       lcd.println(text, line)
     })
   }
+  // Clears all LCD screens:
   static clearAll () {
     lcdChain.forEach(function (lcd) {
       lcd.clear()
     })
     console.log('Cleared all LCDs')
   }
+  // Turns off all screens:
   static turnAllOff () {
     LCDClass.clearAll()
     lcdChain.forEach(function (lcd) {
