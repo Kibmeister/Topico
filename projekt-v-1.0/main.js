@@ -44,7 +44,7 @@ LCDClass.writeToAll('Press to start', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err, value) {
   if (err) throw err
-  if (phase !== 11) { initiator() }
+  if (phase !== 6) { initiator(); phase++ }
   console.log('Button is pushed, phase: ', phase)
 })
 
@@ -53,40 +53,34 @@ function initiator () {
   if (phase === 1) {
     delay = 10000
     words()
-    phase++
+  }
+  if (phase === 2) {
+    choose()
   }
   if (phase === 3) {
-    choose()
-    phase++
-  }
-  if (phase === 5) {
     queWord()
-    phase++
   }
-  if (phase === 7) {
+  if (phase === 4) {
     clearTimeout()
     micInstance.start()
-    phase++
   }
-  if (phase === 9) {
+  if (phase === 5) {
     micInstance.stop()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
-    phase++
   }
-  if (phase === 11) {
+  if (phase === 6) {
     // If the button is pushed, the audio file is uploaded:
     pushButton1.watch(function (err, value) {
       if (err) throw err
       UploadFileClass.UploadFile(chosenWord.word)
-      phase++
     })
     // If the button is held for 5 seconds, the game goes back to phase 3,
     // and is increased to stage 4 once the above input is recieved.
     pushButton2.watch(function (err) {
       if (err) throw err
       delay = 0
-      phase = 5
+      phase = 3
     })
   }
   // micInstance.start()
