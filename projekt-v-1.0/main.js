@@ -31,7 +31,7 @@ let fourWords = [
   { word: word3, lcd: lcd3 },
   { word: word4, lcd: lcd4 }]
 
-var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
+var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 3000 })
 // Output is sent 1s after releasing the button
 var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000 })
 // Output is sent after holding the button for 5 seconds
