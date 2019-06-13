@@ -2,7 +2,7 @@
 
 const mic = require('mic')
 const fs = require('fs')
-const UploadFile = require('./upload.js').UploadFile
+// const UploadFile = require('./upload.js').UploadFile
 const path = require('path')
 
 var micInstance = mic({
@@ -26,7 +26,7 @@ micInputStream.on('startComplete', function () {
   console.log('Started audio recording')
 })
 
-micInputStream.on('processExitComplete', function () {
-  UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
-})
+// micInputStream.on('processExitComplete', function () {
+//   UploadFile.UploadFile(path.join(__dirname, '/temp/tempFile.wav'))
+// })
 module.exports = micInstance

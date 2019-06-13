@@ -2,7 +2,6 @@
 var Gpio = require('onoff').Gpio
 // Class serial
 
-
 // Class constants
 const UploadFile = require('./public/js/pi/upload.js')
 const UploadFileClass = UploadFile.UploadFile
@@ -80,6 +79,7 @@ function initiator () {
     LCDClass.writeToAll('Hold to retry', 2)
   }
   if (phase === 7) {
+    LCDClass.clearAll()
     LCDClass.writeToAll('Press to start', 1)
     LCDClass.writeToAll('a new round', 2)
   }
