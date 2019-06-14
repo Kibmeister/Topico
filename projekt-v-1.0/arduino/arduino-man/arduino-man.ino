@@ -10,47 +10,50 @@ void setup() {
     FastLED.addLeds<NEOPIXEL, 6>(leds[1], NUM_LEDS);
 }
 
+//void setLED() {
+//  if (Serial.available()) {
+//    nr = Serial.parseInt();
+//    Serial.println(nr);
+//  }
+//}
+
 void loop() {
-    Serial.println("Arduino sent a message!");
-    setLED();
+  Serial.println("Arduino sent a message!");
+  char nr;
+  
+  if (Serial.available()>0) {
+    nr = Serial.read();
     if (nr == 1)
     {
-        choose();
+      choose();
     }
     if (nr == 2) {
-        guy1();
+      guy1();
     }
     if (nr == 3) {
-        guy2();
+      guy2();
     }
     if (nr == 4) {
-        guy3();
+      guy3();
     }
     if (nr == 5) {
-        guy4();
+      guy4();
     }
     if (nr == 6) {
-        que1();
+      que1();
     }
     if (nr == 7) {
-        que2();
+      que2();
     }
     if (nr == 8) {
-        que3();
+      que3();
     }
     if (nr == 9) {
-        que4();
+      que4();
     }
     if (nr == 10) {
-         record();
+      record();
     }
-    delay(1000);
-}
-
-void setLED() {
-  if (Serial.available()) {
-    nr = Serial.parseInt();
-    Serial.println(nr);
   }
 }
 
