@@ -66,10 +66,10 @@ function initiator () {
   if (phase === 1) {
     delay = 10000
     words()
-    SerialPort.sendData(1)
   }
   if (phase === 2) {
-    choose()
+    SerialPort.sendData(1)
+    setTimeout(function () { choose() }, 1500)
   }
   if (phase === 3) {
     queWord()
