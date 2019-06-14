@@ -40,7 +40,7 @@ var phase = 1
 
 // Clear screen and print the device is ready:
 LCDClass.clearAll()
-LCDClass.writeToAll('Press to start', 1)
+LCDClass.writeToAll('Press to start.', 1)
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
@@ -69,7 +69,6 @@ function initiator () {
     queWord()
   }
   if (phase === 4) {
-    clearTimeout()
     micInstance.start()
   }
   if (phase === 5) {
@@ -82,6 +81,11 @@ function initiator () {
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to start', 1)
     LCDClass.writeToAll('a new round', 2)
+  }
+  if (phase === 8) {
+    phase = 0
+    LCDClass.clearAll()
+    LCDClass.writeToAll('Press to start.', 1)
   }
   // micInstance.start()
   // setTimeout(() => {
