@@ -1,6 +1,7 @@
 'use strict'
 var Gpio = require('onoff').Gpio
 // Class serial
+const SerialPort = require('./public/js/pi/serialPort.js').serialPort
 
 // Class constants
 const UploadFile = require('./public/js/pi/upload.js')
@@ -35,7 +36,7 @@ let fourWords = [
 let wordQuewords = []
 var printHelpWords1, printHelpWords2, printHelpWords3
 
-var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 3000 })
+var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 1000 })
 // Output is sent 1s after releasing the button
 var pushButton2 = new Gpio(14, 'in', 'rising', { debounceTimeout: 5000, activeLow: true })
 // Output is sent after holding the button for 5 seconds
@@ -65,6 +66,7 @@ function initiator () {
   if (phase === 1) {
     delay = 10000
     words()
+    SerialPort.sendData(1)
   }
   if (phase === 2) {
     choose()
@@ -82,6 +84,7 @@ function initiator () {
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to stop', 2)
     micInstance.start()
+    SerialPort.sendData(10)
   }
   if (phase === 6) {
     micInstance.stop()
@@ -136,6 +139,7 @@ function choose () {
   console.log('Choose() called')
   wordIndex = Math.floor(Math.random() * fourWords.length)
   chosenWord = fourWords[wordIndex]
+  SerialPort.sendData(wordIndex + 2)
   LCDClass.clearAll()
   chosenWord.lcd.println('You got:', 1)
   chosenWord.lcd.println(chosenWord.word, 2)
@@ -144,6 +148,7 @@ function choose () {
 // Rearranges the words object, and prints quewords:
 function queWord () {
   console.log('queWord() called')
+  SerialPort.sendData(wordIndex + 6)
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     wordQuewords.push(chosenWord)

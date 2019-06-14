@@ -3,24 +3,24 @@
 #define NUM_LEDS 56
 CRGB leds[NUM_STRIPS][NUM_LEDS];
 int led = 0;
-int nr = 0;
+int nr;
 
 void setup() {
     Serial.begin(9600);  // Starts the serial communication
     FastLED.addLeds<NEOPIXEL, 6>(leds[1], NUM_LEDS);
 }
 
-//  void setLED() {
-//  if (Serial.available()) {
-//    nr = Serial.parseInt();
-//    Serial.println(nr);
-//  }
-//}
-
-void loop() {
-  if (Serial.available()>0) {
+void setLED() {
+  if (Serial.available()) {
     nr = Serial.parseInt();
     Serial.println(nr);
+    Serial.println("SerialMAN" + Serial.available());
+    }
+   delay(1);
+  }
+
+void loop() {
+  setLED();
     if (nr == 1)
     {
       choose();
@@ -53,7 +53,6 @@ void loop() {
       record();
     }
   }
-}
 
 void record() {
     while (nr == 10) {
@@ -68,6 +67,7 @@ void record() {
                 delay(10);
             }
             FastLED.show();
+            setLED();
         }
     }
 }
@@ -84,6 +84,7 @@ void guy1() {
         delay(5);
     }
     FastLED.show();
+    setLED();
   }
 }
 
@@ -103,6 +104,7 @@ void guy2() {
         delay(5);
     }
     FastLED.show();
+    setLED();
   }
 }
 
@@ -122,6 +124,7 @@ void guy3() {
         delay(5);
     }
     FastLED.show();
+    setLED();
   }
 }
 
@@ -141,6 +144,7 @@ void guy4() {
         delay(5);
     }
     FastLED.show();
+    setLED();
   }
 }
 
@@ -158,6 +162,7 @@ void choose() {
             FastLED.show();
         }
     }
+    setLED();
   }
 }
 
@@ -206,6 +211,7 @@ void que1() {
     guy2que();
     guy3que();
     guy4que();
+    setLED();
   }
 }
 
@@ -214,6 +220,7 @@ void que2() {
     guy3que();
     guy4que();
     guy1que();
+    setLED();
   }
 }
 
@@ -222,6 +229,7 @@ void que3() {
     guy4que();
     guy1que();
     guy2que();
+    setLED();
   }
 }
 
@@ -230,5 +238,6 @@ void que4() {
     guy1que();
     guy2que();
     guy3que();
+    setLED();
   }
 }
