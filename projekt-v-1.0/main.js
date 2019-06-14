@@ -48,18 +48,17 @@ LCDClass.writeToAll('Press to start.', 1)
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
   if (err) throw err
-  if (phase !== 6) { initiator(); console.log('Button is pushed, phase: ', phase) } else {
-    UploadFileClass.UploadFile(chosenWord.word)
-  }
+  initiator()
+  console.log('Button is pushed, phase: ', phase)
   phase++
 })
 
-if (phase === 6) {
-  pushButton2.watch(function (err) {
-    if (err) throw err
+pushButton2.watch(function (err) {
+  if (err) throw err
+  if (phase === 6) {
     phase = 3
-  })
-}
+  }
+})
 
 // Function to control different stages of the interaction:
 function initiator () {
@@ -75,10 +74,12 @@ function initiator () {
   }
   if (phase === 4) {
     clearTimeout(printHelpWords1, printHelpWords2, printHelpWords3)
+    LCDClass.clearAll()
     LCDClass.writeToAll('Press to record', 1)
-    LCDClass.writeToAll(chosenWord.word)
+    LCDClass.writeToAll(chosenWord.word, 2)
   }
   if (phase === 5) {
+    LCDClass.clearAll()
     LCDClass.writeToAll('Press to stop', 2)
     micInstance.start()
   }
@@ -87,6 +88,9 @@ function initiator () {
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
+  }
+  if (phase === 7) {
+    UploadFileClass.UploadFile(chosenWord.word)
   }
   if (phase === 8) {
     LCDClass.clearAll()
