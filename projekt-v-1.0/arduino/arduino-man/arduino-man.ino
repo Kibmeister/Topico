@@ -11,7 +11,8 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Arduino sent a message!");
+    Serial.println("Arduino sent a message!");
+    setLED();
     if (nr == 1)
     {
         choose();
@@ -43,7 +44,7 @@ void loop() {
     if (nr == 10) {
          record();
     }
-    delay(100);
+    delay(1000);
 }
 
 void setLED() {
