@@ -43,6 +43,4 @@ parser.on('data', data => {
   console.log('got word from arduino:', data)
 })
 
-// hello mister Flaze
-
 module.exports.serialPort = serialPort
