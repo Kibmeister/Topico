@@ -2,15 +2,15 @@
 #define NUM_STRIPS 2
 #define NUM_LEDS 56
 CRGB leds[NUM_STRIPS][NUM_LEDS];
-int nr = 1;
 int led = 0;
+int nr = 0;
 
 void setup() {
     Serial.begin(9600);  // Starts the serial communication
     FastLED.addLeds<NEOPIXEL, 6>(leds[1], NUM_LEDS);
 }
 
-//void setLED() {
+//  void setLED() {
 //  if (Serial.available()) {
 //    nr = Serial.parseInt();
 //    Serial.println(nr);
@@ -18,11 +18,9 @@ void setup() {
 //}
 
 void loop() {
-  Serial.println("Arduino sent a message!");
-  char nr;
-  
   if (Serial.available()>0) {
-    nr = Serial.read();
+    nr = Serial.parseInt();
+    Serial.println(nr);
     if (nr == 1)
     {
       choose();
@@ -68,9 +66,6 @@ void record() {
             for (int i = 0; i < NUM_LEDS; i++) {
                 leds[1][i] = CRGB::Black;
                 delay(10);
-            }
-            if (Serial.available()) {
-                break;
             }
             FastLED.show();
         }
@@ -151,9 +146,6 @@ void guy4() {
 
 void choose() {
   while (nr == 1) {
-    if (Serial.available()) {
-        return;
-    }
     for (int i = 0; i < 100; i++) {
         for (int i = 0; i < NUM_LEDS; i++) {
             leds[1][i] = CRGB::White;
