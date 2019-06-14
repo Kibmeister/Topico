@@ -73,8 +73,13 @@ function initiator () {
   if (phase === 3) {
     queWord()
   }
-  if (phase === 5) {
+  if (phase === 4) {
     clearTimeout(printHelpWords1, printHelpWords2, printHelpWords3)
+    LCDClass.writeToAll('Press to record', 1)
+    LCDClass.writeToAll(chosenWord.word)
+  }
+  if (phase === 5) {
+    LCDClass.writeToAll('Press to stop', 2)
     micInstance.start()
   }
   if (phase === 6) {
