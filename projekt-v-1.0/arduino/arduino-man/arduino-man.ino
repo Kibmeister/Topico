@@ -19,36 +19,36 @@ void loop() {
     nr = Serial.parseInt();
     Serial.println(nr);
   }
-    // if (nr == 1) {
-    //     choose();
-    // }
-    // if (nr == 2) {
-    //     guy1();
-    // }
-    // if (nr == 3) {
-    //     guy2();
-    // }
-    // if (nr == 4) {
-    //     guy3();
-    // }
-    // if (nr == 5) {
-    //     guy4();
-    // }
-    // if (nr == 6) {
-    //     que1();
-    // }
-    // if (nr == 7) {
-    //     que2();
-    // }
-    // if (nr == 8) {
-    //     que3();
-    // }
-    // if (nr == 9) {
-    //     que4();
-    // }
-    // if (nr == 10) {
-    //     record();
-    // }
+    if (nr == 1) {
+        choose();
+    }
+    if (nr == 2) {
+        guy1();
+    }
+    if (nr == 3) {
+        guy2();
+    }
+    if (nr == 4) {
+        guy3();
+    }
+    if (nr == 5) {
+        guy4();
+    }
+    if (nr == 6) {
+        que1();
+    }
+    if (nr == 7) {
+        que2();
+    }
+    if (nr == 8) {
+        que3();
+    }
+    if (nr == 9) {
+        que4();
+    }
+    if (nr == 10) {
+         record();
+    }
 }
 
 void record() {
