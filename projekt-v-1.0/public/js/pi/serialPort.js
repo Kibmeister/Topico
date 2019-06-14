@@ -11,7 +11,7 @@ port.on('open', () => {
 class serialPort {
   static sendData (a) {
     console.log('Writing value to SerialPort: ', a)
-    port.write(a + '\n', (err) => {
+    port.write(a + '\n', function (err) {
       if (err) {
         return console.log('Error on write: ', err.message)
       }
