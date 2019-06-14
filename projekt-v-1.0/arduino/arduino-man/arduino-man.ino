@@ -44,7 +44,7 @@ void loop() {
 }
 
 void record() {
-  for(int i = 0; i<6; i++) {
+  for(int i = 0; i<100; i++) {
   for(int i = 0; i<NUM_LEDS; i++){
         leds[1][i] = CRGB::Red; 
         delay(10);
@@ -54,6 +54,9 @@ void record() {
         leds[1][i] = CRGB::Black; 
         delay(10);
        }
+        if (Serial.available()) {
+    break;
+    }
        FastLED.show();
   }
 }
@@ -133,7 +136,10 @@ void guy4() {
 }
 
 void choose() {
-  for(int i = 0; i<6; i++) {
+  if(Serial.available()) {
+    return;
+    }
+  for(int i = 0; i<100; i++) {
   for(int i = 0; i<NUM_LEDS; i++){
         leds[1][i] = CRGB::White; 
         delay(5);
