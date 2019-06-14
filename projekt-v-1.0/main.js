@@ -32,6 +32,9 @@ let fourWords = [
   { word: word3, lcd: lcd3 },
   { word: word4, lcd: lcd4 }]
 
+let wordQuewords = []
+var printHelpWords1, printHelpWords2, printHelpWords3
+
 var pushButton1 = new Gpio(4, 'in', 'rising', { debounceTimeout: 3000 })
 // Output is sent 1s after releasing the button
 var pushButton2 = new Gpio(14, 'in', 'falling', { debounceTimeout: 5000 })
@@ -51,10 +54,12 @@ pushButton1.watch(function (err) {
   phase++
 })
 
-pushButton2.watch(function (err) {
-  if (err) throw err
-  phase = 3
-})
+if (phase === 6) {
+  pushButton2.watch(function (err) {
+    if (err) throw err
+    phase = 3
+  })
+}
 
 // Function to control different stages of the interaction:
 function initiator () {
@@ -68,21 +73,22 @@ function initiator () {
   if (phase === 3) {
     queWord()
   }
-  if (phase === 4) {
+  if (phase === 5) {
+    clearTimeout(printHelpWords1, printHelpWords2, printHelpWords3)
     micInstance.start()
   }
-  if (phase === 5) {
+  if (phase === 6) {
     micInstance.stop()
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
   }
-  if (phase === 7) {
+  if (phase === 8) {
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to start', 1)
     LCDClass.writeToAll('a new round', 2)
   }
-  if (phase === 8) {
+  if (phase === 9) {
     phase = 0
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to start.', 1)
@@ -129,7 +135,6 @@ function choose () {
 // Rearranges the words object, and prints quewords:
 function queWord () {
   console.log('queWord() called')
-  let wordQuewords = []
   WordsClass.getQueWords(chosenWord.word, function (err, res) {
     if (err) return err
     wordQuewords.push(chosenWord)
@@ -137,15 +142,19 @@ function queWord () {
     wordQuewords.push({ word: res[0].queword2, lcd: fourWords[((wordIndex + 2) % 4)].lcd })
     wordQuewords.push({ word: res[0].queword3, lcd: fourWords[((wordIndex + 3) % 4)].lcd })
   })
-  setTimeout(() => {
+  printHelpWords()
+}
+
+function printHelpWords () {
+  printHelpWords1 = setTimeout(function () {
     wordQuewords[1].lcd.println('First helpword:', 1)
     wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
   }, 1 * delay)
-  setTimeout(() => {
+  printHelpWords2 = setTimeout(function () {
     wordQuewords[2].lcd.println('Second helpword:', 1)
     wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
   }, 2 * delay)
-  setTimeout(() => {
+  printHelpWords3 = setTimeout(function () {
     wordQuewords[3].lcd.println('Third helpword:', 1)
     wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
   }, 3 * delay)
