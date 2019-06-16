@@ -89,6 +89,7 @@ function initiator () {
   }
   if (phase === 6) {
     micInstance.stop()
+    SerialPort.sendData(11)
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
