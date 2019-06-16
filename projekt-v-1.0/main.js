@@ -50,8 +50,8 @@ LCDClass.writeToAll('Press to start.', 1)
 pushButton1.watch(function (err) {
   if (err) throw err
   initiator()
-  console.log('Button is pushed, phase: ', phase)
   phase++
+  console.log('Button is pushed, phase: ', phase)
 })
 
 pushButton2.watch(function (err) {
