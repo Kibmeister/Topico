@@ -97,6 +97,9 @@ function initiator () {
   }
   if (phase === 7) {
     UploadFileClass.UploadFile(chosenWord.word)
+    LCDClass.clearAll()
+    LCDClass.writeToAll('Upload complete!', 1)
+    LCDClass.writeToAll('Press to proceed', 2)
   }
   if (phase === 8) {
     LCDClass.clearAll()
@@ -104,7 +107,7 @@ function initiator () {
     LCDClass.writeToAll('a new round', 2)
   }
   if (phase === 9) {
-    phase = 0
+    phase = 1
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to start.', 1)
   }
