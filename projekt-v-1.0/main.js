@@ -56,7 +56,7 @@ pushButton1.watch(function (err) {
 pushButton2.watch(function (err) {
   if (err) throw err
   if (phase === 7) {
-    phase = 3
+    phase = 4
     delay = 1
     console.log('Pushbutton2 set phase to: ', phase)
   }
