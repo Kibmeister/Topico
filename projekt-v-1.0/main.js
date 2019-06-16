@@ -1,13 +1,12 @@
 'use strict'
 var Gpio = require('onoff').Gpio
-// Class serial
-const SerialPort = require('./public/js/pi/serialPort.js').serialPort
 
 // Class constants
 const UploadFile = require('./public/js/pi/upload.js')
 const UploadFileClass = UploadFile.UploadFile
 const WordsClass = require('./db/words').Words
 const micInstance = require('./public/js/pi/mic')
+const SerialPort = require('./public/js/pi/serialPort.js').serialPort
 
 // LCD constants
 const LCD = require('./public/js/pi/lcd')
@@ -57,8 +56,10 @@ pushButton1.watch(function (err) {
 pushButton2.watch(function (err) {
   if (err) throw err
   if (phase === 7) {
-    phase = 3
+    phase = 4
+    delay = 1
     console.log('Pushbutton2 set phase to: ', phase)
+    SerialPort.sendData(11)
   }
 })
 
@@ -89,6 +90,7 @@ function initiator () {
   }
   if (phase === 6) {
     micInstance.stop()
+    SerialPort.sendData(11)
     LCDClass.clearAll()
     LCDClass.writeToAll('Press to save', 1)
     LCDClass.writeToAll('Hold to retry', 2)
@@ -162,16 +164,22 @@ function queWord () {
 
 function printHelpWords () {
   printHelpWords1 = setTimeout(function () {
-    wordQuewords[1].lcd.println('First helpword:', 1)
-    wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
+    if (phase === 3) {
+      wordQuewords[1].lcd.println('First helpword:', 1)
+      wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
+    }
   }, 1 * delay)
   printHelpWords2 = setTimeout(function () {
-    wordQuewords[2].lcd.println('Second helpword:', 1)
-    wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
+    if (phase === 3) {
+      wordQuewords[2].lcd.println('Second helpword:', 1)
+      wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
+    }
   }, 2 * delay)
   printHelpWords3 = setTimeout(function () {
-    wordQuewords[3].lcd.println('Third helpword:', 1)
-    wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
+    if (phase === 3) {
+      wordQuewords[3].lcd.println('Third helpword:', 1)
+      wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
+    }
   }, 3 * delay)
 }
 
