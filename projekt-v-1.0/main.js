@@ -164,16 +164,22 @@ function queWord () {
 
 function printHelpWords () {
   printHelpWords1 = setTimeout(function () {
-    wordQuewords[1].lcd.println('First helpword:', 1)
-    wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
+    if (phase === 3) {
+      wordQuewords[1].lcd.println('First helpword:', 1)
+      wordQuewords[1].lcd.println(wordQuewords[1].word, 2)
+    }
   }, 1 * delay)
   printHelpWords2 = setTimeout(function () {
-    wordQuewords[2].lcd.println('Second helpword:', 1)
-    wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
+    if (phase === 3) {
+      wordQuewords[2].lcd.println('Second helpword:', 1)
+      wordQuewords[2].lcd.println(wordQuewords[2].word, 2)
+    }
   }, 2 * delay)
   printHelpWords3 = setTimeout(function () {
-    wordQuewords[3].lcd.println('Third helpword:', 1)
-    wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
+    if (phase === 3) {
+      wordQuewords[3].lcd.println('Third helpword:', 1)
+      wordQuewords[3].lcd.println(wordQuewords[3].word, 2)
+    }
   }, 3 * delay)
 }
 
