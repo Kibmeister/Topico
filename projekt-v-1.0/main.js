@@ -59,6 +59,7 @@ pushButton2.watch(function (err) {
     phase = 4
     delay = 1
     console.log('Pushbutton2 set phase to: ', phase)
+    SerialPort.sendData(11)
   }
 })
 
