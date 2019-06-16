@@ -150,7 +150,7 @@ void guy4() {
 
 void choose() {
   while (nr == 1) {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 6; i++) {
         for (int i = 0; i < NUM_LEDS; i++) {
             leds[1][i] = CRGB::White;
             delay(5);
