@@ -58,6 +58,7 @@ pushButton2.watch(function (err) {
   if (err) throw err
   if (phase === 6) {
     phase = 3
+    console.log('Pushbutton2 set phase to: ', phase)
   }
 })
 
