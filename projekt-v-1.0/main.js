@@ -1,13 +1,12 @@
 'use strict'
 var Gpio = require('onoff').Gpio
-// Class serial
-const SerialPort = require('./public/js/pi/serialPort.js').serialPort
 
 // Class constants
 const UploadFile = require('./public/js/pi/upload.js')
 const UploadFileClass = UploadFile.UploadFile
 const WordsClass = require('./db/words').Words
 const micInstance = require('./public/js/pi/mic')
+const SerialPort = require('./public/js/pi/serialPort.js').serialPort
 
 // LCD constants
 const LCD = require('./public/js/pi/lcd')
@@ -58,6 +57,7 @@ pushButton2.watch(function (err) {
   if (err) throw err
   if (phase === 7) {
     phase = 3
+    delay = 1
     console.log('Pushbutton2 set phase to: ', phase)
   }
 })
