@@ -14,13 +14,15 @@ void setLED() {
   if (Serial.available()) {
     nr = Serial.parseInt();
     Serial.println(nr);
-    Serial.println("SerialMAN" + Serial.available());
     }
    delay(1);
   }
 
 void loop() {
   setLED();
+    if (nr == 12) {
+      killBill();
+    }
     if (nr == 1)
     {
       choose();
@@ -52,11 +54,13 @@ void loop() {
     if (nr == 10) {
       record();
     }
+    if (nr == 11) {
+      stopRecording();
+    }
   }
 
 void record() {
     while (nr == 10) {
-        for (int i = 0; i < 100; i++) {
             for (int i = 0; i < NUM_LEDS; i++) {
                 leds[1][i] = CRGB::Red;
                 delay(10);
@@ -68,8 +72,10 @@ void record() {
             }
             FastLED.show();
             setLED();
-        }
     }
+    if (nr == 0) {
+      nr = 10;
+      }
 }
 
 void guy1() {
@@ -130,7 +136,7 @@ void guy3() {
 
 void guy4() {
   while (nr == 5) {
-    led = 56;
+    led = 55;
     for (int i = 0; i < 41; i++) {
         leds[1][i] = CRGB::Black;
         delay(5);
@@ -150,7 +156,6 @@ void guy4() {
 
 void choose() {
   while (nr == 1) {
-    for (int i = 0; i < 6; i++) {
         for (int i = 0; i < NUM_LEDS; i++) {
             leds[1][i] = CRGB::White;
             delay(5);
@@ -161,49 +166,47 @@ void choose() {
             delay(5);
             FastLED.show();
         }
+       setLED();
     }
-    setLED();
-  }
+    if (nr == 0) {
+      nr = 1;
+      }
 }
 
 void guy1que() {
     led = 13;
     for (int i = 0; i < led; i++) {
         leds[1][i] = CRGB::Green;
-        delay(100);
+        delay(714);
         FastLED.show();
     }
-    delay(1000);
 }
 
 void guy2que() {
     led = 27;
     for (int i = 14; i < led; i++) {
         leds[1][i] = CRGB::Green;
-        delay(100);
+        delay(714);
         FastLED.show();
     }
-    delay(1000);
 }
 
 void guy3que() {
     led = 42;
     for (int i = 28; i < led; i++) {
         leds[1][i] = CRGB::Green;
-        delay(100);
+        delay(714);
         FastLED.show();
     }
-    delay(1000);
 }
 
 void guy4que() {
     led = 56;
     for (int i = 43; i < led; i++) {
         leds[1][i] = CRGB::Green;
-        delay(100);
+        delay(714);
         FastLED.show();
     }
-    delay(1000);
 }
 
 void que1() {
@@ -241,3 +244,27 @@ void que4() {
     setLED();
   }
 }
+
+void stopRecording() {
+    for (int i = 0; i<3; i++) {
+        for (int i = 0; i < NUM_LEDS; i++) {
+            leds[1][i] = CRGB::Green;
+        }
+        FastLED.show();
+        delay(500);
+        for (int i = 0; i < NUM_LEDS; i++) {
+            leds[1][i] = CRGB::Black;
+        }
+        FastLED.show();
+        delay(500);
+        setLED();
+    }
+}
+
+void killBill() {
+  for (int i = 0; i < NUM_LEDS; i++) {
+            leds[1][i] = CRGB::Black;
+        }
+        FastLED.show();
+  }
+  
