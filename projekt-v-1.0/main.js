@@ -44,6 +44,7 @@ var phase = 1
 // Clear screen and print the device is ready:
 LCDClass.clearAll()
 LCDClass.writeToAll('Press to start.', 1)
+SerialPort.sendData(12)
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
