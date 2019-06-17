@@ -25,3 +25,8 @@ parser.on('data', data => {
 })
 
 module.exports.serialPort = serialPort
+
+process.on('SIGINT', function () {
+  SerialPort.sendData(11)
+  process.nextTick(function () { process.exit(0) })
+})
