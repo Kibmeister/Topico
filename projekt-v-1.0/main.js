@@ -58,7 +58,7 @@ pushButton2.watch(function (err) {
   if (err) throw err
   if (phase === 7) {
     phase = 4
-    delay = 1
+    delay = 1; console.log('Delay set to 1')
     console.log('Pushbutton2 set phase to: ', phase)
     SerialPort.sendData(11)
   }
@@ -67,7 +67,7 @@ pushButton2.watch(function (err) {
 // Function to control different stages of the interaction:
 function initiator () {
   if (phase === 1) {
-    delay = 10000
+    delay = 10000; console.log('Delay set to original')
     words()
   }
   if (phase === 2) {
@@ -189,7 +189,6 @@ function printHelpWords () {
 
 process.on('SIGINT', function () {
   clearInterval()
-  SerialPort.sendData(11)
   LCDClass.turnAllOff()
   process.nextTick(function () { process.exit(0) })
 })
