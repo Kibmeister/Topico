@@ -44,7 +44,7 @@ var phase = 1
 // Clear screen and print the device is ready:
 LCDClass.clearAll()
 LCDClass.writeToAll('Press to start.', 1)
-SerialPort.sendData(1)
+SerialPort.sendData(11)
 
 // Prevent button repeated presses:
 pushButton1.watch(function (err) {
@@ -189,7 +189,7 @@ function printHelpWords () {
 
 process.on('SIGINT', function () {
   clearInterval()
-  SerialPort.sendData(1)
+  SerialPort.sendData(11)
   LCDClass.turnAllOff()
   process.nextTick(function () { process.exit(0) })
 })
