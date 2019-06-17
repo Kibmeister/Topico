@@ -189,6 +189,7 @@ function printHelpWords () {
 
 process.on('SIGINT', function () {
   clearInterval()
+  SerialPort.sendData(12)
   LCDClass.turnAllOff()
   process.nextTick(function () { process.exit(0) })
 })
