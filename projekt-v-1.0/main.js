@@ -108,9 +108,12 @@ function initiator () {
     LCDClass.writeToAll('a new round', 2)
   }
   if (phase === 9) {
-    phase = 1
-    LCDClass.clearAll()
+    LCDClass.clearAll(1)
     LCDClass.writeToAll('Press to start.', 1)
+    setTimeout(function (err) {
+      if (err) throw err
+      phase = 1
+    }, 1000)
   }
   // micInstance.start()
   // setTimeout(() => {
