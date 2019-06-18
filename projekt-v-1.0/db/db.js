@@ -5,7 +5,7 @@ let config = {
   user: 'pi',
   password: 'foobar',
   database: 'itpdp',
-  host: '192.168.43.220'
+  host: '192.168.43.31'
 }
 
 const pool = mysql.createPool(config)
