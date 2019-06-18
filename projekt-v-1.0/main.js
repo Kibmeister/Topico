@@ -67,6 +67,7 @@ pushButton2.watch(function (err) {
 // Function to control different stages of the interaction:
 function initiator () {
   if (phase === 1) {
+    wordQuewords = []
     delay = 10000; console.log('Delay set to original')
     words()
   }
